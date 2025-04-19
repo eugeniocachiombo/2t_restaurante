@@ -42,10 +42,9 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="#hero" class="active">Início</a></li>
-                    <li><a href="#about">Sobre Nós</a></li>
                     <li><a href="#services">Serviços</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#team">Equipa</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
                     <li><a href="#contact">Contactos</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -56,7 +55,7 @@
 
     {{ $slot }}
 
-    <footer id="footer" class="footer dark-background">
+    <footer id="footer" class="footer dark-background" >
         <div class="container">
             <h3 class="sitename">@include('inc.namewebsite')</h3>
             <p>Venha para a nossa casa e experimente o melhor da gastronomia local.</p>

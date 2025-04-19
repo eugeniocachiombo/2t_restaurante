@@ -17,6 +17,529 @@
         </section><!-- /Seção Hero -->
 
 
+        <!-- Seção de Estatísticas -->
+        <section id="stats" class="stats section">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="1240" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Pratos Servidos</p>
+                        </div>
+                    </div><!-- Fim do Item de Estatística -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="870" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Bebidas Preparadas</p>
+                        </div>
+                    </div><!-- Fim do Item de Estatística -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="640" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Pedidos Online</p>
+                        </div>
+                    </div><!-- Fim do Item de Estatística -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="1"
+                                class="purecounter"></span>
+                            <p>Especialistas na Cozinha</p>
+                        </div>
+                    </div><!-- Fim do Item de Estatística -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Seção de Estatísticas -->
+
+
+        <!-- Seção de Pratos Mais Servidos -->
+        <section id="featured-services" class="featured-services section">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="service-item position-relative">
+                            <div class="img">
+                                <img src="{{ asset('assets/img/rest/calulu.png') }}" class="img-fluid"
+                                    alt="Funge com Calulu">
+                            </div>
+                            <div class="details">
+                                <a href="service-details.html" class="stretched-link">
+                                    <h3>Funge com Calulu</h3>
+                                </a>
+                                <p>Um prato tradicional e querido em toda Angola. O funge de milho ou bombó acompanha o
+                                    delicioso calulu de peixe seco com quiabos e folhas.</p>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Prato -->
+
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="service-item position-relative">
+                            <div class="img">
+                                <img src="{{ asset('assets/img/rest/muamba-galinha.png') }}" class="img-fluid"
+                                    alt="Muamba de Galinha">
+                            </div>
+                            <div class="details">
+                                <a href="service-details.html" class="stretched-link">
+                                    <h3>Muamba de Galinha</h3>
+                                </a>
+                                <p>Um clássico da culinária angolana. Frango cozido lentamente com óleo de palma,
+                                    quiabos e especiarias, servido com funge ou arroz.</p>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Prato -->
+
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="service-item position-relative">
+                            <div class="img">
+                                <img src="{{ asset('assets/img/rest/caldeirada.png') }}" class="img-fluid"
+                                    alt="Caldeirada de Cabrito">
+                            </div>
+                            <div class="details">
+                                <a href="service-details.html" class="stretched-link">
+                                    <h3>Caldeirada de Cabrito</h3>
+                                </a>
+                                <p>Carne de cabrito cozida lentamente com batatas, pimentões e ervas, formando um caldo
+                                    saboroso e rico, perfeito para ocasiões especiais.</p>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Prato -->
+
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="service-item position-relative">
+                            <div class="img">
+                                <img src="{{ asset('assets/img/rest/muamba-ginguba.png') }}" class="img-fluid"
+                                    alt="Moamba de Ginguba">
+                            </div>
+                            <div class="details">
+                                <a href="service-details.html" class="stretched-link">
+                                    <h3>Moamba de Ginguba</h3>
+                                </a>
+                                <p>Uma deliciosa variação da moamba, feita com molho de amendoim (ginguba), frango e
+                                    legumes, ideal para quem aprecia sabores autênticos.</p>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Prato -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Seção de Pratos Mais Servidos -->
+
+
+        <!-- Seção de Serviços -->
+        <section id="services" class="services section"
+            style="background-image: url('{{ asset('assets/img/rest/1(2).jpg') }}'); background-size: cover; background-position: center;">
+
+            <!-- Título da Seção -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Serviços</h2>
+                <p>Sabores marcantes, atendimento acolhedor e experiências feitas sob medida para você.</p>
+            </div><!-- Fim do Título da Seção -->
+
+            <div class="container">
+                <div class="row g-5">
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item item-cyan position-relative">
+                            <i class="bi bi-bag-check icon"></i>
+                            <div>
+                                <h3>Entrega de Refeições</h3>
+                                <p>Receba nossas delícias onde estiver! Um cardápio completo, preparado com carinho e
+                                    entregue com agilidade, direto na sua porta.</p>
+                                <a href="#menu" class="read-more stretched-link">Peça agora <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Item de Serviço -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-item item-orange position-relative">
+                            <i class="bi bi-box-seam icon"></i>
+                            <div>
+                                <h3>Pedidos Personalizados</h3>
+                                <p>Cada pedido é único, assim como você. Seja para uma ocasião especial ou seu prato
+                                    favorito com um toque extra, preparamos tudo sob medida.</p>
+                                <a href="#contact" class="read-more stretched-link">Fazer pedido <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Item de Serviço -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-item item-teal position-relative">
+                            <i class="bi bi-stars icon"></i>
+                            <div>
+                                <h3>Eventos Gastronômicos</h3>
+                                <p>Transformamos momentos em experiências inesquecíveis. Jantares temáticos, degustações
+                                    e muito mais para surpreender seus convidados.</p>
+                                <a href="#gallery" class="read-more stretched-link">Ver eventos <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Item de Serviço -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-item item-red position-relative">
+                            <i class="bi bi-person-lines-fill icon"></i>
+                            <div>
+                                <h3>Atendimento Personalizado</h3>
+                                <p>Seu conforto é nossa prioridade. Atendimento cordial, ágil e atento aos detalhes,
+                                    para que cada interação seja memorável.</p>
+                                <a href="#contact" class="read-more stretched-link">Fale conosco <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Item de Serviço -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="service-item item-indigo position-relative">
+                            <i class="bi bi-calendar-check icon"></i>
+                            <div>
+                                <h3>Reserva de Mesas</h3>
+                                <p>Garanta seu lugar especial no nosso espaço! Perfeito para encontros, comemorações ou
+                                    um almoço tranquilo no seu dia.</p>
+                                <a href="#reservation" class="read-more stretched-link">Reservar agora <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Item de Serviço -->
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+                        <div class="service-item item-pink position-relative">
+                            <i class="bi bi-lightbulb icon"></i>
+                            <div>
+                                <h3>Consultoria Gastronômica</h3>
+                                <p>Tem um evento e não sabe o que servir? Nós ajudamos com sugestões criativas e
+                                    combinações perfeitas para impressionar.</p>
+                                <a href="#contact" class="read-more stretched-link">Saiba como <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Item de Serviço -->
+
+                </div>
+            </div>
+
+        </section><!-- /Seção de Serviços -->
+
+
+
+        <!-- Seção de Chamada para Ação -->
+        <section id="call-to-action" class="call-to-action section dark-background">
+
+            <div class="container">
+                <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="col-xl-10">
+                        <div class="text-center">
+                            <h3>Pronto para fazer seu pedido?</h3>
+                            <p>Delícias autênticas, preparadas com carinho, estão à sua espera. Faça seu pedido agora e
+                                experimente o melhor da nossa cozinha no conforto da sua casa ou na nossa mesa.</p>
+                            <a class="cta-btn" href="#">Peça Agora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /Seção de Chamada para Ação -->
+
+
+
+        <!-- Seção da Equipe -->
+        <section id="team" class="team section light-background"
+        style="background-image: url('{{ asset('assets/img/rest/1(1).jpg') }}'); background-size: cover; background-position: center;">
+
+            <!-- Título da Seção -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Nosso Equipa de Cozinha</h2>
+                <p class="text-white"><b>Conheça os talentos por trás dos sabores inesquecíveis. Nossa equipe de cozinha combina paixão,
+                    criatividade e tradição em cada prato servido.</b></p>
+            </div><!-- Fim do Título da Seção -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{asset('assets/img/team/team-1.jpg')}}" class="img-fluid" alt="Chef Principal">
+                                <div class="social">
+                                    <a href="#"><i class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-facebook"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>Chef Manuel Silva</h4>
+                                <span>Chef Executivo</span>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Membro -->
+
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{asset('assets/img/team/team-2.jpg')}}" class="img-fluid" alt="Sous Chef">
+                                <div class="social">
+                                    <a href="#"><i class="bi bi-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>Luciana Paixão</h4>
+                                <span>Sous Chef</span>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Membro -->
+
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                        data-aos-delay="300">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{asset('assets/img/team/team-3.jpg')}}" class="img-fluid"
+                                    alt="Especialista em Grelhados">
+                                <div class="social">
+                                    <a href="#"><i class="bi bi-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>José Mário</h4>
+                                <span>Especialista em Grelhados</span>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Membro -->
+
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                        data-aos-delay="400">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="{{asset('assets/img/team/team-4.jpg')}}" class="img-fluid" alt="Chef de Sobremesas">
+                                <div class="social">
+                                    <a href="#"><i class="bi bi-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>Helena Duarte</h4>
+                                <span>Chef de Sobremesas</span>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Membro -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Seção da Equipe -->
+
+
+
+        <!-- Seção de Pratos Mais Servidos -->
+        <section id="pricing" class="pricing section">
+
+            <!-- Título da Seção -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Pratos Mais Servidos</h2>
+                <p>Sabores que conquistam todos os dias. Escolha seu favorito e aproveite uma experiência gastronômica
+                    inesquecível.</p>
+            </div><!-- Fim do Título da Seção -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="pricing-item">
+                            <h3>Muamba de Galinha</h3>
+                            <h4><sup>AOA</sup>4.500<span> / prato</span></h4>
+                            <ul>
+                                <li>Galinha temperada e cozida com óleo de palma</li>
+                                <li>Acompanhada de funge ou arroz</li>
+                                <li>Sabor autêntico angolano</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Pedir agora</a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Prato -->
+
+                    <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="pricing-item featured">
+                            <h3>Calulu de Peixe</h3>
+                            <h4><sup>AOA</sup>5.000<span> / prato</span></h4>
+                            <ul>
+                                <li>Peixe seco cozido com folhas, quiabos e dendê</li>
+                                <li>Servido com funge ou banana pão</li>
+                                <li>Perfeito para quem ama tradição</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Pedir agora</a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Prato -->
+
+                    <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="pricing-item">
+                            <h3>Funge com Carne Guisada</h3>
+                            <h4><sup>AOA</sup>3.800<span> / prato</span></h4>
+                            <ul>
+                                <li>Carne macia e bem temperada</li>
+                                <li>Funge de milho branco ou bombó</li>
+                                <li>Simples, delicioso e reconfortante</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Pedir agora</a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Prato -->
+
+                    <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="pricing-item">
+                            <span class="advanced">Especial</span>
+                            <h3>Churrasco à Angolana</h3>
+                            <h4><sup>AOA</sup>6.000<span> / prato</span></h4>
+                            <ul>
+                                <li>Carnes grelhadas com molhos típicos</li>
+                                <li>Acompanhado de batatas, farofa e salada</li>
+                                <li>Sabor marcante e porção generosa</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Pedir agora</a>
+                            </div>
+                        </div>
+                    </div><!-- Fim do Prato -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Seção de Pratos Mais Servidos -->
+
+
+
+        <!-- Seção de Perguntas Frequentes -->
+        <section id="faq" class="faq section light-background">
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="content px-xl-5">
+                            <h3><span>Perguntas </span><strong>Frequentes</strong></h3>
+                            <p>Aqui estão as respostas para as dúvidas mais comuns sobre o nosso restaurante. Se tiver
+                                alguma outra dúvida, não hesite em nos contactar!</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+                        <div class="faq-container">
+                            <div class="faq-item faq-active">
+                                <h3><span class="num">1.</span> <span>Quais são os pratos mais populares?</span>
+                                </h3>
+                                <div class="faq-content">
+                                    <p>Entre os nossos pratos mais servidos, destacam-se a Muamba de Galinha, Calulu de
+                                        Peixe, Funge com Carne Guisada e o Churrasco à Angolana. Todos são preparados
+                                        com ingredientes frescos e com muito amor.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- Fim do item de FAQ-->
+
+                            <div class="faq-item">
+                                <h3><span class="num">2.</span> <span>Posso fazer pedidos online?</span></h3>
+                                <div class="faq-content">
+                                    <p>Sim, você pode fazer pedidos diretamente pelo nosso site ou pelo nosso
+                                        aplicativo. Basta escolher os pratos, adicionar ao carrinho e escolher a forma
+                                        de pagamento.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- Fim do item de FAQ-->
+
+                            <div class="faq-item">
+                                <h3><span class="num">3.</span> <span>O restaurante oferece opções
+                                        vegetarianas?</span></h3>
+                                <div class="faq-content">
+                                    <p>Sim, temos uma seleção de pratos vegetarianos que incluem opções saborosas, como
+                                        o Calulu de Tofu e os vegetais grelhados. Fique à vontade para perguntar ao
+                                        nosso garçom sobre outras alternativas sem carne!</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- Fim do item de FAQ-->
+
+                            <div class="faq-item">
+                                <h3><span class="num">4.</span> <span>O restaurante oferece delivery?</span></h3>
+                                <div class="faq-content">
+                                    <p>Sim, realizamos entregas em toda a área de cobertura da cidade. Você pode pedir
+                                        pelo nosso site ou por plataformas de entrega como Uber Eats e Glovo.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- Fim do item de FAQ-->
+
+                            <div class="faq-item">
+                                <h3><span class="num">5.</span> <span>Posso fazer uma reserva?</span></h3>
+                                <div class="faq-content">
+                                    <p>Sim, recomendamos fazer uma reserva para garantir seu lugar, especialmente
+                                        durante os finais de semana e feriados. Você pode fazer a reserva online ou por
+                                        telefone.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- Fim do item de FAQ-->
+
+                            <div class="faq-item">
+                                <h3><span class="num">6.</span> <span>Qual a política de pagamento?</span></h3>
+                                <div class="faq-content">
+                                    <p>Aceitamos pagamentos em dinheiro, cartões de crédito e débito, além de opções
+                                        digitais como o MB Way. Para pedidos online, oferecemos também pagamento via
+                                        PayPal e transferência bancária.</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- Fim do item de FAQ-->
+
+                            <div class="faq-item">
+                                <h3><span class="num">7.</span> <span>O restaurante tem opções para crianças?</span>
+                                </h3>
+                                <div class="faq-content">
+                                    <p>Sim, temos um menu especial para crianças com pratos mais leves e porções
+                                        reduzidas. Também oferecemos opções de sobremesas divertidas para os pequenos.
+                                    </p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- Fim do item de FAQ-->
+
+                            <div class="faq-item">
+                                <h3><span class="num">8.</span> <span>Quais são os horários de funcionamento?</span>
+                                </h3>
+                                <div class="faq-content">
+                                    <p>Estamos abertos todos os dias das 12:00 às 23:00. Durante os finais de semana,
+                                        temos uma programação especial com música ao vivo!</p>
+                                </div>
+                                <i class="faq-toggle bi bi-chevron-right"></i>
+                            </div><!-- Fim do item de FAQ-->
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section><!-- /Seção de Perguntas Frequentes -->
+
         <!-- Seção Sobre -->
         <section id="about" class="about section">
             <!-- Título da Seção -->
@@ -73,697 +596,14 @@
         </section><!-- /Seção Sobre -->
 
 
-        <!-- Seção de Estatísticas -->
-        <section id="stats" class="stats section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Clientes</p>
-                        </div>
-                    </div><!-- Fim do Item de Estatística -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Projetos</p>
-                        </div>
-                    </div><!-- Fim do Item de Estatística -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Horas de Suporte</p>
-                        </div>
-                    </div><!-- Fim do Item de Estatística -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Colaboradores</p>
-                        </div>
-                    </div><!-- Fim do Item de Estatística -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Seção de Estatísticas -->
-
-        <!-- Seção de Serviços em Destaque -->
-        <section id="featured-services" class="featured-services section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="service-item position-relative">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/services-1.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="details">
-                                <a href="service-details.html" class="stretched-link">
-                                    <h3>Consultoria Estratégica</h3>
-                                </a>
-                                <p>Oferecemos soluções eficazes para impulsionar o crescimento do seu negócio com
-                                    confiança e segurança.</p>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="service-item position-relative">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/services-2.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="details">
-                                <a href="service-details.html" class="stretched-link">
-                                    <h3>Suporte Personalizado</h3>
-                                </a>
-                                <p>Atendimento dedicado, pensado para resolver suas necessidades com rapidez, clareza e
-                                    eficiência.</p>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="service-item position-relative">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/services-3.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="details">
-                                <a href="service-details.html" class="stretched-link">
-                                    <h3>Marketing Digital</h3>
-                                </a>
-                                <p>Criamos estratégias de marketing sob medida para aumentar sua visibilidade e atrair
-                                    mais clientes.</p>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="500">
-                        <div class="service-item position-relative">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/services-4.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="details">
-                                <a href="service-details.html" class="stretched-link">
-                                    <h3>Gestão de Projetos</h3>
-                                </a>
-                                <p>Planejamos, executamos e entregamos projetos com excelência e dentro do prazo,
-                                    superando expectativas.</p>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Seção de Serviços em Destaque -->
-
-        <!-- Seção de Serviços -->
-        <section id="services" class="services section">
-
-            <!-- Título da Seção -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Serviços</h2>
-                <p>Soluções pensadas para atender suas necessidades com qualidade e eficiência.</p>
-            </div><!-- Fim do Título da Seção -->
-
-            <div class="container">
-
-                <div class="row g-5">
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item item-cyan position-relative">
-                            <i class="bi bi-activity icon"></i>
-                            <div>
-                                <h3>Consultoria Estratégica</h3>
-                                <p>Oferecemos soluções personalizadas para garantir o crescimento sustentável do seu
-                                    negócio.</p>
-                                <a href="service-details.html" class="read-more stretched-link">Saiba Mais <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-item item-orange position-relative">
-                            <i class="bi bi-broadcast icon"></i>
-                            <div>
-                                <h3>Marketing Digital</h3>
-                                <p>Impulsione sua marca com estratégias eficazes de marketing nas principais
-                                    plataformas.</p>
-                                <a href="service-details.html" class="read-more stretched-link">Saiba Mais <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-item item-teal position-relative">
-                            <i class="bi bi-easel icon"></i>
-                            <div>
-                                <h3>Design Criativo</h3>
-                                <p>Desenvolvemos identidades visuais modernas e impactantes que representam a sua marca.
-                                </p>
-                                <a href="service-details.html" class="read-more stretched-link">Saiba Mais <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-item item-red position-relative">
-                            <i class="bi bi-bounding-box-circles icon"></i>
-                            <div>
-                                <h3>Tecnologia e Inovação</h3>
-                                <p>Implementamos soluções tecnológicas inovadoras para otimizar seus processos e
-                                    resultados.</p>
-                                <a href="service-details.html" class="read-more stretched-link">Saiba Mais <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="service-item item-indigo position-relative">
-                            <i class="bi bi-calendar4-week icon"></i>
-                            <div>
-                                <h3>Gestão de Projetos</h3>
-                                <p>Gerenciamos seu projeto do início ao fim com planejamento, organização e controle.
-                                </p>
-                                <a href="service-details.html" class="read-more stretched-link">Saiba Mais <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="service-item item-pink position-relative">
-                            <i class="bi bi-chat-square-text icon"></i>
-                            <div>
-                                <h3>Atendimento ao Cliente</h3>
-                                <p>Oferecemos suporte completo e humanizado para garantir a sua total satisfação.</p>
-                                <a href="service-details.html" class="read-more stretched-link">Saiba Mais <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Seção de Serviços -->
-
-
-
-        <!-- Seção de Depoimentos -->
-        <section id="testimonials" class="testimonials section">
-
-            <!-- Título da Seção -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Depoimentos</h2>
-                <p>Veja o que nossos clientes dizem sobre nossos serviços e experiências.</p>
-            </div><!-- Fim do Título da Seção -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="swiper init-swiper">
-                    <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  },
-                  "breakpoints": {
-                    "320": {
-                      "slidesPerView": 1,
-                      "spaceBetween": 40
-                    },
-                    "1200": {
-                      "slidesPerView": 3,
-                      "spaceBetween": 1
-                    }
-                  }
-                }
-            </script>
-
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>
-                                    A equipe foi extremamente profissional e atenciosa. Superaram todas as nossas
-                                    expectativas!
-                                </p>
-                                <div class="profile mt-auto">
-                                    <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>Saul Goodman</h3>
-                                    <h4>CEO &amp; Fundador</h4>
-                                </div>
-                            </div>
-                        </div><!-- Fim do Depoimento -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>
-                                    O serviço prestado foi impecável, com soluções criativas e eficazes para o nosso
-                                    projeto.
-                                </p>
-                                <div class="profile mt-auto">
-                                    <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>Sara Wilsson</h3>
-                                    <h4>Designer</h4>
-                                </div>
-                            </div>
-                        </div><!-- Fim do Depoimento -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>
-                                    Desde o primeiro contato, me senti segura e bem atendida. Recomendo sem dúvidas!
-                                </p>
-                                <div class="profile mt-auto">
-                                    <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>Jena Karlis</h3>
-                                    <h4>Proprietária de Loja</h4>
-                                </div>
-                            </div>
-                        </div><!-- Fim do Depoimento -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>
-                                    Atendimento ágil, soluções modernas e uma equipe que realmente entende do assunto.
-                                </p>
-                                <div class="profile mt-auto">
-                                    <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>Matt Brandon</h3>
-                                    <h4>Freelancer</h4>
-                                </div>
-                            </div>
-                        </div><!-- Fim do Depoimento -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>
-                                    Trabalhar com essa equipe foi uma das melhores decisões que tomei para o meu
-                                    negócio.
-                                </p>
-                                <div class="profile mt-auto">
-                                    <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>John Larson</h3>
-                                    <h4>Empreendedor</h4>
-                                </div>
-                            </div>
-                        </div><!-- Fim do Depoimento -->
-
-                    </div>
-
-                    <div class="swiper-pagination"></div>
-                </div>
-
-            </div>
-
-        </section><!-- /Seção de Depoimentos -->
-
-
-        <!-- Seção de Chamada para Ação -->
-        <section id="call-to-action" class="call-to-action section dark-background">
-
-            <div class="container">
-                <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="col-xl-10">
-                        <div class="text-center">
-                            <h3>Pronto para transformar sua ideia?</h3>
-                            <p>Estamos aqui para ajudar você a tirar seu projeto do papel com soluções criativas e
-                                eficientes. Entre em contato e descubra como podemos colaborar.</p>
-                            <a class="cta-btn" href="#">Fale Conosco</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section><!-- /Seção de Chamada para Ação -->
-
-
-        <!-- Seção de Portfólio -->
-        <section id="portfolio" class="portfolio section">
-
-            <!-- Título da Seção -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Portfólio</h2>
-                <p>Confira alguns dos nossos trabalhos mais recentes, criados com dedicação e criatividade.</p>
-            </div><!-- Fim do Título da Seção -->
-
-            <div class="container">
-
-                <div class="isotope-layout" data-default-filter="*" data-layout="masonry"
-                    data-sort="original-order">
-
-                    <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-                        <li data-filter="*" class="filter-active">Todos</li>
-                        <li data-filter=".filter-app">Aplicativos</li>
-                        <li data-filter=".filter-product">Produtos</li>
-                        <li data-filter=".filter-branding">Identidade Visual</li>
-                        <li data-filter=".filter-books">Publicações</li>
-                    </ul><!-- Fim dos Filtros -->
-
-                    <!-- Aqui permanecem os itens do portfólio, você pode apenas ajustar os títulos e descrições se quiser -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Seção de Portfólio -->
-
-
-        <!-- Seção da Equipe -->
-        <section id="team" class="team section light-background">
-
-            <!-- Título da Seção -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Nosso Time</h2>
-                <p>Conheça os profissionais que tornam tudo possível com dedicação, talento e inovação.</p>
-            </div><!-- Fim do Título da Seção -->
-
-            <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="100">
-                        <div class="team-member">
-                            <div class="member-img">
-                                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                    <a href="#"><i class="bi bi-facebook"></i></a>
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Walter White</h4>
-                                <span>Diretor Executivo (CEO)</span>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Membro -->
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="200">
-                        <div class="team-member">
-                            <div class="member-img">
-                                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                    <a href="#"><i class="bi bi-facebook"></i></a>
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Sarah Johnson</h4>
-                                <span>Gerente de Produto</span>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Membro -->
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="300">
-                        <div class="team-member">
-                            <div class="member-img">
-                                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                    <a href="#"><i class="bi bi-facebook"></i></a>
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>William Anderson</h4>
-                                <span>Diretor de Tecnologia (CTO)</span>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Membro -->
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="400">
-                        <div class="team-member">
-                            <div class="member-img">
-                                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                                <div class="social">
-                                    <a href="#"><i class="bi bi-twitter-x"></i></a>
-                                    <a href="#"><i class="bi bi-facebook"></i></a>
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Amanda Jepson</h4>
-                                <span>Contadora</span>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Membro -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Seção da Equipe -->
-
-
-        <!-- Seção de Preços -->
-        <section id="pricing" class="pricing section">
-
-            <!-- Título da Seção -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Planos</h2>
-                <p>Escolha o plano ideal para você e aproveite todos os recursos oferecidos pela nossa plataforma.</p>
-            </div><!-- Fim do Título da Seção -->
-
-            <div class="container">
-
-                <div class="row gy-3">
-
-                    <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="pricing-item">
-                            <h3>Gratuito</h3>
-                            <h4><sup>R$</sup>0<span> / mês</span></h4>
-                            <ul>
-                                <li>Acesso limitado</li>
-                                <li>Suporte básico</li>
-                                <li>Funcionalidades restritas</li>
-                                <li class="na">Integrações avançadas</li>
-                                <li class="na">Suporte prioritário</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Assinar</a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Plano -->
-
-                    <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="pricing-item featured">
-                            <h3>Business</h3>
-                            <h4><sup>R$</sup>19<span> / mês</span></h4>
-                            <ul>
-                                <li>Acesso completo</li>
-                                <li>Integrações básicas</li>
-                                <li>Dashboard personalizável</li>
-                                <li>Suporte por e-mail</li>
-                                <li class="na">Suporte 24/7</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Assinar</a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Plano -->
-
-                    <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="pricing-item">
-                            <h3>Desenvolvedor</h3>
-                            <h4><sup>R$</sup>29<span> / mês</span></h4>
-                            <ul>
-                                <li>Acesso completo</li>
-                                <li>API para desenvolvedores</li>
-                                <li>Ambiente de testes</li>
-                                <li>Suporte técnico</li>
-                                <li>Documentação avançada</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Assinar</a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Plano -->
-
-                    <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="pricing-item">
-                            <span class="advanced">Avançado</span>
-                            <h3>Ultimate</h3>
-                            <h4><sup>R$</sup>49<span> / mês</span></h4>
-                            <ul>
-                                <li>Todos os recursos liberados</li>
-                                <li>Suporte 24/7</li>
-                                <li>Integrações ilimitadas</li>
-                                <li>Acesso antecipado a novidades</li>
-                                <li>Consultoria personalizada</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Assinar</a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Plano -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Seção de Preços -->
-
-
-        <!-- Seção de Perguntas Frequentes -->
-        <section id="faq" class="faq section light-background">
-
-            <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="content px-xl-5">
-                            <h3><span>Perguntas </span><strong>Frequentes</strong></h3>
-                            <p>
-                                Aqui você encontra as respostas para as dúvidas mais comuns sobre nossos serviços. Caso
-                                não encontre a resposta, entre em contato conosco.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-
-                        <div class="faq-container">
-                            <div class="faq-item faq-active">
-                                <h3><span class="num">1.</span> <span>Como posso começar a usar os serviços?</span>
-                                </h3>
-                                <div class="faq-content">
-                                    <p>Para começar a usar, basta se cadastrar no nosso site e escolher o plano que mais
-                                        atende às suas necessidades. Após o cadastro, você terá acesso imediato às
-                                        funcionalidades.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- Fim do item de FAQ-->
-
-                            <div class="faq-item">
-                                <h3><span class="num">2.</span> <span>Quais são as formas de pagamento
-                                        aceitas?</span></h3>
-                                <div class="faq-content">
-                                    <p>Aceitamos pagamentos via cartões de crédito, débito, e transferências bancárias.
-                                        Além disso, oferecemos opções de pagamento via PayPal e outros meios de
-                                        pagamento online.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- Fim do item de FAQ-->
-
-                            <div class="faq-item">
-                                <h3><span class="num">3.</span> <span>Posso cancelar a assinatura a qualquer
-                                        momento?</span></h3>
-                                <div class="faq-content">
-                                    <p>Sim, você pode cancelar sua assinatura a qualquer momento. Após o cancelamento,
-                                        você continuará tendo acesso aos serviços até o final do período de pagamento
-                                        atual.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- Fim do item de FAQ-->
-
-                            <div class="faq-item">
-                                <h3><span class="num">4.</span> <span>Como posso entrar em contato com o
-                                        suporte?</span></h3>
-                                <div class="faq-content">
-                                    <p>Você pode entrar em contato conosco através do nosso chat online ou por e-mail.
-                                        Nossa equipe de suporte está disponível para ajudá-lo com qualquer dúvida ou
-                                        problema.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- Fim do item de FAQ-->
-
-                            <div class="faq-item">
-                                <h3><span class="num">5.</span> <span>Quais são as vantagens de assinar o plano
-                                        Business?</span></h3>
-                                <div class="faq-content">
-                                    <p>O plano Business oferece uma série de benefícios, incluindo acesso a recursos
-                                        exclusivos, suporte dedicado e integrações avançadas para ajudar a otimizar suas
-                                        operações.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- Fim do item de FAQ-->
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-        </section><!-- /Seção de Perguntas Frequentes -->
-
 
         <!-- Seção de Contato -->
-        <section id="contact" class="contact section">
+        <section id="contact" class="contact section" style="background-image: url('{{ asset('assets/img/rest/1(1).jpg') }}'); background-size: cover; background-position: center;">
 
             <!-- Título da Seção -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Contato</h2>
-                <p>Entre em contato conosco e tire suas dúvidas. Estamos prontos para ajudar!</p>
+                <h2>Contacto</h2>
+                <p class="text-white">Entre em contato conosco e tire suas dúvidas. Estamos prontos para ajudar!</p>
             </div><!-- Fim do Título da Seção -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -782,15 +622,15 @@
                             <i class="bi bi-geo-alt flex-shrink-0"></i>
                             <div>
                                 <h3>Endereço</h3>
-                                <p>Avenida Adam, 108, Nova York, NY 535022</p>
+                                <p class="text-white">Avenida Adam, 108, Nova York, NY 535022</p>
                             </div>
                         </div><!-- Fim do Item de Informações -->
 
                         <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                             <i class="bi bi-telephone flex-shrink-0"></i>
                             <div>
-                                <h3>Nos Ligue</h3>
-                                <p>+1 5589 55488 55</p>
+                                <h3>Contacte Nos</h3>
+                                <p class="text-white">+1 5589 55488 55</p>
                             </div>
                         </div><!-- Fim do Item de Informações -->
 
@@ -798,7 +638,7 @@
                             <i class="bi bi-envelope flex-shrink-0"></i>
                             <div>
                                 <h3>Envie um E-mail</h3>
-                                <p>info@exemplo.com</p>
+                                <p class="text-white">info@exemplo.com</p>
                             </div>
                         </div><!-- Fim do Item de Informações -->
 
