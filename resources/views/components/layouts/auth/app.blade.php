@@ -58,6 +58,9 @@
     <!-- custom js -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/chart_custom_style1.js') }}"></script>
+    
+    <!-- custom js -->
+    <script src="{{ asset('assets.fontawesome.css.all6') }}"></script>
 
 </body>
 

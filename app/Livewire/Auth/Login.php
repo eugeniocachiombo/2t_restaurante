@@ -11,4 +11,8 @@ class Login extends Component
         return view('livewire.auth.login')
         ->layout("components.layouts.auth.app");
     }
+
+    public function authenticate(){
+        return redirect()->route("homepage");
+    }
 }

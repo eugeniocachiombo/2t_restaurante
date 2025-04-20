@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/perfect-scrollbar.css') }}" />
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+    <script src="{{ asset('assets.fontawesome.css.all6') }}"></script>
 </head>
 
 <body class="dashboard dashboard_1">

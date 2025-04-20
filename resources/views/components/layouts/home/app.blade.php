@@ -28,6 +28,7 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <script src="{{ asset('assets.fontawesome.css.all6') }}"></script>
 </head>
 
 <body class="index-page">
@@ -46,7 +47,7 @@
                     <li><a href="#team">Equipa</a></li>
                     <li><a href="#about">Sobre Nós</a></li>
                     <li><a href="#contact">Contactos</a></li>
-                    <li><a href="#"><button class="btn text-white" style="background: orange">Entrar</button></a></li>
+                    <li><a href="{{route('auth.login')}}"><button class="btn text-white" style="background: orange">Entrar</button></a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>

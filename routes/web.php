@@ -7,6 +7,6 @@ use App\Livewire\Home\Main;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Index::class);
-Route::get('/home', Main::class);
-Route::get('/login', Login::class);
+Route::get('/página-inicial', Main::class)->name('homepage');
+Route::get('/autenticação', Login::class)->name('auth.login');
 Route::fallback(Error::class);

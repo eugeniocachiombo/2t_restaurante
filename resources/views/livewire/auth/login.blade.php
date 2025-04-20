@@ -21,13 +21,19 @@
                             <div class="field">
                                 <label class="label_field hidden">hidden label</label>
                                 <label class="form-check-label">
-                                    Lembrar-me <input type="checkbox" class="form-check-input"> 
+                                    Lembrar-me <input type="checkbox" class="form-check-input">
                                 </label>
                                 <a class="forgot" href="">Esqueceu a palavra-passe?</a>
                             </div>
                             <div class="field margin_0">
                                 <label class="label_field hidden">hidden label</label>
-                                <button class="main_bt">Entrar</button>
+                                <button wire:click.prevent="authenticate" wire:loading.attr="disabled"
+                                    wire:target="authenticate" class="main_bt">
+                                    <span wire:loading.remove wire:target="authenticate">Entrar</span>
+                                    <span wire:loading wire:target="authenticate">
+                                        <i class="fa fa-spinner fa-spin"></i> A processar... 
+                                    </span>
+                                </button>
                             </div>
                         </fieldset>
                     </form>
