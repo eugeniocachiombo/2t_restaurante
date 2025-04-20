@@ -35,7 +35,7 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="/" class="logo d-flex align-items-center">
                 <h1 class="sitename">@include('inc.namewebsite')</h1>
             </a>
 
@@ -46,6 +46,7 @@
                     <li><a href="#team">Equipa</a></li>
                     <li><a href="#about">Sobre Nós</a></li>
                     <li><a href="#contact">Contactos</a></li>
+                    <li><a href="#"><button class="btn text-white" style="background: orange">Entrar</button></a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
