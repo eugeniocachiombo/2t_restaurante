@@ -1,14 +1,14 @@
-<nav id="sidebar">
+<nav id="sidebar" style="background: #222">
     <div class="sidebar_blog_1">
         <div class="sidebar-header">
-            <div class="logo_section">
+            <div class="logo_section" style="background: #222">
                 <a href="{{ asset('assets/index.html') }}">
                     <img class="logo_icon img-responsive"
                         src="{{ asset('assets/images/logo/logo_icon.png') }}" alt="#" />
                 </a>
             </div>
         </div>
-        <div class="sidebar_user_info">
+        <div class="sidebar_user_info" style="background: #222">
             <div class="icon_setting"></div>
             <div class="user_profle_side">
                 <div class="user_img">
@@ -22,8 +22,8 @@
             </div>
         </div>
     </div>
-    <div class="sidebar_blog_2">
-        <h4>Geral</h4>
+    <div class="sidebar_blog_2" >
+        <h4 style="background: #222">Administrador</h4>
         <ul class="list-unstyled components">
             <li class="active">
                 <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

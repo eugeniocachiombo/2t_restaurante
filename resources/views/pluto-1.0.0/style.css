@@ -3367,7 +3367,10 @@ table.projects tr td:first-child {
     margin: 11px 0;
     position: relative;
     left: 0;
-    color: #ff5722;
+    color: #222;
+}
+.forgot:hover {
+    color: #33f;
 }
 
 

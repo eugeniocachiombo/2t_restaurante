@@ -1,5 +1,6 @@
-<div class="full_container">
-    <div class="container">
+<div class="full_container" 
+style="background: rgba(21, 40, 60, .8); background-image: url('{{ asset('assets/img/rest/1(1).jpg') }}'); background-size: cover; background-position: center; ">
+    <div class="container" >
         <div class="center verticle_center full_height">
             <div class="login_section">
                 <div class="logo_login">
@@ -9,21 +10,21 @@
                 </div>
                 <div class="login_form">
                     <form>
-                        <fieldset>
+                        <fieldset >
                             <div class="field">
                                 <label class="label_field">E-mail</label>
-                                <input type="email" name="email" placeholder="E-mail" />
+                                <input type="email" name="email" placeholder="nome@exemplo.com" />
                             </div>
                             <div class="field">
                                 <label class="label_field">Palavra-passe</label>
-                                <input type="password" name="password" placeholder="Palavra-passe" />
+                                <input type="password" name="password" placeholder="******" />
                             </div>
                             <div class="field">
                                 <label class="label_field hidden">hidden label</label>
                                 <label class="form-check-label">
                                     Lembrar-me <input type="checkbox" class="form-check-input">
                                 </label>
-                                <a class="forgot" href="">Esqueceu a palavra-passe?</a>
+                                <a class="forgot" href="" >Esqueceu a palavra-passe?</a>
                             </div>
                             <div class="field margin_0">
                                 <label class="label_field hidden">hidden label</label>

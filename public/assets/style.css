@@ -1747,7 +1747,7 @@ a[data-toggle="collapse"] {
     min-width: 125px;
     height: auto;
     float: left;
-    background: #1ed085;
+    background: #2a5079;
     text-align: center;
     color: #fff;
     padding: 10px 25px;
@@ -1766,7 +1766,7 @@ button.main_bt {
 
 .main_bt:hover,
 .main_bt:focus {
-    background: #ff5722;
+    background: #15283c;
     color: #fff;
 }
 
@@ -3277,7 +3277,7 @@ table.projects tr td:first-child {
 }
 
 .logo_login {
-    background: url('images/layout_img/login_image.jpg');
+    background: url('img/rest/1\(6\).jpg');
     padding: 50px 0;
     background-position: center center;
     position: relative;
@@ -3367,9 +3367,20 @@ table.projects tr td:first-child {
     margin: 11px 0;
     position: relative;
     left: 0;
-    color: #ff5722;
+    color: #222;
+}
+.forgot:hover {
+    color: #33f;
 }
 
+.btnLogin{
+    background: #222;
+    
+}
+.btnLogin:hover{
+    background: #000000;
+
+}
 
 /*------------------------------------------------------------------
     26. Error
