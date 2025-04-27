@@ -18,11 +18,17 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        "first_name",
+        "last_name",
         'email',
         'password',
-        'id_acesso',
-        'criacao_tarefa',
+        "gender",
+        "birth_date",
+        "nif",
+        "address_id",
+        "phone",
+        "password",
+        "access_id"
     ];
 
     /**
@@ -40,10 +46,6 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-
-     public function buscarAcesso(){
-        return $this->belongsTo(Acesso::class, "id_acesso", "id");
-     }
 
     protected function casts(): array
     {
