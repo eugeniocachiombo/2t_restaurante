@@ -45,7 +45,7 @@ class Login extends Component
     {
         if (is_numeric($emailphone)) {
             return [
-                'telefone' => $emailphone,
+                'phone' => $emailphone,
                 'password' => $password,
             ];
         } else {

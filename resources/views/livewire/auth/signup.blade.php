@@ -93,44 +93,6 @@
                         </div>
                     </div>
 
-                    {{--<div class="col-6">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class=" province_id">Província</label>
-                                <select class="form-select" wire:model='province_id' name="province_id"
-                                    id="province_id">
-                                    <option value="">Selecione</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class=" municipality_id">Município</label>
-                                <select class="form-select" wire:model='municipality_id' name="municipality_id"
-                                    id="municipality_id">
-                                    <option value="">Selecione</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class=" address_id">Morada</label>
-                                <select class="form-select" wire:model='address_id' name="address_id" id="address_id">
-                                    <option value="">Selecione</option>
-                                </select>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <label class=" nif">NIF/BI</label>
-                                <input class="form-control" type="text" wire:model='nif' name="nif"
-                                    id="nif" />
-                            </div>
-                            
-                           
-
-
-                            
-                        </div>
-                    </div> --}}
-
                     <div class="mt-3">
                         <button  wire:loading.attr="disabled"
                             wire:target="save" class="btn main_bt">
