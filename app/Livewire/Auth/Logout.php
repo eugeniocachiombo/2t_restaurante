@@ -7,13 +7,12 @@ use Livewire\Component;
 
 class Logout extends Component
 {
-    public function mount(){
-        $this->logout();
-    }
     
     public function render()
     {
-        return view('livewire.auth.logout');
+       // $this->logout();
+        return view('livewire.auth.logout')
+        ->layout("components.layouts.auth.app");
     }
 
     public function logout(){
