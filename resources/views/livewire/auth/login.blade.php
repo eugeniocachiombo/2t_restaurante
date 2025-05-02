@@ -13,15 +13,21 @@ style="background: rgba(21, 40, 60, .8); background-image: url('{{ asset('assets
                     <form>
                         <fieldset >
                             <div class="field">
-                                <label class="label_field">E-mail</label>
-                                <input type="email" name="email" placeholder="nome@exemplo.com" />
+                                <label class="label_field">E-mail/Telefone</label>
+                                <input type="text" wire:model="emailphone" name="emailphone" placeholder="Digite o Email ou Telefone" />
+                                @error('emailphone')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
                             </div>
                             <div class="field">
                                 <label class="label_field">Palavra-passe</label>
-                                <input type="password" name="password" placeholder="******" />
+                                <input type="password" wire:model="password" name="password" placeholder="******" />
+                                @error('password')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
                             </div>
                             <div class="ms-md-4 mb-md-2 d-md-flex align-items-center">
-                                <input type="checkbox" class="me-2"> Lembrar-me 
+                                <input type="checkbox" class="me-2" wire:model='remember_me'> Lembrar-me 
                             </div>
                             
                             <div class="">
