@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="login_form">
-        <form class="" >
+        <form class="" wire:submit.prevent="save">
                 <div class="container">
                     <h4>Criar Conta</h4>
                     <hr>
@@ -16,53 +16,80 @@
                     <div class="col-md-12">
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <label class=" first_name">Nome</label>
+                                <label for="first_name">Nome</label>
                                 <input class="form-control" type="text" wire:model='first_name' name="first_name"
                                     id="first_name" />
+                                    @error('first_name')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
                             </div>
 
                             <div class="col-md-6">
-                                <label class=" last_name">Sobrenome</label>
+                                <label for="last_name">Sobrenome</label>
                                 <input class="form-control" type="text" wire:model='last_name' name="last_name"
                                     id="last_name" />
+                                    @error('last_name')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
                             </div>
 
                             <div class="col-md-6">
-                                <label class=" gender">Gênero</label>
+                                <label for="gender">Gênero</label>
                                 <select class="form-select" wire:model='gender' name="gender" id="gender">
                                     <option value="">Selecione</option>
                                     <option value="MASCULINO">Masculino</option>
                                     <option value="FEMININO">Feminino</option>
                                 </select>
+                                @error('gender')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
                             </div>
                             <div class="col-md-6">
-                                <label class=" birth_date">Nascimento</label>
+                                <label for="birth_date">Nascimento</label>
                                 <input class="form-control" type="date" wire:model='birth_date' name="birth_date"
                                     id="birth_date" />
+                                    @error('birth_date')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
                             </div>
 
                             <div class="col-md-6">
-                                <label class="email">E-mail</label>
+                                <label for="email">E-mail</label>
                                 <input type="email" wire:model='email' class="form-control" name="email"
                                     id="email" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class="phone">Telefone</label>
-                                <input type="number" wire:model='phone' class="form-control" name="phone"
-                                    id="phone" />
-                            </div>
-                            <div class="col-md-6">
-                                <label class=" password">Palavra-passe</label>
-                                <input wire:model='password' id="password" class="form-control" type="password"
-                                    name="password" />
+                                    @error('email')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
                             </div>
 
                             <div class="col-md-6">
-                                <label class="confirmpassword">Confirmar Palavra-passe</label>
-                                <input wire:model='confirmpassword' id="confirmpassword" class="form-control" type="password"
-                                    name="confirmpassword" />
+                                <label for="phone">Telefone</label>
+                                <input type="number" wire:model='phone' class="form-control" name="phone"
+                                    id="phone" />
+                                    @error('phone')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
                             </div>
-                            
+
+                            <div class="col-md-6">
+                                <label for="password">Palavra-passe</label>
+                                <input wire:model='password' id="password" class="form-control" type="password"
+                                    name="password" />
+                                    @error('password')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="confirmpassword">Confirmar Palavra-passe</label>
+                                <input wire:change='check_password'
+                                wire:model='confirmpassword' id="confirmpassword"
+                                 class="form-control" type="password"
+                                    name="confirmpassword" />
+                                    @error('confirmpassword')
+                                        <span class="text-danger mt-2">{{$message}}</span>
+                                    @enderror
+                            </div>
                         </div>
                     </div>
 
@@ -105,13 +132,16 @@
                     </div> --}}
 
                     <div class="mt-3">
-                        <button wire:click.prevent="save" wire:loading.attr="disabled"
+                        <button  wire:loading.attr="disabled"
                             wire:target="save" class="btn main_bt">
                             <span wire:loading.remove wire:target="save">Cadastrar</span>
                             <span wire:loading wire:target="save">
                                 <i class="fa fa-spinner fa-spin"></i> A processar...
                             </span>
                         </button>
+                        
+                        <br class="d-md-none">
+                        <a class="forgot" href="{{route("auth.login")}}" >Já tenho uma conta</a>
                     </div>
                 </div>
         </form>

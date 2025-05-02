@@ -13,6 +13,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <!-- site icon -->
     <link rel="icon" href="{{ asset('assets/images/fevicon.png') }}" type="image/png" />
     <!-- bootstrap css -->
@@ -29,12 +30,15 @@
     <link rel="stylesheet" href="{{ asset('assets/css/perfect-scrollbar.css') }}" />
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+ 
+    <!-- alert and Select 2 -->
+    @include('inc.head-assets')
 </head>
 
 <body class="dashboard dashboard_1">
 
     {{ $slot }}
-
+   
     <!-- jQuery -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
@@ -50,6 +54,7 @@
     <script src="{{ asset('assets/js/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/utils.js') }}"></script>
     <script src="{{ asset('assets/js/analyser.js') }}"></script>
+    
     <!-- nice scrollbar -->
     <script src="{{ asset('assets/js/perfect-scrollbar.min.js') }}"></script>
     <script>
@@ -58,10 +63,12 @@
     <!-- custom js -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/chart_custom_style1.js') }}"></script>
-    
-    <!-- custom js -->
-    <script src="{{ asset('assets.fontawesome.css.all6') }}"></script>
 
+    <!-- custom js -->
+    <script src="{{ asset('assets.fontawesome.css.all6') }}"></script> 
+
+     <!-- Datatable, Select 2 -->
+    @include('inc.foot-assets')
 </body>
 
 </html>

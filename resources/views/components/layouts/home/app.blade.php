@@ -29,6 +29,9 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <script src="{{ asset('assets.fontawesome.css.all6') }}"></script>
+
+    <!-- alert and Select 2 -->
+    @include('inc.head-assets')
 </head>
 
 <body class="index-page">
@@ -96,7 +99,8 @@
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
-
+    <!-- datatable and Select 2 -->
+    @include('inc.foot-assets')
 </body>
 
 </html>

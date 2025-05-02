@@ -1,7 +1,7 @@
-document.addEventListener('livewire:load', function () {
+document.addEventListener('livewire:init', function () {
     Livewire.on('atrazar_redirect', function (data) {
         setTimeout(() => {
-            window.location = data.caminho
-        }, data.tempo);
+            window.location = data[0].path
+        }, data[0].time);
     });
 });
