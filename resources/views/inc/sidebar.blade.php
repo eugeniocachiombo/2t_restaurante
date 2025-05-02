@@ -16,14 +16,14 @@
                         alt="#" />
                 </div>
                 <div class="user_info">
-                    <h6>John David</h6>
+                    <h6>{{ucwords(auth()->user()->first_name)}} {{ucwords(auth()->user()->last_name)}}</h6>
                     <p><span class="online_animation"></span> Online</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="sidebar_blog_2" >
-        <h4 style="background: #222">Administrador</h4>
+        <h4 style="background: #222;">{{ucwords(auth()->user()->getAccess->description)}}</h4>
         <ul class="list-unstyled components">
             <li class="active">
                 <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

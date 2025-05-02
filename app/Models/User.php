@@ -47,6 +47,10 @@ class User extends Authenticatable
      * @return array<string, string>
      */
 
+    public function getAccess(){
+        return $this->belongsTo(Access::class, "access_id", "id");
+    }
+
     protected function casts(): array
     {
         return [

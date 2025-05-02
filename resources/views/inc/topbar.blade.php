@@ -31,7 +31,7 @@
                                 <img class="img-responsive rounded-circle"
                                     src="{{ asset('assets/images/layout_img/user_img.jpg') }}"
                                     alt="#" />
-                                <span class="name_user">John David</span>
+                                <span class="name_user">{{ucwords(auth()->user()->first_name)}} {{ucwords(auth()->user()->last_name)}}</span>
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"
