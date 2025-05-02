@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Municipality extends Model
 {
     protected $fillable = [
-        "description"
+        "description",
+        "province_id"
     ];
 }
