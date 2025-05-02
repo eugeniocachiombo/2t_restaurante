@@ -50,6 +50,9 @@ class User extends Authenticatable
     public function getAccess(){
         return $this->belongsTo(Access::class, "access_id", "id");
     }
+    public function getAddress(){
+        return $this->belongsTo(Address::class, "address_id", "id");
+    }
 
     protected function casts(): array
     {

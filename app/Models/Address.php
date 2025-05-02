@@ -11,4 +11,12 @@ class Address extends Model
         "province_id",
         "municipality_id",
     ];
+
+    public function getProvince(){
+        return $this->belongsTo(Province::class, "province_id", "id");
+    }
+
+    public function getMunicipality(){
+        return $this->belongsTo(Municipality::class, "municipality_id", "id");
+    }
 }

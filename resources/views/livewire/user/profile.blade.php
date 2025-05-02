@@ -61,22 +61,29 @@
                                             <div class="tab-content" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="profile_section"
                                                     role="tabpanel" aria-labelledby="nav-contact-tab">
-                                                    <h3 class="mb-2">{{ ucwords(auth()->user()->first_name) }}
-                                                        {{ ucwords(auth()->user()->last_name) }}</h3>
+                                                    <h3 class="mb-2">Dados Pessoais</h3>
 
                                                     <ul class="list-unstyled" style="font-size: 15px">
                                                         <li class="my-3"><i class="fa fa-tag"></i> Gênero:
                                                             {{ ucwords(auth()->user()->gender) }}</li>
-                                                        <li class="my-3"><i class="fa fa-calendar"></i> Data de nascimento:
+                                                        <li class="my-3"><i class="fa fa-calendar"></i> Data de
+                                                            nascimento:
                                                             {{ auth()->user()->birth_date }}</li>
                                                         <li class="my-3"><i class="fa fa-ticket"></i> Portador BI/NIF:
-                                                            {{ auth()->user()->nif ?? "n/d" }}</li>
+                                                            {{ auth()->user()->nif ?? 'n/d' }}</li>
                                                         <li class="my-3"><i class="fa fa-envelope-o"></i> Email:
                                                             {{ ucwords(auth()->user()->email) }}</li>
                                                         <li class="my-3"><i class="fa fa-phone"></i> Telefone:
                                                             {{ ucwords(auth()->user()->phone) }}</li>
                                                         <li class="my-3"><i class="fa fa-map"></i> Morada:
-                                                            {{ auth()->user()->address_id ?? 'n/d' }}</li>
+                                                            @if (auth()->user()->address_id)
+                                                                {{auth()->user()->getAddress->description}},
+                                                                {{auth()->user()->getAddress->getMunicipality->description}},
+                                                                {{auth()->user()->getAddress->getProvince->description}}
+                                                            @else
+                                                                'n/d'
+                                                            @endif
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class="tab-pane fade " id="recent_activity" role="tabpanel"
