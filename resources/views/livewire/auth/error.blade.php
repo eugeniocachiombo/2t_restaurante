@@ -1,3 +1,4 @@
+@section('title', 'Página de erro')
 <div class="full_container">
     <div class="container">
         <div class="center verticle_center full_height">
