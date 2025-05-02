@@ -1,10 +1,10 @@
-@section('title', 'Painel Inicial')
+@section('title', 'Painel Principal')
 <div class="midde_cont">
     <div class="container-fluid">
         <div class="row column_title">
             <div class="col-md-12">
                 <div class="page_title">
-                    <h2>Dashboard</h2>
+                    <h2>@yield('title')</h2>
                 </div>
             </div>
         </div>

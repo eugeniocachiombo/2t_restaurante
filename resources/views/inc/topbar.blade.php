@@ -37,10 +37,10 @@
                                 <a class="dropdown-item"
                                     href="{{ route('user.profile') }}">Meu Perfil</a>
                                 <a class="dropdown-item"
-                                    href="{{ asset('assets/settings.html') }}">Definições</a>
+                                    href="#">Definições</a>
                                 <a class="dropdown-item"
-                                    href="{{ asset('assets/help.html') }}">Ajuda</a>
-                                <a class="dropdown-item" href="#"><span>Terminar Sessão</span>
+                                    href="{{route("auth.help")}}">Ajuda</a>
+                                <a class="dropdown-item" href="{{route("auth.logout")}}"><span>Terminar Sessão</span>
                                     <i class="fa fa-sign-out"></i></a>
                             </div>
                         </li>
