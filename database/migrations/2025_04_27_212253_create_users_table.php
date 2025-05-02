@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('last_name');
             $table->enum('gender', ['MASCULINO', 'FEMININO']);
             $table->date('birth_date');
-            $table->string('nif');
-            $table->unsignedBigInteger('address_id');
+            $table->string('nif')->nullable();
+            $table->unsignedBigInteger('address_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('phone');
+            $table->integer('phone')->unique();
             $table->string('password');
             $table->rememberToken();
             $table->unsignedBigInteger('access_id');

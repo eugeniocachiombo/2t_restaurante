@@ -10,5 +10,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Index::class);
 Route::get('/página-inicial', Main::class)->name('homepage');
 Route::get('/autenticação', Login::class)->name('auth.login');
-Route::get('/cadastro', Signup::class)->name('auth.signup');
+Route::get('/criar-conta', Signup::class)->name('auth.signup');
 Route::fallback(Error::class);
