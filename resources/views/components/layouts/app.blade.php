@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/perfect-scrollbar.css') }}" />
     <!-- custom css -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
-    <script src="{{ asset('assets.fontawesome.css.all6') }}"></script>
 
     <!-- alert and Select 2 -->
     @include('inc.head-assets')

@@ -8,10 +8,9 @@
                 </div>
             </div>
         </div>
-        <div class="row column1">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <div class="white_shd full margin_bottom_30">
+        <div class="row column1 ">
+            <div class="col-md-12">
+                <div class="white_shd full ">
                     <div class="full graph_head">
                         <div class="heading1 margin_0">
                             <h2>@yield('title')</h2>
@@ -23,7 +22,7 @@
                             <div class="col-lg-12">
                                 <div class="full dis_flex center_text">
                                     <div class="profile_img"><img width="180" class="rounded-circle"
-                                            src="images/layout_img/user_img.jpg" alt="#" /></div>
+                                            src="{{asset('assets/images/layout_img/user_img.jpg')}}" alt="#" /></div>
                                     <div class="profile_contant">
                                         <div class="contact_inner">
                                             <h3>{{ ucwords($user->first_name) }}
@@ -240,7 +239,7 @@
                                                     id="project_worked" role="tabpanel"
                                                     aria-labelledby="nav-profile-tab">
                                                     <h1>Alterar palavra-passe</h1> <hr>
-                                                    <div class="row g-3">
+                                                    <div class="row g-3 col-md-6">
                                                         <div class="col-md-7">
                                                             <label class="oldpassword">Antiga</label>
                                                             <input wire:change='check_password' class="form-control" type="password"
@@ -292,7 +291,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2"></div>
             </div>
             <!-- end row -->
         </div>
