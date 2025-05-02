@@ -148,6 +148,44 @@
                 </div>
             </div>
         </div>
+
+        <div class="user_progress_bar">
+            <div class="progress_bar">
+                <!-- Skill Bars -->
+                <span class="skill" style="width:85%;">Compras Feitas <span
+                        class="info_valume">85%</span></span>
+                <div class="progress skill-bar ">
+                    <div class="progress-bar progress-bar-animated progress-bar-striped"
+                        role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 85%;">
+                    </div>
+                </div>
+                <span class="skill" style="width:78%;">Website Design <span
+                        class="info_valume">78%</span></span>
+                <div class="progress skill-bar">
+                    <div class="progress-bar progress-bar-animated progress-bar-striped"
+                        role="progressbar" aria-valuenow="78" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 78%;">
+                    </div>
+                </div>
+                <span class="skill" style="width:47%;">Automation & Testing <span
+                        class="info_valume">47%</span></span>
+                <div class="progress skill-bar">
+                    <div class="progress-bar progress-bar-animated progress-bar-striped"
+                        role="progressbar" aria-valuenow="54" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 54%;">
+                    </div>
+                </div>
+                <span class="skill" style="width:65%;">UI / UX <span
+                        class="info_valume">65%</span></span>
+                <div class="progress skill-bar">
+                    <div class="progress-bar progress-bar-animated progress-bar-striped"
+                        role="progressbar" aria-valuenow="65" aria-valuemin="0"
+                        aria-valuemax="100" style="width: 65%;">
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- graph -->
         <div class="row column2 graph margin_bottom_30">
             <div class="col-md-l2 col-lg-12">
@@ -380,12 +418,5 @@
             </div>
         </div>
     </div>
-    <!-- footer -->
-    <div class="container-fluid">
-        <div class="footer">
-            <p>Copyright © 2018 Designed by html.design. All rights reserved.<br><br>
-                Distributed By: <a href="https://themewagon.com/">ThemeWagon</a>
-            </p>
-        </div>
-    </div>
+    @include('inc.footer')
 </div>

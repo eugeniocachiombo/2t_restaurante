@@ -35,7 +35,7 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"
-                                    href="{{ asset('assets/profile.html') }}">Meu Perfil</a>
+                                    href="{{ route('user.profile') }}">Meu Perfil</a>
                                 <a class="dropdown-item"
                                     href="{{ asset('assets/settings.html') }}">Definições</a>
                                 <a class="dropdown-item"
