@@ -54,6 +54,7 @@
                                             <th class=" bg-dark text-white text-center">ID</th>
                                             <th class=" bg-dark text-white text-center">Descrição</th>
                                             <th class=" bg-dark text-white text-center">Preço</th>
+                                            <th class=" bg-dark text-white text-center">Quantidade</th>
                                             <th class=" bg-dark text-white text-center">Data Expiração</th>
                                             <th class=" bg-dark text-white text-center">Status</th>
                                             <th class=" bg-dark text-white text-center">Responsável</th>
@@ -81,6 +82,7 @@
                                                 </td>
                                                 <td class="text-center">{{ number_format($item->price, 2, ',', '.') }}
                                                     Kz</td>
+                                                <td class="text-center">{{ $item->quantity}}</td>
                                                 <td class="text-center">
                                                     {{ \Carbon\Carbon::parse($item->expiration_date)->format('d/m/Y') }}
                                                 </td>

@@ -13,23 +13,27 @@ class DrinkComponent extends Component
 {
     use WithFileUploads;
 
-    public $description, $price, $expiration_date, $photo, $drink_id;
+    public $description, $price, $quantity, $expiration_date, $photo, $drink_id;
     public $edit = false;
 
     protected $rules = [
         'description' => 'required|string|max:255|unique:drinks,description',
         'price' => 'required',
+        'quantity' => 'required|integer',
         'expiration_date' => 'required|date|after:today',
         'photo' => 'nullable|image|max:1024',
     ];
 
     protected $messages = [
         'description.required' => 'A descrição é obrigatória.',
-        'description.unique' => 'Este prato já existe.',
+        'description.unique' => 'Esta bebida já existe.',
         'description.string' => 'A descrição deve ser um texto.',
         'description.max' => 'A descrição não pode ter mais que 255 caracteres.',
 
         'price.required' => 'O preço é obrigatório.',
+
+        'quantity.required' => 'A quantidade é obrigatória.',
+        'quantity.integer' => 'Somente números inteiros.',
 
         'expiration_date.required' => 'A data de expiração é obrigatória.',
         'expiration_date.date' => 'A data de expiração deve ser uma data válida.',
@@ -69,6 +73,7 @@ class DrinkComponent extends Component
 
             Drink::create([
                 'description' => $this->description,
+                'quantity' => $this->quantity,
                 'price' => $priceFinal,
                 'expiration_date' => $this->expiration_date,
                 'photo' => $photoPath,
@@ -116,6 +121,7 @@ class DrinkComponent extends Component
 
             $drink->update([
                 'description' => $this->description,
+                'quantity' => $this->quantity,
                 'price' => $this->price,
                 'expiration_date' => $this->expiration_date,
             ]);
@@ -152,6 +158,7 @@ class DrinkComponent extends Component
             $this->drink_id = $id;
             $this->description = $drink->description;
             $this->price = $drink->price;
+            $this->quantity = $drink->quantity;
             $this->expiration_date = $drink->expiration_date;
         } catch (\Throwable $th) {
             $this->dispatch('alerta', [
@@ -188,7 +195,7 @@ class DrinkComponent extends Component
     {
         $this->reset([
             'description', 'price', 'expiration_date',
-            'photo', 'drink_id', 'edit',
+            'photo', 'drink_id', 'edit', 'quantity',
         ]);
     }
     

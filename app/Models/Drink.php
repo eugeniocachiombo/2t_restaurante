@@ -9,6 +9,7 @@ class Drink extends Model
     protected $fillable = [
         "description",
         "price",
+        "quantity",
         "expiration_date",
         "photo",
         "status",

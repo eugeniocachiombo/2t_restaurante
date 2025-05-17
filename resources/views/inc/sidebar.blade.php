@@ -41,11 +41,6 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('category.component')}}" >
-                    <i class="fa fa-tag red_color"></i> <span>Categorias</span>
-                </a>
-            </li>
-            <li>
                 <a href="{{route('drink.component')}}" >
                     <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
                 </a>
@@ -53,6 +48,11 @@
             <li>
                 <a href="#">
                     <i class="fa fa-book purple_color2"></i> <span>Receitas</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('category.component')}}" >
+                    <i class="fa fa-tag red_color"></i> <span>Categorias</span>
                 </a>
             </li>
             <li>
