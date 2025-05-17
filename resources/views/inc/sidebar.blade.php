@@ -56,7 +56,7 @@
                 </a>
             </li>
             <li>
-                <a href="#apps">
+                <a href="{{route('ingredient.component')}}">
                     <i class="fa fa-leaf blue2_color"></i> <span>Ingredientes</span>
                 </a>
             </li>

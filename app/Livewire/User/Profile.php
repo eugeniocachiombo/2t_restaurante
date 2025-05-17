@@ -76,8 +76,6 @@ class Profile extends Component
             $this->municipalities = Municipality::where("province_id", $this->province_id)
             ->orderBy("description", "asc")
             ->get();
-
-            dd($this->municipalities);
         }
 
         if($this->municipality_id && $this->province_id){
