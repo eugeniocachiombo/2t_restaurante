@@ -41,9 +41,14 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('drink.component')}}" >
+                <a href="#additional_page" data-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle">
                     <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
                 </a>
+                <ul class="collapse list-unstyled" id="additional_page">
+                    <li><a href="{{route('drink.stockenter.component')}}">> <span>Entrada de Estoque</span></a></li>
+                    <li><a href="{{route('drink.component')}}">> <span>Lista de bebidas</span></a></li>
+                </ul>
             </li>
             <li>
                 <a href="#">
