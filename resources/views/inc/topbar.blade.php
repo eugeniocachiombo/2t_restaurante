@@ -33,7 +33,7 @@
                                             src="{{ asset('storage/' . auth()->user()->photo) }}" alt="photo de perfil"
                                             style="width: 40px; height: 40px">
                                 @else
-                                    <i class="fa fa-image text-white fa-3x"></i>
+                                    <i class="fa fa-image text-white fa-2x"></i>
                                 @endif
                                 <span class="name_user">{{ ucwords(auth()->user()->first_name) }}
                                     {{ ucwords(auth()->user()->last_name) }}</span>

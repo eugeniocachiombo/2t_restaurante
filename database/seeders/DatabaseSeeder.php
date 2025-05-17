@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
 
         $this->createCategory("Sal");
         $this->createIngredient("Sal fino", "kg", 4);
-        $this->createCategory("Sal grosso", "kg", 4);
+        $this->createIngredient("Sal grosso", "kg", 4);
 
         $this->createCategory("Azéite");
         $this->createIngredient("Azéite Galo", "mL", 5);
