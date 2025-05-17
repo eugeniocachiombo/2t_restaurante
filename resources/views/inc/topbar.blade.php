@@ -5,7 +5,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <div class="logo_section">
-                <a href="{{ asset('assets/index.html') }}">
+                <a href="/">
                     <img class="img-responsive" src="{{ asset('assets/images/logo/logo.png') }}" alt="#" />
                 </a>
             </div>

@@ -63,13 +63,15 @@
                                     <tbody>
                                         @forelse ($drinks as $item)
                                             <tr class="border">
-                                                <td class="text-center">{{ $item->id }}</td>
-                                                <td class="text-center">
+                                                <td class="text-center border">{{ $item->id }}</td>
+                                                <td class="text-center border">
                                                     <div>
                                                         @if ($item->photo)
-                                                            <img src="{{ asset('storage/' . $item->photo) }}"
+                                                            <a target="blank" href="{{ asset('storage/' . $item->photo) }}">
+                                                                <img src="{{ asset('storage/' . $item->photo) }}"
                                                                 alt="Foto" width="40" height="40"
                                                                 class="rounded-circle">
+                                                            </a>
                                                         @else
                                                             <div class="d-flex justify-content-center align-items-center"
                                                                 style="">
@@ -79,20 +81,20 @@
                                                     </div>
                                                     <b>{{ $item->description }}</b>
                                                 </td>
-                                                <td class="text-center">{{ number_format($item->price, 2, ',', '.') }}
+                                                <td class="text-center border">{{ number_format($item->price, 2, ',', '.') }}
                                                     Kz</td>
-                                                <td class="text-center">{{ $item->quantity}}</td>
-                                                <td class="text-center">
+                                                <td class="text-center border">{{ $item->quantity}}</td>
+                                                <td class="text-center border">
                                                     <span
                                                         class="badge {{ $item->status === 'DISPONIVEL' ? 'bg-success' : 'bg-danger' }}">
                                                         {{ $item->status }}
                                                     </span>
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center border">
                                                     {{ $item->getUser->first_name ?? '' }}
                                                     {{ $item->getUser->last_name ?? '' }}
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center border">
                                                     <button wire:click.prevent="setData({{ $item->id }})"
                                                         data-toggle="modal" data-target="#modal-add"
                                                         class="btn btn-sm btn-primary">

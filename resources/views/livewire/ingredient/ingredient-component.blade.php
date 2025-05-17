@@ -62,14 +62,14 @@
                                     <tbody>
                                         @forelse ($ingredients as $item)
                                             <tr class="border">
-                                                <td class="text-center">{{ $item->id }}</td>
-                                                <td class="text-center">{{ $item->description }}</td>
-                                                <td class="text-center">{{ $item->unit }}</td>
-                                                <td class="text-center">{{ $item->getCategories->description }}</td>
-                                                <td class="text-center">
+                                                <td class="text-center border">{{ $item->id }}</td>
+                                                <td class="text-center border">{{ $item->description }}</td>
+                                                <td class="text-center border">{{ $item->unit }}</td>
+                                                <td class="text-center border">{{ $item->getCategories->description }}</td>
+                                                <td class="text-center border">
                                                     {{ $item->getUser->first_name ?? '' }} {{ $item->getUser->last_name ?? '' }}
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center border">
                                                     <button wire:click.prevent="setData({{ $item->id }})"
                                                             data-toggle="modal" data-target="#modal-add"
                                                             class="btn btn-sm btn-primary">

@@ -52,24 +52,32 @@
                     <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
                 </a>
                 <ul class="collapse list-unstyled" id="drinks">
-                    <li><a href="{{ route('drink.stockenter.component') }}">> <span>Entrada de Estoque</span></a></li>
-                    <li><a href="{{ route('drink.component') }}">> <span>Lista de bebidas</span></a></li>
+                    <li><a href="{{ route('drink.stockenter.component') }}"><i class="fa fa-plus-circle purple_color"></i> <span>Entrada de Estoque</span></a></li>
+                    <li><a href="{{ route('drink.component') }}"><i class="fa fa-glass purple_color"></i> <span>Lista de bebidas</span></a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-book purple_color2"></i> <span>Receitas</span>
+                <a href="#recipes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-fire orange_color2"></i> <span>Cozinha</span>
                 </a>
-            </li>
-            <li>
-                <a href="{{ route('category.component') }}">
-                    <i class="fa fa-tag red_color"></i> <span>Categorias</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('ingredient.component') }}">
-                    <i class="fa fa-leaf blue2_color"></i> <span>Ingredientes</span>
-                </a>
+                <ul class="collapse list-unstyled" id="recipes">
+                    
+                    <li>
+                        <a href="{{ route('category.component') }}">
+                            <i class="fa fa-tag red_color"></i> <span>Categorias</span>
+                        </a>    
+                    </li>
+                    <li>
+                        <a href="{{ route('ingredient.component') }}">
+                            <i class="fa fa-leaf green_color"></i> <span>Ingredientes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('drink.stockenter.component') }}">
+                             <span><i class="fa fa-book purple_color2"></i> Receitas</span></a>
+                    </li>
+                    
+                </ul>
             </li>
             <li>
                 <a href="{{ route('dish.component') }}">

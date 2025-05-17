@@ -62,8 +62,8 @@
                                     <tbody>
                                         @forelse ($stockenters as $item)
                                             <tr class="border">
-                                                <td class="text-center">{{ $item->id }}</td>
-                                                <td class="text-center">
+                                                <td class="text-center border">{{ $item->id }}</td>
+                                                <td class="text-center border">
                                                     <div>
                                                         @if ($item->getDrink->photo)
                                                             <img src="{{ asset('storage/' . $item->getDrink->photo) }}"
@@ -78,8 +78,8 @@
                                                     </div>
                                                     <b>{{ $item->getDrink->description }}</b>
                                                 </td>
-                                                <td class="text-center">{{ $item->quantity}}</td>
-                                                <td class="text-center">
+                                                <td class="text-center border">{{ $item->quantity}}</td>
+                                                <td class="text-center border">
                                                     @php
                                                         $expdate = \Carbon\Carbon::parse($item->expiration_date)->format('d/m/Y');
                                                     @endphp
@@ -93,11 +93,11 @@
                                                         {{ $expdate }} 
                                                     @endif
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center border">
                                                     {{ $item->getUser->first_name ?? '' }}
                                                     {{ $item->getUser->last_name ?? '' }}
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center border">
                                                     <button wire:click.prevent="setData({{ $item->id }})"
                                                         data-toggle="modal" data-target="#modal-add-stockenter"
                                                         class="btn btn-sm btn-primary">

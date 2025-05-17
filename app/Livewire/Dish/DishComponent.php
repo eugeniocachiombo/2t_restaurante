@@ -202,6 +202,11 @@ class DishComponent extends Component
         }
     }
 
+    public function removePhoto()
+    {
+        $this->photo = null;
+    }
+
     public function clear()
     {
         $this->reset([

@@ -20,17 +20,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define("usuarioAutenticado", function($user){
-            return $user;
+        Gate::define("admin", function ($user) {
+            return $user->access_id === 1;
         });
-        Gate::define("criadorTarefas", function($user){
-            return $user->criacao_tarefa == "permitido";
+        Gate::define("atendente", function ($user) {
+            return $user->access_id === 2;
         });
-        Gate::define("usuarioNormal", function($user){
-            return $user->id_acesso == 2;
+        Gate::define("supervisor", function ($user) {
+            return $user->access_id === 3;
         });
-        Gate::define("superAdmin", function($user){
-            return $user->id_acesso == 1;
+        Gate::define("cozinheiro", function ($user) {
+            return $user->access_id === 4;
+        });
+        Gate::define("cliente", function ($user) {
+            return $user->access_id === 5;
         });
     }
 }

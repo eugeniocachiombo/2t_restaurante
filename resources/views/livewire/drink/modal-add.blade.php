@@ -32,6 +32,31 @@
                 <div class="mb-2">
                     <label>Foto</label>
                     <input type="file" class="form-control" wire:model="photo">
+                    
+                    <!-- Barra de progresso simples com wire:loading -->
+                    <div class="my-2 w-100" wire:loading wire:target="photo">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                                role="progressbar" style="width: 100%">
+                                Carregando...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pré-visualização -->
+                    <center>
+                        @if ($photo)
+                            <div class="my-3">
+                                <img src="{{ $photo->temporaryUrl() }}" alt="Pré-visualização da Foto"
+                                    class="img-fluid rounded" style="max-height: 100px;"> <br>
+                                <button type="button" class="btn btn-sm btn-danger mt-2"
+                                    wire:click="$set('photo', null)">
+                                    Remover Foto
+                                </button>
+                            </div>
+                        @endif
+                    </center>
+
                     @error('photo') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
