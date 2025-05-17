@@ -1,4 +1,6 @@
 <!-- Assets js-->
+<script src="{{ asset('assets/jquery/jquery.js') }}"></script>
+<script src="{{ asset('assets/jquery/jMask.js') }}"></script>
 <script src="{{ asset('assets/js/alerta.js') }}"></script>
 <script src="{{ asset('assets/js/executar_alert.js') }}"></script>
 <script src="{{ asset('assets/js/atrazar_redirect.js') }}"></script>

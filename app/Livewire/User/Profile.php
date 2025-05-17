@@ -48,7 +48,7 @@ class Profile extends Component
     public function mount()
     {
         $this->tab = "profile_section";
-        $this->provinces = Province::all();
+        $this->provinces = Province::orderBy("description", "asc")->get();
         $this->user = Auth::user();
         $this->first_name = $this->user->first_name;
         $this->last_name = $this->user->last_name;
@@ -73,12 +73,18 @@ class Profile extends Component
     public function get_local(){
 
         if($this->province_id){
-            $this->municipalities = Municipality::where("province_id", $this->province_id)->get();
+            $this->municipalities = Municipality::where("province_id", $this->province_id)
+            ->orderBy("description", "asc")
+            ->get();
+
+            dd($this->municipalities);
         }
 
         if($this->municipality_id && $this->province_id){
             $this->addresses = Address::where("municipality_id", $this->municipality_id)
-            ->where("province_id", $this->province_id)->get();
+            ->where("province_id", $this->province_id)
+            ->orderBy("description", "asc")
+            ->get();
         }
     }
 
@@ -126,7 +132,7 @@ class Profile extends Component
         try {
             DB::beginTransaction();
             User::where("id", Auth::user()->id)->update([
-                "password" => $this->newpassword
+                "password" => Hash::make($this->newpassword)
             ]);
             $this->dispatch('alerta', [
                 'icon' => 'success',

@@ -10,7 +10,7 @@ class Logout extends Component
     
     public function render()
     {
-       // $this->logout();
+        $this->logout();
         return view('livewire.auth.logout')
         ->layout("components.layouts.auth.app");
     }
@@ -20,7 +20,7 @@ class Logout extends Component
         cookie("sessao_iniciada", false, 0);
         $this->dispatch('atrazar_redirect', [
             'path' => '/',
-            'time' => 1000
+            'time' => 3000
         ]);
     }
 }

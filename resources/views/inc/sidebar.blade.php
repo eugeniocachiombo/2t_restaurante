@@ -41,7 +41,12 @@
                 </a>
             </li>
             <li>
-                <a href="#" >
+                <a href="{{route('category.component')}}" >
+                    <i class="fa fa-tag red_color"></i> <span>Categorias</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('drink.component')}}" >
                     <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
                 </a>
             </li>
@@ -51,7 +56,7 @@
                 </a>
             </li>
             <li>
-                <a href="#apps" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#apps">
                     <i class="fa fa-leaf blue2_color"></i> <span>Ingredientes</span>
                 </a>
             </li>
@@ -69,7 +74,7 @@
                     <li><a href="#">> <span>Clientes</span></a></li>
                     <li><a href="#">> <span>Atendentes</span></a></li>
                     <li><a href="#">> <span>Supervisores</span></a></li>
-                    <li><a href="#">> <span>Cozenheiros</span></a></li>
+                    <li><a href="#">> <span>Cozinheiros</span></a></li>
                 </ul>
             </li>
         </ul>

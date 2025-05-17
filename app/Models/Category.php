@@ -10,4 +10,8 @@ class Category extends Model
         "description",
         "user_id"
     ];
+
+    public function getUser(){
+        return $this->belongsTo(User::class, "user_id", "id");
+    }
 }
