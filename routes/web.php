@@ -5,3 +5,4 @@ include __DIR__ . "/auth/routes.php";
 include __DIR__ . "/user/routes.php";
 include __DIR__ . "/category/routes.php";
 include __DIR__ . "/drink/routes.php";
+include __DIR__ . "/dish/routes.php";

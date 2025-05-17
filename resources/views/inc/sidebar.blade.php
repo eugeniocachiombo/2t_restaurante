@@ -61,7 +61,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('dish.component')}}">
                     <i class="fa fa-cutlery blue1_color"></i> <span>Pratos</span>
                 </a>
             </li>

@@ -1,26 +1,31 @@
 <?php
 
-namespace App\Livewire\Drink;
+namespace App\Livewire\Dish;
 
-use App\Models\Drink;
+use App\Models\Dish;
+use App\Models\Recipe;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-
-class DrinkComponent extends Component
+class DishComponent extends Component
 {
     use WithFileUploads;
 
-    public $description, $price, $expiration_date, $photo, $drink_id;
+    public $description, $price, $photo, $dish_id;
+    public $recipe_id, $quantity, $discount;
     public $edit = false;
 
+    public $recipes;
+
     protected $rules = [
-        'description' => 'required|string|max:255|unique:drinks,description',
+        'description' => 'required|string|max:255|unique:dishes,description',
         'price' => 'required',
-        'expiration_date' => 'required|date|after:today',
         'photo' => 'nullable|image|max:1024',
+        'recipe_id' => 'nullable|exists:recipes,id',
+        'quantity' => 'required|integer|min:1',
+        'discount' => 'nullable|integer',
     ];
 
     protected $messages = [
@@ -31,29 +36,37 @@ class DrinkComponent extends Component
 
         'price.required' => 'O preço é obrigatório.',
 
-        'expiration_date.required' => 'A data de expiração é obrigatória.',
-        'expiration_date.date' => 'A data de expiração deve ser uma data válida.',
-        'expiration_date.after' => 'A data de expiração deve ser no futuro.',
+        'photo.image' => 'A foto deve ser uma imagem.',
+        'photo.max' => 'A imagem não pode ter mais que 1MB.',
 
-        'photo.image' => 'O arquivo deve ser uma imagem.',
-        'photo.max' => 'A imagem não pode ultrapassar 1MB.',
+        'recipe_id.exists' => 'A receita selecionada é inválida.',
+
+        'quantity.required' => 'A quantidade é obrigatória.',
+        'quantity.integer' => 'A quantidade deve ser um número inteiro.',
+        'quantity.min' => 'A quantidade mínima é 1.',
+
+        'discount.integer' => 'O desconto deve ser um número.',
     ];
+
+    public function mount()
+    {
+        $this->recipes = Recipe::all();
+    }
 
     public function render()
     {
-        return view('livewire.drink.drink-component', [
-            "drinks" => Drink::all()
-        ])
-        ->layout("components.layouts.app");
+        return view('livewire.dish.dish-component', [
+            'dishes' => Dish::all()
+        ])->layout("components.layouts.app");
     }
 
-    public function submit(){
+    public function submit()
+    {
         if ($this->edit) {
             $this->update();
         } else {
             $this->save();
         }
-        
     }
 
     public function save()
@@ -62,17 +75,18 @@ class DrinkComponent extends Component
 
         try {
             DB::beginTransaction();
-            $photoPath = $this->photo ? $this->photo->store('photos', 'public') : null;
-            
-            $priceRmPoint = str_replace(".", "", $this->price);
-            $priceFinal = str_replace(",", ".", $priceRmPoint);
 
-            Drink::create([
+            $photoPath = $this->photo ? $this->photo->store('photos', 'public') : null;
+            $priceFinal = $this->parseCurrency($this->price);
+
+            Dish::create([
                 'description' => $this->description,
                 'price' => $priceFinal,
-                'expiration_date' => $this->expiration_date,
                 'photo' => $photoPath,
-                'user_id' => Auth::user()->id,
+                'recipe_id' => $this->recipe_id,
+                'user_id' => Auth::id(),
+                'quantity' => $this->quantity,
+                'discount' => $this->discount
             ]);
 
             DB::commit();
@@ -81,7 +95,7 @@ class DrinkComponent extends Component
                 'icon' => 'success',
                 'btn' => true,
                 'title' => 'Sucesso',
-                'html' => 'Operação Realizada Com Sucesso',
+                'html' => 'Operação realizada com sucesso',
             ]);
 
             $this->clear();
@@ -89,13 +103,11 @@ class DrinkComponent extends Component
 
         } catch (\Throwable $th) {
             DB::rollBack();
-
-            // Para debug: dd($th->getMessage(), $th->getLine());
             $this->dispatch('alerta', [
                 'icon' => 'error',
                 'btn' => true,
-                'title' => 'Falha',
-                'html' => 'Falha ao realizar operação',
+                'title' => 'Erro',
+                'html' => 'Erro ao realizar operação',
             ]);
         }
     }
@@ -107,17 +119,19 @@ class DrinkComponent extends Component
         try {
             DB::beginTransaction();
 
-            $drink = Drink::findOrFail($this->drink_id);
+            $dish = Dish::findOrFail($this->dish_id);
 
             if ($this->photo) {
                 $photoPath = $this->photo->store('photos', 'public');
-                $drink->photo = $photoPath;
+                $dish->photo = $photoPath;
             }
 
-            $drink->update([
+            $dish->update([
                 'description' => $this->description,
-                'price' => $this->price,
-                'expiration_date' => $this->expiration_date,
+                'price' => $this->parseCurrency($this->price),
+                'recipe_id' => $this->recipe_id,
+                'quantity' => $this->quantity,
+                'discount' => $this->discount
             ]);
 
             DB::commit();
@@ -126,7 +140,7 @@ class DrinkComponent extends Component
                 'icon' => 'success',
                 'btn' => true,
                 'title' => 'Sucesso',
-                'html' => 'Operação Realizada Com Sucesso',
+                'html' => 'Operação realizada com sucesso',
             ]);
 
             $this->clear();
@@ -134,12 +148,11 @@ class DrinkComponent extends Component
 
         } catch (\Throwable $th) {
             DB::rollBack();
-           // dd($th->getMessage(), $th->getLine());
             $this->dispatch('alerta', [
                 'icon' => 'error',
                 'btn' => true,
                 'title' => 'Erro',
-                'html' => 'Falha ao realizar operação',
+                'html' => 'Erro ao realizar operação',
             ]);
         }
     }
@@ -148,17 +161,21 @@ class DrinkComponent extends Component
     {
         try {
             $this->edit = true;
-            $drink = Drink::find($id);
-            $this->drink_id = $id;
-            $this->description = $drink->description;
-            $this->price = $drink->price;
-            $this->expiration_date = $drink->expiration_date;
+            $dish = Dish::findOrFail($id);
+
+            $this->dish_id = $dish->id;
+            $this->description = $dish->description;
+            $this->price = number_format($dish->price, 2, ',', '.');
+            $this->recipe_id = $dish->recipe_id;
+            $this->quantity = $dish->quantity;
+            $this->discount = $dish->discount;
+
         } catch (\Throwable $th) {
             $this->dispatch('alerta', [
                 'icon' => 'error',
                 'btn' => true,
                 'title' => 'Erro',
-                'html' => 'Falha ao realizar operação',
+                'html' => 'Erro ao realizar operação',
             ]);
         }
     }
@@ -166,20 +183,21 @@ class DrinkComponent extends Component
     public function delete($id)
     {
         try {
-            $drink = Drink::find($id);
-            $drink->delete();
+            $dish = Dish::findOrFail($id);
+            $dish->delete();
+
             $this->dispatch('alerta', [
                 'icon' => 'success',
                 'btn' => true,
                 'title' => 'Sucesso',
-                'html' => 'Operação Realizada Com Sucesso',
+                'html' => 'Operação realizada com sucesso',
             ]);
         } catch (\Throwable $th) {
             $this->dispatch('alerta', [
                 'icon' => 'error',
                 'btn' => true,
                 'title' => 'Erro',
-                'html' => 'Falha ao realizar operação',
+                'html' => 'Erro ao realizar operação',
             ]);
         }
     }
@@ -187,9 +205,13 @@ class DrinkComponent extends Component
     public function clear()
     {
         $this->reset([
-            'description', 'price', 'expiration_date',
-            'photo', 'drink_id', 'edit',
+            'description', 'price', 'photo', 'dish_id',
+            'recipe_id', 'quantity', 'discount', 'edit'
         ]);
     }
-    
+
+    private function parseCurrency($value)
+    {
+        return str_replace(',', '.', str_replace('.', '', $value));
+    }
 }

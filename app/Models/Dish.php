@@ -16,4 +16,8 @@ class Dish extends Model
         "price",
         "discount",
     ];
+
+    public function getUser(){
+        return $this->belongsTo(User::class, "user_id", "id");
+    }
 }
