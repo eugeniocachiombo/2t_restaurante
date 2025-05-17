@@ -13,7 +13,7 @@ style="background: rgba(21, 40, 60, .8); background-image: url('{{ asset('assets
                     <form>
                         <fieldset >
                             <div class="field">
-                                <label class="label_field">E-mail/Telefone</label>
+                                <label class="label_field">Utilizador</label>
                                 <input type="text" wire:model="emailphone" name="emailphone" placeholder="Digite o Email ou Telefone" />
                                 @error('emailphone')
                                         <span class="text-danger mt-2">{{$message}}</span>

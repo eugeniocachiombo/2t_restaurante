@@ -10,7 +10,6 @@ class Drink extends Model
         "description",
         "price",
         "quantity",
-        "expiration_date",
         "photo",
         "status",
         "user_id",

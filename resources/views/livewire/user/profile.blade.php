@@ -21,8 +21,24 @@
                             <!-- profile image -->
                             <div class="col-lg-12">
                                 <div class="full dis_flex center_text">
-                                    <div class="profile_img"><img width="180" class="rounded-circle"
-                                            src="{{asset('assets/images/layout_img/user_img.jpg')}}" alt="#" /></div>
+                                    <div class="profile_img">
+                                        @if (auth()->user()->photo)
+                                            <a href="{{ asset('storage/' . auth()->user()->photo) }}">
+                                                <img class="img-fluid rounded-circle"
+                                                    src="{{ asset('storage/' . auth()->user()->photo) }}"
+                                                    alt="photo de perfil" style="width: 180px; height: 160px">
+                                            </a>
+                                        @else
+                                            <div class="border d-flex justify-content-center align-items-center rounded-circle bg-secondary"
+                                                style="width: 180px; height: 180px;">
+                                                <i class="fa fa-image text-white fa-5x"></i>
+                                            </div>
+                                        @endif
+                                        {{-- Livewire sobreposto e um pouco mais baixo --}}
+                                        <div class=" " style="bottom: -6px; right: -2px;">
+                                            @livewire('user.component.set-photo')
+                                        </div>
+                                    </div>
                                     <div class="profile_contant">
                                         <div class="contact_inner">
                                             <h3>{{ ucwords($user->first_name) }}
@@ -32,6 +48,8 @@
                                         </div>
 
                                     </div>
+
+
                                 </div>
                                 <!-- profile contant section -->
                                 <div class="full inner_elements margin_top_30">
@@ -222,8 +240,9 @@
                                                             </div>
 
                                                             <div class="my-3">
-                                                                <button wire:click.prevent='update' wire:loading.attr="disabled"
-                                                                    wire:target="update" class="btn main_bt">
+                                                                <button wire:click.prevent='update'
+                                                                    wire:loading.attr="disabled" wire:target="update"
+                                                                    class="btn main_bt">
                                                                     <span wire:loading.remove
                                                                         wire:target="update">Actualizar</span>
                                                                     <span wire:loading wire:target="update">
@@ -238,38 +257,40 @@
                                                 <div class="tab-pane fade {{ $tab == 'project_worked' ? 'show active' : '' }} "
                                                     id="project_worked" role="tabpanel"
                                                     aria-labelledby="nav-profile-tab">
-                                                    <h1>Alterar palavra-passe</h1> <hr>
+                                                    <h1>Alterar palavra-passe</h1>
+                                                    <hr>
                                                     <div class="row g-3 col-md-6">
                                                         <div class="col-md-7">
                                                             <label class="oldpassword">Antiga</label>
-                                                            <input wire:change='check_password' class="form-control" type="password"
-                                                                wire:model='oldpassword' name="oldpassword" id="oldpassword" />
+                                                            <input wire:change='check_password' class="form-control"
+                                                                type="password" wire:model='oldpassword'
+                                                                name="oldpassword" id="oldpassword" />
                                                             @error('oldpassword')
-                                                                <span
-                                                                    class="text-danger mt-2">{{ $message }}</span>
+                                                                <span class="text-danger mt-2">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                         <div class="col-md-7">
                                                             <label class="newpassword">Nova</label>
-                                                            <input wire:change='check_password' class="form-control" type="password"
-                                                                wire:model='newpassword' name="newpassword" id="newpassword" />
+                                                            <input wire:change='check_password' class="form-control"
+                                                                type="password" wire:model='newpassword'
+                                                                name="newpassword" id="newpassword" />
                                                             @error('newpassword')
-                                                                <span
-                                                                    class="text-danger mt-2">{{ $message }}</span>
+                                                                <span class="text-danger mt-2">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                         <div class="col-md-7">
                                                             <label class="confirmpassword">Confirmar</label>
-                                                            <input wire:change='check_password' class="form-control" type="password"
-                                                                wire:model='confirmpassword' name="confirmpassword" id="confirmpassword" />
+                                                            <input wire:change='check_password' class="form-control"
+                                                                type="password" wire:model='confirmpassword'
+                                                                name="confirmpassword" id="confirmpassword" />
                                                             @error('confirmpassword')
-                                                                <span
-                                                                    class="text-danger mt-2">{{ $message }}</span>
+                                                                <span class="text-danger mt-2">{{ $message }}</span>
                                                             @enderror
                                                         </div>
 
                                                         <div class="my-3">
-                                                            <button wire:click.prevent='change_password' wire:loading.attr="disabled"
+                                                            <button wire:click.prevent='change_password'
+                                                                wire:loading.attr="disabled"
                                                                 wire:target="change_password" class="btn main_bt">
                                                                 <span wire:loading.remove
                                                                     wire:target="change_password">Alterar</span>
@@ -300,14 +321,14 @@
 @push('scripts')
     <script>
         /*   $(document).ready(function() {
-                    $('#province_id').select2({
-                        theme: 'bootstrap-5',
-                        width: "100%"
-                    });
-                    $('#province_id').on('change', function(e) {
-                        @this.set('province_id', $('#province_id').select2("val"));
-                        @this.get_local();
-                    });
-                });*/
+                            $('#province_id').select2({
+                                theme: 'bootstrap-5',
+                                width: "100%"
+                            });
+                            $('#province_id').on('change', function(e) {
+                                @this.set('province_id', $('#province_id').select2("val"));
+                                @this.get_local();
+                            });
+                        });*/
     </script>
 @endpush

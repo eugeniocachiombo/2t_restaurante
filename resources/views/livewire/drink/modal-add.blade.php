@@ -30,18 +30,6 @@
                 </div>
 
                 <div class="mb-2">
-                    <label>Quantidade</label>
-                    <input type="text" id="quantity" class="form-control" wire:model="quantity">
-                    @error('quantity') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
-
-                <div class="mb-2">
-                    <label>Data de Expiração</label>
-                    <input type="date" class="form-control" wire:model="expiration_date">
-                    @error('expiration_date') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
-
-                <div class="mb-2">
                     <label>Foto</label>
                     <input type="file" class="form-control" wire:model="photo">
                     @error('photo') <span class="text-danger">{{ $message }}</span> @enderror

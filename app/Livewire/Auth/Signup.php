@@ -80,7 +80,7 @@ class Signup extends Component
             ]);
         } catch (\Throwable $th) {
             DB::rollBack();
-            //dd($th->getMessage(), $th->getLine());
+            dd($th->getMessage(), $th->getLine());
             $this->dispatch('alerta', [
                 'icon' => 'error',
                 'btn' => true,

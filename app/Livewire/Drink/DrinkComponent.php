@@ -19,9 +19,6 @@ class DrinkComponent extends Component
     protected $rules = [
         'description' => 'required|string|max:255|unique:drinks,description',
         'price' => 'required',
-        'quantity' => 'required|integer',
-        'expiration_date' => 'required|date|after:today',
-        'photo' => 'nullable|image|max:1024',
     ];
 
     protected $messages = [
@@ -29,18 +26,6 @@ class DrinkComponent extends Component
         'description.unique' => 'Esta bebida já existe.',
         'description.string' => 'A descrição deve ser um texto.',
         'description.max' => 'A descrição não pode ter mais que 255 caracteres.',
-
-        'price.required' => 'O preço é obrigatório.',
-
-        'quantity.required' => 'A quantidade é obrigatória.',
-        'quantity.integer' => 'Somente números inteiros.',
-
-        'expiration_date.required' => 'A data de expiração é obrigatória.',
-        'expiration_date.date' => 'A data de expiração deve ser uma data válida.',
-        'expiration_date.after' => 'A data de expiração deve ser no futuro.',
-
-        'photo.image' => 'O arquivo deve ser uma imagem.',
-        'photo.max' => 'A imagem não pode ultrapassar 1MB.',
     ];
 
     public function render()
@@ -73,9 +58,8 @@ class DrinkComponent extends Component
 
             Drink::create([
                 'description' => $this->description,
-                'quantity' => $this->quantity,
+                'quantity' => 0,
                 'price' => $priceFinal,
-                'expiration_date' => $this->expiration_date,
                 'photo' => $photoPath,
                 'user_id' => Auth::user()->id,
             ]);
@@ -95,7 +79,7 @@ class DrinkComponent extends Component
         } catch (\Throwable $th) {
             DB::rollBack();
 
-            // Para debug: dd($th->getMessage(), $th->getLine());
+          // dd($th->getMessage(), $th->getLine());
             $this->dispatch('alerta', [
                 'icon' => 'error',
                 'btn' => true,
@@ -121,9 +105,7 @@ class DrinkComponent extends Component
 
             $drink->update([
                 'description' => $this->description,
-                'quantity' => $this->quantity,
                 'price' => $this->price,
-                'expiration_date' => $this->expiration_date,
             ]);
 
             DB::commit();
