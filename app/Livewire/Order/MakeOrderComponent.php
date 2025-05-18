@@ -10,6 +10,7 @@ use Overtrue\LaravelShoppingCart\Cart;
 class MakeOrderComponent extends Component
 {
 
+
     public function render()
     {
         return view('livewire.order.make-order-component', [

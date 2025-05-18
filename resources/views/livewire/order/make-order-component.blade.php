@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="row ">
-                                    @foreach ($dishes as $item)
+                                    @forelse ($dishes as $item)
                                         <div  class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="100">
                                             <div class="pricing-item">
                                                 @if ($item->photo)
@@ -66,9 +66,20 @@
                                                         <i class="fa fa-cart-plus"></i> Adicionar
                                                     </span>
                                                 </div>
+
+                                                
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @empty
+                                        Nenhum prato disponível de momento
+                                    @endforelse
+                                    <div class="row">
+                                        <div class="container">
+                                            <div class="d-flex justify-content-end">
+                                                {{$dishes->links('pagination::bootstrap-5')}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </section>
