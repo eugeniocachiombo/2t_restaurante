@@ -18,7 +18,7 @@
                     </div>
                     <div class="counter_no">
                         <div>
-                            <p class="total_no">{{count($categories)}}</p>
+                            <p class="total_no">{{ count($categories) }}</p>
                             <p class="head_couter">Categorias</p>
                         </div>
                     </div>
@@ -33,9 +33,7 @@
                             <h2>Lista de @yield('title')</h2>
                         </div>
                         <div class="heading1 margin_0">
-                            <button class="btn btn-primary" type="button"
-                            data-toggle="modal"
-                        data-target="#modal-add">
+                            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-add">
                                 <i class="fa fa-plus-circle"></i> Adicionar
                             </button>
                         </div>
@@ -54,29 +52,33 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($categories as $item)
-                                        <tr class="border">
-                                            <td class="border text-center">{{$item->id}}</td>
-                                            <td class="border text-center">{{$item->description}}</td>
-                                            <td class="border text-center">{{$item->getUser->first_name ?? ""}} {{$item->getUser->last_name ?? ""}}</td>
-                                            <td class="border text-center">
-                                                <button type="button" class="btn btn-sm btn-primary">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-sm btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                            <tr class="border">
+                                                <td class="border text-center">{{ $item->id }}</td>
+                                                <td class="border text-center">{{ $item->description }}</td>
+                                                <td class="border text-center">{{ $item->getUser->first_name ?? '' }}
+                                                    {{ $item->getUser->last_name ?? '' }}</td>
+                                                <td class="border text-center">
+                                                    <button wire:click.prevent="setData({{ $item->id }})"
+                                                        data-toggle="modal" data-target="#modal-add"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button wire:click.prevent="delete({{ $item->id }})"
+                                                        class="btn btn-sm btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
                                         @empty
-                                        <tr>
-                                          <td class="text-center p-5" style="font-size: 20px; font-weight: bold" 
-                                          colspan="4">
-                                            <i class="fa fa-tag"></i>  <br>
-                                            Nenhuma informação encontrada
-                                        </td>
-                                        </tr>
+                                            <tr>
+                                                <td class="text-center p-5" style="font-size: 20px; font-weight: bold"
+                                                    colspan="4">
+                                                    <i class="fa fa-tag"></i> <br>
+                                                    Nenhuma informação encontrada
+                                                </td>
+                                            </tr>
                                         @endforelse
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
@@ -92,14 +94,14 @@
 @push('scripts')
     <script>
         /*   $(document).ready(function() {
-                        $('#province_id').select2({
-                            theme: 'bootstrap-5',
-                            width: "100%"
-                        });
-                        $('#province_id').on('change', function(e) {
-                            @this.set('province_id', $('#province_id').select2("val"));
-                            @this.get_local();
-                        });
-                    });*/
+                            $('#province_id').select2({
+                                theme: 'bootstrap-5',
+                                width: "100%"
+                            });
+                            $('#province_id').on('change', function(e) {
+                                @this.set('province_id', $('#province_id').select2("val"));
+                                @this.get_local();
+                            });
+                        });*/
     </script>
 @endpush

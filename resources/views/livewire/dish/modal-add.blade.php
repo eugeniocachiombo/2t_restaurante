@@ -92,7 +92,7 @@
                     wire:target="submit"
                     class="btn main_bt">
                     <span wire:loading.remove wire:target="submit">
-                        {{ $edit ? 'Atualizar' : 'Adicionar' }}
+                        {{ $edit ? 'Actualizar' : 'Adicionar' }}
                     </span>
                     <span wire:loading wire:target="submit">
                         <i class="fa fa-spinner fa-spin"></i> A processar...

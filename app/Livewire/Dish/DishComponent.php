@@ -114,7 +114,14 @@ class DishComponent extends Component
 
     public function update()
     {
-        $this->validate();
+        $this->validate([
+            'description' => 'required|string|max:255|unique:dishes,description,'.$this->dish_id,
+            'price' => 'required',
+            'photo' => 'nullable|image|max:10024',
+            'recipe_id' => 'nullable|exists:recipes,id',
+            'quantity' => 'required|integer|min:1',
+            'discount' => 'nullable|integer',
+        ]);
 
         try {
             DB::beginTransaction();

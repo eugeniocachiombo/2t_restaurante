@@ -22,12 +22,14 @@
             </div>
 
             <div class="modal-footer">
-                <button wire:click="{{ $edit ? 'update' : 'save' }}" wire:loading.attr="disabled" wire:target="{{ $edit ? 'update' : 'save' }}"
+                <button wire:click.prevent="submit"
+                    wire:loading.attr="disabled"
+                    wire:target="submit"
                     class="btn main_bt">
-                    <span wire:loading.remove wire:target="{{ $edit ? 'update' : 'save' }}">
-                        Adicionar
+                    <span wire:loading.remove wire:target="submit">
+                        {{ $edit ? 'Actualizar' : 'Adicionar' }}
                     </span>
-                    <span wire:loading wire:target="{{ $edit ? 'update' : 'save' }}">
+                    <span wire:loading wire:target="submit">
                         <i class="fa fa-spinner fa-spin"></i> A processar...
                     </span>
                 </button>

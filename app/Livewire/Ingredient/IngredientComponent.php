@@ -14,13 +14,14 @@ class IngredientComponent extends Component
     public $edit = false;
 
     protected $rules = [
-        'description' => 'required|string|max:255',
+        'description' => 'required|string|max:255|unique:ingredients,description',
         'unit' => 'required',
         'category_id' => 'required',
     ];
 
     protected $messages = [
         'description.required' => 'A descrição é obrigatória.',
+        'description.unique' => 'Este ingrediente já existe.',
         'description.string' => 'A descrição deve ser um texto.',
         'description.max' => 'A descrição não pode ter mais que 255 caracteres.',
 
@@ -82,7 +83,11 @@ class IngredientComponent extends Component
 
     public function update()
     {
-        $this->validate();
+        $this->validate([
+            'description' => 'required|string|max:255|unique:ingredients,description,'.$this->ingredient_id,
+            'unit' => 'required',
+            'category_id' => 'required',
+        ]);
 
         try {
             DB::beginTransaction();
