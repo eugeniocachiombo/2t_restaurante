@@ -72,4 +72,30 @@ class CardapioComponent extends Component
             ]);
         }
     }
+
+    public function addDrinkToCart($dish_id)
+    {
+        try {
+            $drink = Drink::find($dish_id);
+            $priceFinal = $drink->price - ($drink->price * $drink->discount) / 100;
+            $count = app(Cart::class)->count();
+            app(Cart::class)->add($count+1, $drink->description, 1, $priceFinal, [
+                "user_id" => Auth::user()->id,
+                "dish_id" => '',
+                "drink_id" => $drink->id
+            ]);
+            $this->dispatch('alerta', [
+                'toast' => true,
+                'btn' => true,
+                'html' => '<b>'.$drink->description . '</b> foi adicionado ao carrinho',
+            ]);
+        } catch (\Throwable $th) {
+            $this->dispatch('alerta', [
+                'icon' => 'error',
+                'btn' => true,
+                'title' => 'Erro',
+                'html' => 'Falha ao realizar operação',
+            ]);
+        }
+    }
 }

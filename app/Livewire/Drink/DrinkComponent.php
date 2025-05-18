@@ -91,7 +91,10 @@ class DrinkComponent extends Component
 
     public function update()
     {
-        $this->validate();
+        $this->validate([
+            'description' => 'required|string|max:255|unique:drinks,description,' . $this->drink_id,
+            'price' => 'required',
+        ]);
 
         try {
             DB::beginTransaction();

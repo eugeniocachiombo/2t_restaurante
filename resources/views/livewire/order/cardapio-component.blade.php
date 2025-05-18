@@ -158,7 +158,7 @@
                                         Nenhuma bebida disponível de momento
                                     @endforelse
 
-                                    <div class="row">
+                                    <div class="row d-none">
                                         <div class="container">
                                             <div class="d-flex justify-content-end">
                                                 {{ $drinks->links('pagination::bootstrap-5') }}
@@ -167,10 +167,7 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
-
                     </section>
                 </div>
             </div>
