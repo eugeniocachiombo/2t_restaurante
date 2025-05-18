@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Dish;
+use App\Models\Drink;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,5 +37,25 @@ class AppServiceProvider extends ServiceProvider
         Gate::define("cliente", function ($user) {
             return $user->access_id === 5;
         });
+
+        foreach (Dish::all() as $key => $item) {
+            if ($item->quantity == 0) {
+                $item->status = 'INDISPONIVEL';
+                $item->save();
+            }else if ($item->quantity >= 0){
+                $item->status = 'DISPONIVEL';
+                $item->save();
+            }
+        }
+
+        foreach (Drink::all() as $key => $item) {
+            if ($item->quantity == 0) {
+                $item->status = 'INDISPONIVEL';
+                $item->save();
+            }else if ($item->quantity >= 0){
+                $item->status = 'DISPONIVEL';
+                $item->save();
+            }
+        }
     }
 }
