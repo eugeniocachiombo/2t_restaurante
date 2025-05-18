@@ -1,7 +1,7 @@
 @section('title', 'Fazer Pedido')
 
 <div class="midde_cont">
-    <link rel="stylesheet" href="{{asset('assets/css/makeorder.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/makeorder.css') }}">
     <div class="container-fluid">
         <div class="row column_title">
             <div class="col-md-12">
@@ -9,7 +9,8 @@
                     <h2>@yield('title')</h2>
 
                     <div class="position-relative">
-                        <span class="me-2"><b>Total:</b> {{ number_format($cartTotal, 2, ',', '.') ?? 0, 00 }} kz</span>
+                        <span class="me-2"><b>Total:</b> {{ number_format($cartTotal, 2, ',', '.') ?? 0, 00 }}
+                            kz</span>
                         <i class="fa fa-cart-plus text-dark fa-2x"></i>
                         <span
                             class="cart-total-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -40,9 +41,19 @@
                                         experiência gastronômica inesquecível.</p>
                                 </div>
 
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <input type="text" id="searchInput" class="form-control"
+                                            placeholder="Pesquisar prato...">
+                                    </div>
+                                </div>
+
+
                                 <div class="row ">
                                     @forelse ($dishes as $item)
-                                        <div  class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="col-xl-3 col-lg-6 dish-item"
+                                            data-nome="{{ strtolower($item->description) }}" data-aos="fade-up"
+                                            data-aos-delay="100">
                                             <div class="pricing-item">
                                                 @if ($item->photo)
                                                     <a target="blank" href="{{ asset('storage/' . $item->photo) }}">
@@ -51,35 +62,60 @@
                                                     </a>
                                                 @else
                                                     <div class="d-flex justify-content-center align-items-center">
-                                                        <i class="fa fa-image fa-5x fa-5x" style="font-size: 150px"></i>
+                                                        <i class="fa fa-image fa-5x" style="font-size: 150px"></i>
                                                     </div>
                                                 @endif
                                                 <h3>{{ $item->description }}</h3>
                                                 <h4><sup>AOA</sup>{{ number_format($item->price, 2, ',', '.') }}<span> /
                                                         prato</span></h4>
                                                 <ul>
-                                                    <li>Com desconto de <b>{{intval($item->discount)}}%</b></li>
+                                                    <li>Com desconto de <b>{{ intval($item->discount) }}%</b></li>
                                                 </ul>
-                                                <div class="btn-wrap" >
+                                                <div class="btn-wrap">
                                                     <span style="cursor: pointer"
-                                                    wire:click.prevent='addToCart({{$item->id}})' class="btn-buy">
+                                                        wire:click.prevent='addToCart({{ $item->id }})'
+                                                        class="btn-buy">
                                                         <i class="fa fa-cart-plus"></i> Adicionar
                                                     </span>
                                                 </div>
-
-                                                
                                             </div>
                                         </div>
                                     @empty
                                         Nenhum prato disponível de momento
                                     @endforelse
+
+
                                     <div class="row">
                                         <div class="container">
                                             <div class="d-flex justify-content-end">
-                                                {{$dishes->links('pagination::bootstrap-5')}}
+                                                {{ $dishes->links('pagination::bootstrap-5') }}
                                             </div>
                                         </div>
                                     </div>
+
+                                    @push('scripts')
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                const searchInput = document.getElementById('searchInput');
+                                                const items = document.querySelectorAll('.dish-item');
+
+                                                searchInput.addEventListener('keyup', function() {
+                                                    const filter = this.value.toLowerCase();
+
+                                                    items.forEach(function(item) {
+                                                        const nome = item.getAttribute('data-nome');
+
+                                                        if (nome.includes(filter)) {
+                                                            item.style.display = '';
+                                                        } else {
+                                                            item.style.display = 'none';
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+                                    @endpush
+
                                 </div>
 
                             </section>
