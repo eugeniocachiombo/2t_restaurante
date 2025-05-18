@@ -14,12 +14,11 @@
                 <div class="user_img d-flex align-items-center justify-content-center">
                     @if (auth()->user()->photo)
                         <a href="{{ asset('storage/' . auth()->user()->photo) }}">
-                            <img  class="img-fluid rounded-circle"
-                                src="{{ asset('storage/' . auth()->user()->photo) }}" alt="photo de perfil"
-                                style="width: 50px; height: 50px">
+                            <img class="img-fluid rounded-circle" src="{{ asset('storage/' . auth()->user()->photo) }}"
+                                alt="photo de perfil" style="width: 50px; height: 50px">
                         </a>
                     @else
-                    <i class="fa fa-image text-white fa-3x"></i>
+                        <i class="fa fa-image text-white fa-3x"></i>
                     @endif
                 </div>
                 <div class="user_info">
@@ -43,17 +42,25 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#order" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-clipboard orange_color"></i> <span>Pedidos</span>
                 </a>
+                <ul class="collapse list-unstyled" id="order">
+                    <li><a href="{{ route('order.make.component') }}"><i class="fa fa-truck orange_color"></i>
+                            <span>Fazer Pedido</span></a></li>
+                    <li><a href="{{ route('order.component') }}"><i class="fa fa-list orange_color"></i> <span>Lista
+                                de Pedidos</span></a></li>
+                </ul>
             </li>
             <li>
                 <a href="#drinks" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
                 </a>
                 <ul class="collapse list-unstyled" id="drinks">
-                    <li><a href="{{ route('drink.stockenter.component') }}"><i class="fa fa-plus-circle purple_color"></i> <span>Entrada de Estoque</span></a></li>
-                    <li><a href="{{ route('drink.component') }}"><i class="fa fa-glass purple_color"></i> <span>Lista de bebidas</span></a></li>
+                    <li><a href="{{ route('drink.stockenter.component') }}"><i
+                                class="fa fa-plus-circle purple_color"></i> <span>Entrada de Estoque</span></a></li>
+                    <li><a href="{{ route('drink.component') }}"><i class="fa fa-list purple_color"></i> <span>Lista
+                                de bebidas</span></a></li>
                 </ul>
             </li>
             <li>
@@ -61,11 +68,11 @@
                     <i class="fa fa-fire orange_color2"></i> <span>Cozinha</span>
                 </a>
                 <ul class="collapse list-unstyled" id="recipes">
-                    
+
                     <li>
                         <a href="{{ route('category.component') }}">
                             <i class="fa fa-tag red_color"></i> <span>Categorias</span>
-                        </a>    
+                        </a>
                     </li>
                     <li>
                         <a href="{{ route('ingredient.component') }}">
@@ -74,9 +81,9 @@
                     </li>
                     <li>
                         <a href="{{ route('drink.stockenter.component') }}">
-                             <span><i class="fa fa-book purple_color2"></i> Receitas</span></a>
+                            <span><i class="fa fa-book purple_color2"></i> Receitas</span></a>
                     </li>
-                    
+
                 </ul>
             </li>
             <li>

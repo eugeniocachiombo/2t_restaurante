@@ -22,7 +22,7 @@ class DishComponent extends Component
     protected $rules = [
         'description' => 'required|string|max:255|unique:dishes,description',
         'price' => 'required',
-        'photo' => 'nullable|image|max:1024',
+        'photo' => 'nullable|image|max:10024',
         'recipe_id' => 'nullable|exists:recipes,id',
         'quantity' => 'required|integer|min:1',
         'discount' => 'nullable|integer',
@@ -37,7 +37,7 @@ class DishComponent extends Component
         'price.required' => 'O preço é obrigatório.',
 
         'photo.image' => 'A foto deve ser uma imagem.',
-        'photo.max' => 'A imagem não pode ter mais que 1MB.',
+        'photo.max' => 'A imagem não pode ter mais que 1GB.',
 
         'recipe_id.exists' => 'A receita selecionada é inválida.',
 
@@ -168,7 +168,7 @@ class DishComponent extends Component
             $this->price = number_format($dish->price, 2, ',', '.');
             $this->recipe_id = $dish->recipe_id;
             $this->quantity = $dish->quantity;
-            $this->discount = $dish->discount;
+            $this->discount = intval($dish->discount);
 
         } catch (\Throwable $th) {
             $this->dispatch('alerta', [

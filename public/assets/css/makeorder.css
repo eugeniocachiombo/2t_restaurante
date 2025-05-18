@@ -1,0 +1,179 @@
+.price_table {
+    background: #f9f9f9;
+    padding: 50px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Título da seção */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.section-title h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Grid de pratos */
+.pricing .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+/* Card do prato */
+.pricing-item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 25px 30px 35px;
+    flex: 1 1 260px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Destaque do prato */
+.pricing-item.featured {
+    border: 3px solid #007bff;
+    background: #e6f0ff;
+}
+
+/* Especial */
+.pricing-item .advanced {
+    display: inline-block;
+    background: #ff6f61;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 0.8px;
+    align-self: flex-start;
+    text-transform: uppercase;
+}
+
+/* Nome do prato */
+.pricing-item h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #222;
+}
+
+/* Preço */
+.pricing-item h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 18px;
+}
+
+.pricing-item h4 sup {
+    font-size: 1rem;
+    vertical-align: super;
+}
+
+.pricing-item h4 span {
+    font-weight: 400;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Lista de características */
+.pricing-item ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.pricing-item ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.pricing-item ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: 700;
+}
+
+/* Botão */
+.btn-wrap {
+    margin-top: auto;
+    text-align: center;
+}
+
+.btn-buy {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-buy:hover,
+.btn-buy:focus {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .pricing .row {
+        justify-content: center;
+    }
+
+    .pricing-item {
+        max-width: 90%;
+        flex: 1 1 100%;
+    }
+}
+
+/* Imagem do prato */
+.pricing-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajusta padding do card para encaixar a imagem */
+.pricing-item {
+    padding: 20px 30px 35px;
+    display: flex;
+    flex-direction: column;
+}
