@@ -52,10 +52,11 @@ class CardapioComponent extends Component
         try {
             $dish = Dish::find($dish_id);
             $priceFinal = $dish->price - ($dish->price * $dish->discount) / 100;
-            $count = app(Cart::class)->count();
-            app(Cart::class)->add($count+1, $dish->description, 1, $priceFinal, [
+            $count = app(Cart::class)->name(Auth::user()->id)->count();
+            app(Cart::class)->name(Auth::user()->id)->add($count+1, $dish->description, 1, $priceFinal, [
                 "user_id" => Auth::user()->id,
                 "dish_id" => $dish->id,
+                "photo" => $dish->photo,
                 "drink_id" => ''
             ]);
             $this->dispatch('alerta', [
@@ -78,11 +79,12 @@ class CardapioComponent extends Component
         try {
             $drink = Drink::find($dish_id);
             $priceFinal = $drink->price - ($drink->price * $drink->discount) / 100;
-            $count = app(Cart::class)->count();
-            app(Cart::class)->add($count+1, $drink->description, 1, $priceFinal, [
+            $count = app(Cart::class)->name(Auth::user()->id)->count();
+            app(Cart::class)->name(Auth::user()->id)->add($count+1, $drink->description, 1, $priceFinal, [
                 "user_id" => Auth::user()->id,
                 "dish_id" => '',
-                "drink_id" => $drink->id
+                "drink_id" => $drink->id,
+                "photo" => $drink->photo
             ]);
             $this->dispatch('alerta', [
                 'toast' => true,

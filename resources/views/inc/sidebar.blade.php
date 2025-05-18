@@ -31,17 +31,17 @@
     <div class="sidebar_blog_2">
         <h4 style="background: #222;">{{ ucwords(auth()->user()->getAccess->description) }}</h4>
         <ul class="list-unstyled components">
-            <li class="active">
+            <li class="{{\Illuminate\Support\Facades\Route::currentRouteName() == 'homepage' ?  'bg-success' : ''}} ">
                 <a href="{{ route('homepage') }}">
                     <i class="fa fa-dashboard yellow_color"></i> <span>Painel Principal</span>
                 </a>
             </li>
-            <li>
+            <li class="{{\Illuminate\Support\Facades\Route::currentRouteName() == 'user.profile' ?  'bg-success' : ''}} ">
                 <a href="{{ route('user.profile') }}">
                     <i class="fa fa-user red_color"></i> <span>Perfil</span>
                 </a>
             </li>
-            <li>
+            <li class="{{(\Illuminate\Support\Facades\Route::currentRouteName() == 'order.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'order.make.component' ) ?  'bg-success' : ''}}" >
                 <a href="#order" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-clipboard orange_color"></i> <span>Pedidos</span>
                 </a>
@@ -52,7 +52,7 @@
                                 de Pedidos</span></a></li>
                 </ul>
             </li>
-            <li>
+            <li class="{{(\Illuminate\Support\Facades\Route::currentRouteName() == 'drink.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'drink.stockenter.component' ) ?  'bg-success' : ''}}">
                 <a href="#drinks" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
                 </a>
@@ -63,7 +63,7 @@
                                 de bebidas</span></a></li>
                 </ul>
             </li>
-            <li>
+            <li class="{{(\Illuminate\Support\Facades\Route::currentRouteName() == 'category.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'ingredient.component' ) ?  'bg-success' : ''}}">
                 <a href="#recipes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-fire orange_color2"></i> <span>Cozinha</span>
                 </a>
@@ -86,7 +86,7 @@
 
                 </ul>
             </li>
-            <li>
+            <li class="{{\Illuminate\Support\Facades\Route::currentRouteName() == 'dish.component' ?  'bg-success' : ''}} ">
                 <a href="{{ route('dish.component') }}">
                     <i class="fa fa-cutlery blue1_color"></i> <span>Pratos</span>
                 </a>

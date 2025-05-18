@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('number');
             $table->string('description');
             $table->unsignedBigInteger('customer_user_id');
-            $table->unsignedBigInteger('attendant_user_id');
+            $table->unsignedBigInteger('attendant_user_id')->nullable();
             $table->enum('type', ['PRESENCIAL', 'ONLINE']);
             $table->enum('status', ['PENDENTE', 'PAGO', 'CANCELADO', 'RECEBIDO']);
             $table->decimal('total_price', 10, 2);

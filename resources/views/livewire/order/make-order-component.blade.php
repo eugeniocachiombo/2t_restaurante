@@ -8,11 +8,12 @@
                 <div class="page_title d-flex align-items-center justify-content-between">
                     <h2>@yield('title')</h2>
 
-                    <div class="position-relative" wire:poll.visible>
+                    <div style="cursor: pointer" class="position-relative" wire:poll.visible
+                    data-toggle="modal" data-target="#modal-cart">
                         <span class="me-2"><b>Total:</b> {{ number_format($cartTotal, 2, ',', '.') ?? 0, 00 }}
                             kz</span>
                         <i class="fa fa-cart-plus text-dark fa-2x"></i>
-                        <span
+                        <span 
                             class="cart-total-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ $cartQt ?? 0 }}
                         </span>
@@ -21,6 +22,7 @@
                 </div>
             </div>
         </div>
+        @include('livewire.order.modal-cart')
         @livewire('order.cardapio-component')
     </div>
     @include('inc.footer')
