@@ -46,6 +46,19 @@
                                         <input type="text" id="searchInput" class="form-control"
                                             placeholder="Pesquisar prato...">
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <select class="form-select" wire:model.live="perPage">
+                                            <option value="6">Mostrar apenas: 6</option>
+                                            <option value="10">Mostrar apenas: 10</option>
+                                            <option value="20">Mostrar apenas: 20</option>
+                                            <option value="50">Mostrar apenas: 50</option>
+                                            <option value="100">Mostrar apenas: 100</option>
+                                            <option value="200">Mostrar apenas: 200</option>
+                                            <option value="300">Mostrar apenas: 300</option>
+                                            <option value="1000">Mostrar apenas: 1000</option>
+                                        </select>
+                                    </div>
                                 </div>
 
 

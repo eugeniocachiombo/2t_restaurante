@@ -10,13 +10,14 @@ use Overtrue\LaravelShoppingCart\Cart;
 class MakeOrderComponent extends Component
 {
 
+    public $perPage = 6;
 
     public function render()
     {
         return view('livewire.order.make-order-component', [
             "cartQt" => app(Cart::class)->count(),
             "cartTotal" => app(Cart::class)->total(),
-            "dishes" => Dish::where("status", "DISPONÍVEL")->paginate(6),
+            "dishes" => Dish::where("status", "DISPONÍVEL")->paginate($this->perPage),
         ])
             ->layout('components.layouts.app');
     }
