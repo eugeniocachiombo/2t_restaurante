@@ -15,7 +15,6 @@ class OrderComponent extends Component
     public $orderItems = [];
     public $selectedOrderId;
 
-    // Campos do pedido para edição (adapte conforme seus campos no form)
     public $description, $type, $status;
 
     public function render()
@@ -95,9 +94,9 @@ class OrderComponent extends Component
         try {
             DB::beginTransaction();
 
-            OrderItem::where('order_id', $id)->delete();
-            Order::findOrFail($id)->delete();
-
+           $order = Order::findOrFail($id);
+           $order->status = "CANCELADO";
+           $order->save();
             DB::commit();
 
             $this->dispatch('alerta', [

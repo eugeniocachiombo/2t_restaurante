@@ -4,10 +4,10 @@ namespace App\Livewire\Order;
 
 use App\Models\Order;
 use App\Models\OrderItem;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Illuminate\Support\Str;
 use Overtrue\LaravelShoppingCart\Cart;
 
 class MakeOrderComponent extends Component
@@ -50,7 +50,7 @@ class MakeOrderComponent extends Component
 
             // Criação do pedido
             $order = Order::create([
-                'number' => intval(Carbon::now()->format("dmyhis")) . Auth::user()->id,
+                'number' => 'Ped' . Str::upper(Str::random(5)),
                 'description' => 'Pedido criado pelo sistema',
                 'customer_user_id' => Auth::user()->id,
                 'type' => 'ONLINE',

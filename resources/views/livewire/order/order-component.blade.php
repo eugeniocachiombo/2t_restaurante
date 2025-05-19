@@ -67,7 +67,24 @@
                                                 </td>
                                                 <td class="text-center border">{{ $item->customer->first_name }}</td>
                                                 <td class="text-center border">{{ $item->type }}</td>
-                                                <td class="text-center border">{{ $item->status }}</td>
+                                                <td class="text-center border">
+                                                    
+                                                    @if ($item->status == "PENDENTE")
+                                                    <span class="badge bg-warning text-dark">
+                                                        {{ $item->status }}
+                                                        </span>
+                                                    @elseif ($item->status == "CANCELADO")
+                                                    <span class="badge bg-danger">
+                                                        {{ $item->status }}
+                                                        </span>
+                                                    @else
+                                                    <span class="badge bg-success">
+                                                        {{ $item->status }}
+                                                        </span>
+                                                        
+                                                    @endif
+                                                    
+                                            </td>
                                                 <td class="text-center border">{{ number_format($item->total_price, 2, ",", ".") }} kz</td>
                                                 <td class="text-center border">{{ $item->total_quantity }}</td>
                                                 <td class="text-center border">
@@ -78,11 +95,12 @@
                                                         <i class="fa fa-eye"></i>
                                                     </button>
 
-                                                    <!-- Botão de deletar -->
+                                                    @if ($item->status == "PENDENTE")
                                                     <button wire:click.prevent="delete({{ $item->id }})"
                                                         class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @empty
