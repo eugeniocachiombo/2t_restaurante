@@ -17,4 +17,20 @@ class Order extends Model
         "total_quantity",
         "total_discount",
     ];
+
+    public function items()
+    {
+        return $this->hasMany(\App\Models\OrderItem::class);
+    }
+    
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'customer_user_id');
+    }
+
+    public function attendant()
+    {
+        return $this->belongsTo(User::class, 'attendant_user_id');
+    }
+
 }

@@ -37,7 +37,7 @@
                             <h2>Lista de @yield('title')</h2>
                         </div>
                         <div class="heading1 margin_0">
-                           
+
                         </div>
                     </div>
 
@@ -49,30 +49,38 @@
                                         <tr>
                                             <th class="bg-dark text-white text-center">ID</th>
                                             <th class="bg-dark text-white text-center">Descrição</th>
-                                            <th class="bg-dark text-white text-center">Unidade</th>
-                                            <th class="bg-dark text-white text-center">Categoria</th>
                                             <th class="bg-dark text-white text-center">Responsável</th>
-                                            <th class="bg-dark text-white text-center">Ação</th>
+                                            <th class="bg-dark text-white text-center">Tipo</th>
+                                            <th class="bg-dark text-white text-center">Estado</th>
+                                            <th class="bg-dark text-white text-center">Preço Total</th>
+                                            <th class="bg-dark text-white text-center">Qtd Total</th>
+                                            <th class="bg-dark text-white text-center">Acção</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($orders as $item)
                                             <tr class="border">
                                                 <td class="text-center border">{{ $item->id }}</td>
-                                                <td class="text-center border">{{ $item->description }}</td>
-                                                <td class="text-center border">{{ $item->unit }}</td>
-                                                <td class="text-center border">{{ $item->getCategories->description }}</td>
-                                                <td class="text-center border">
-                                                    {{ $item->getUser->first_name ?? '' }} {{ $item->getUser->last_name ?? '' }}
+                                                <td class="text-center border">{{ $item->description }} <br>
+                                                    <span class="bagde badge-dark text-dark">Nº
+                                                        {{ $item->number }}</span>
                                                 </td>
+                                                <td class="text-center border">{{ $item->customer->first_name }}</td>
+                                                <td class="text-center border">{{ $item->type }}</td>
+                                                <td class="text-center border">{{ $item->status }}</td>
+                                                <td class="text-center border">{{ number_format($item->total_price, 2, ",", ".") }} kz</td>
+                                                <td class="text-center border">{{ $item->total_quantity }}</td>
                                                 <td class="text-center border">
-                                                    <button wire:click.prevent="setData({{ $item->id }})"
-                                                            data-toggle="modal" data-target="#modal-add"
-                                                            class="btn btn-sm btn-primary">
-                                                        <i class="fa fa-edit"></i>
+                                                    <!-- Botão de visualizar itens -->
+                                                    <button wire:click.prevent="viewOrderItems({{ $item->id }})"
+                                                        data-toggle="modal" data-target="#modal-view-items"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fa fa-eye"></i>
                                                     </button>
+
+                                                    <!-- Botão de deletar -->
                                                     <button wire:click.prevent="delete({{ $item->id }})"
-                                                            class="btn btn-sm btn-danger">
+                                                        class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
@@ -93,6 +101,7 @@
                 </div>
             </div>
         </div>
+        @include('livewire.order.modal-order-items')
         @include('inc.footer')
     </div>
 </div>

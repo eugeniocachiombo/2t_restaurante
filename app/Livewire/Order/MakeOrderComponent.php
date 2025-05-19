@@ -4,6 +4,7 @@ namespace App\Livewire\Order;
 
 use App\Models\Order;
 use App\Models\OrderItem;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -41,14 +42,15 @@ class MakeOrderComponent extends Component
         DB::beginTransaction();
 
         try {
+            
             // Cálculos
-            $totalQuantity = $items->sum('quantity');
-            $totalPrice = $items->sum(fn($item) => $item->price * $item->quantity);
-            $totalDiscount = $items->sum(fn($item) => ($item->attributes['discount'] ?? 0) * $item->quantity);
+            $totalQuantity = $cart->count();
+            $totalPrice = $cart->total();
+            $totalDiscount = $items->sum(fn($item) => ($item->attributes['discount'] ?? 0) * $item->qty);
 
             // Criação do pedido
             $order = Order::create([
-                'number' => strtoupper(uniqid('ORD')),
+                'number' => intval(Carbon::now()->format("dmyhis")) . Auth::user()->id,
                 'description' => 'Pedido criado pelo sistema',
                 'customer_user_id' => Auth::user()->id,
                 'type' => 'ONLINE',
@@ -62,8 +64,8 @@ class MakeOrderComponent extends Component
             foreach ($items as $item) {
                 OrderItem::create([
                     'order_id' => $order->id,
-                    'dish_id' => $item->dish ? $item->id : null,
-                    'drink_id' => $item->drink  ? $item->id : null,
+                    'dish_id' => $item->dish_id ? $item->dish_id : null,
+                    'drink_id' => $item->drink_id  ? $item->drink_id : null,
                     'quantity' => $item->qty,
                     'price' => $item->price,
                 ]);
