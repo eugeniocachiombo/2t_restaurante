@@ -9,7 +9,9 @@
             <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
-                        <h2>Bem-vindo ao <span class="sitename">@include('inc.namewebsite')</span></h2>
+                        <h2>Bem-vindo ao <span class="sitename">
+                             @include('inc.namewebsite')
+                        </span></h2>
                         <p>Uma experiência gastronômica completa — no seu prato, na sua casa ou no nosso espaço</p>
                         <a href="#about" class="btn-get-started">Descubra mais</a>
                     </div>
@@ -276,10 +278,11 @@
                 <div class="row gy-4">
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="100">
+                        data-aos-delay="100" >
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{asset('assets/img/team/team-1.jpeg')}}" class="img-fluid" alt="Chef Principal">
+                                <img 
+                                 src="{{asset('assets/img/team/team-1.jpeg')}}" class="img-fluid" alt="Chef Principal">
                                 <div class="social">
                                     <a href="#"><i class="bi bi-instagram"></i></a>
                                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -293,10 +296,11 @@
                     </div><!-- Fim do Membro -->
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="200">
+                        data-aos-delay="200" >
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{asset('assets/img/team/team-2.jpeg')}}" class="img-fluid" alt="Sous Chef">
+                                <img 
+                                 src="{{asset('assets/img/team/team-2.jpeg')}}" class="img-fluid" alt="Sous Chef">
                                 <div class="social">
                                     <a href="#"><i class="bi bi-instagram"></i></a>
                                 </div>
@@ -309,7 +313,7 @@
                     </div><!-- Fim do Membro -->
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="300">
+                        data-aos-delay="300" >
                         <div class="team-member">
                             <div class="member-img">
                                 <img src="{{asset('assets/img/team/team-3.jpeg')}}" class="img-fluid"
@@ -395,7 +399,7 @@
                     <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="pricing-item">
                             <span class="advanced">Especial</span>
-                            <h3>Churrasco à Angolana</h3>
+                            <h3>Churrasco Angolano</h3>
                             <h4><sup>AOA</sup>6.000<span> / prato</span></h4>
                             <ul>
                                 <li>Carnes grelhadas com molhos típicos</li>
@@ -607,7 +611,7 @@
                             <i class="bi bi-geo-alt flex-shrink-0"></i>
                             <div>
                                 <h3>Endereço</h3>
-                                <p class="text-white">Avenida Adam, 108, Nova York, NY 535022</p>
+                                <p class="text-white">Projecto Nova Vida - Rua 50</p>
                             </div>
                         </div><!-- Fim do Item de Informações -->
 
@@ -615,7 +619,7 @@
                             <i class="bi bi-telephone flex-shrink-0"></i>
                             <div>
                                 <h3>Contacte Nos</h3>
-                                <p class="text-white">+1 5589 55488 55</p>
+                                <p class="text-white">+244 936 743 826</p>
                             </div>
                         </div><!-- Fim do Item de Informações -->
 
@@ -623,7 +627,7 @@
                             <i class="bi bi-envelope flex-shrink-0"></i>
                             <div>
                                 <h3>Envie um E-mail</h3>
-                                <p class="text-white">info@exemplo.com</p>
+                                <p class="text-white">kblos@gmail.com</p>
                             </div>
                         </div><!-- Fim do Item de Informações -->
 

@@ -40,7 +40,7 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
             <a href="/" class="logo d-flex align-items-center">
-                <h1 class="sitename">@include('inc.namewebsite')</h1>
+                <img class="img-responsive" style="min-width: 150px; min-height: 62px" src="{{ asset('assets/images/logo/logo.png') }}" alt="#" />
             </a>
 
             <nav id="navmenu" class="navmenu">
