@@ -27,7 +27,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="1240" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="{{count($dishes)}}" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Pratos Servidos</p>
                         </div>
@@ -35,7 +35,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="870" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="{{count($drinks)}}" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Bebidas Preparadas</p>
                         </div>
@@ -43,7 +43,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="640" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="{{count($orders)}}" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Pedidos Online</p>
                         </div>
@@ -51,7 +51,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="1"
+                            <span data-purecounter-start="0" data-purecounter-end="{{count($cookers)}}" data-purecounter-duration="1"
                                 class="purecounter"></span>
                             <p>Especialistas na Cozinha</p>
                         </div>
@@ -162,7 +162,7 @@
                                 <h3>Entrega de Refeições</h3>
                                 <p>Receba nossas delícias onde estiver! Um cardápio completo, preparado com carinho e
                                     entregue com agilidade, direto na sua porta.</p>
-                                <a href="#menu" class="read-more stretched-link">Peça agora <i
+                                <a href="{{route("auth.login")}}" class="read-more stretched-link">Peça agora <i
                                         class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
@@ -275,11 +275,11 @@
 
                 <div class="row gy-4">
 
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
                         data-aos-delay="100">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{asset('assets/img/team/team-1.jpg')}}" class="img-fluid" alt="Chef Principal">
+                                <img src="{{asset('assets/img/team/team-1.jpeg')}}" class="img-fluid" alt="Chef Principal">
                                 <div class="social">
                                     <a href="#"><i class="bi bi-instagram"></i></a>
                                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -292,11 +292,11 @@
                         </div>
                     </div><!-- Fim do Membro -->
 
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
                         data-aos-delay="200">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{asset('assets/img/team/team-2.jpg')}}" class="img-fluid" alt="Sous Chef">
+                                <img src="{{asset('assets/img/team/team-2.jpeg')}}" class="img-fluid" alt="Sous Chef">
                                 <div class="social">
                                     <a href="#"><i class="bi bi-instagram"></i></a>
                                 </div>
@@ -308,11 +308,11 @@
                         </div>
                     </div><!-- Fim do Membro -->
 
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
                         data-aos-delay="300">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{asset('assets/img/team/team-3.jpg')}}" class="img-fluid"
+                                <img src="{{asset('assets/img/team/team-3.jpeg')}}" class="img-fluid"
                                     alt="Especialista em Grelhados">
                                 <div class="social">
                                     <a href="#"><i class="bi bi-instagram"></i></a>
@@ -321,22 +321,6 @@
                             <div class="member-info">
                                 <h4>José Mário</h4>
                                 <span>Especialista em Grelhados</span>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Membro -->
-
-                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="400">
-                        <div class="team-member">
-                            <div class="member-img">
-                                <img src="{{asset('assets/img/team/team-4.jpg')}}" class="img-fluid" alt="Chef de Sobremesas">
-                                <div class="social">
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="member-info">
-                                <h4>Helena Duarte</h4>
-                                <span>Chef de Sobremesas</span>
                             </div>
                         </div>
                     </div><!-- Fim do Membro -->
