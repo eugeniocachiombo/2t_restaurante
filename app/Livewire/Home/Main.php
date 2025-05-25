@@ -6,7 +6,9 @@ use App\Models\Dish;
 use App\Models\Drink;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class Main extends Component
@@ -15,26 +17,96 @@ class Main extends Component
     {
         return view('livewire.home.main', [
             "customers" => User::where("access_id", 5)->get(),
-            "orders" => Order::all(),
-            "dishes" => Dish::all(),
-            "drinks" => Drink::all(),
+            "orders" => $this->getOrders(),
+            "dishes" => $this->getDishes(),
+            "drinks" => $this->getDrinks(),
             "monthlySalesAnalysis" => $this->getMonthlySalesAnalysis(),
             "monthlyOrderStatusCounts" => $this->getMonthlyOrderStatusCounts()
         ])->layout("components.layouts.app");
+    }
+
+    public function getOrders()
+    {
+
+        $user = Auth::user();
+        $query = [];
+
+        if (Gate::allows("admin") || Gate::allows("supervisor")) {
+            $query = Order::all();
+        } else if (Gate::allows("cliente")) {
+            $query = Order::where("customer_user_id", $user->id)->get();
+        } else if (Gate::allows("atendente")) {
+            $query = Order::where("attendant_user_id", $user->id)->get();
+        }
+
+        return $query;
+    }
+
+    public function getDishes()
+    {
+
+        $user = Auth::user();
+        $query = [];
+
+        if (Gate::allows("admin") || Gate::allows("supervisor") || Gate::allows("atendente")) {
+            $query = Dish::all();
+        } else if (Gate::allows("cliente")) {
+            $query = Dish::select("dishes.*")
+                ->join("order_items", "order_items.dish_id", "dishes.id")
+                ->join("orders", "orders.id", "order_items.order_id")
+                ->where('orders.status', 'PAGO')
+                ->where('orders.customer_user_id', $user->id)
+                ->distinct()
+                ->get();
+        } else if (Gate::allows("cozinheiro")) {
+            $query = Dish::where("user_id", $user->id)->get();
+        }
+
+        return $query;
+    }
+
+    public function getDrinks()
+    {
+
+        $user = Auth::user();
+        $query = [];
+
+        if (Gate::allows("admin") || Gate::allows("supervisor")) {
+            $query = Drink::all();
+        } else if (Gate::allows("cliente")) {
+            $query = Drink::select("drinks.*")
+                ->join("order_items", "order_items.dish_id", "drinks.id")
+                ->join("orders", "orders.id", "order_items.order_id")
+                ->where('orders.status', 'PAGO')
+                ->where('orders.customer_user_id', $user->id)
+                ->distinct()
+                ->get();
+        } else {
+            $query = Drink::where("user_id", $user->id)->get();
+        }
+
+        return $query;
     }
 
     public function getMonthlyOrderStatusCounts()
     {
         $statuses = ['PENDENTE', 'PAGO', 'CANCELADO', 'RECEBIDO'];
         $year = now()->year;
+        $user = Auth::user();
 
-        // Obtem todos os pedidos do ano atual
-        $orders = Order::whereYear('created_at', $year)->get();
+        $query = Order::whereYear('created_at', $year);
 
-        // Identifica os meses que têm pelo menos 1 pedido
+        if (Gate::allows("cliente")) {
+            $query->where('customer_user_id', $user->id);
+        } else if (Gate::allows("atendente")) {
+            $query->where('attendant_user_id', $user->id);
+        }
+
+        $orders = $query->get();
+
         $monthsWithData = $orders->groupBy(function ($order) {
-            return (int) $order->created_at->format('m'); // Mês numérico
-        })->keys()->sort()->values()->toArray(); // Ex: [1, 2, 4]
+            return (int) $order->created_at->format('m');
+        })->keys()->sort()->values()->toArray();
 
         $data = [];
         foreach ($statuses as $status) {
@@ -47,28 +119,36 @@ class Main extends Component
             }
         }
 
-        // Também retorna os nomes dos meses para exibição no gráfico
+
         $monthNames = collect($monthsWithData)->map(function ($month) {
             return \Carbon\Carbon::create()->month($month)->locale('pt_BR')->isoFormat('MMMM');
         })->toArray();
 
         return [
-            'labels' => $monthNames,       // ['janeiro', 'fevereiro', ...]
-            'data' => $data                // ['PENDENTE' => [...], ...]
+            'labels' => $monthNames,
+            'data' => $data
         ];
     }
 
     public function getMonthlySalesAnalysis()
     {
+        $user = Auth::user();
         $year = now()->year;
 
-        // Buscar pedidos pagos no ano atual com seus itens
-        $paidOrders = Order::where('status', 'PAGO')
-            ->whereYear('created_at', $year)
-            ->with('items')
+
+        $query = Order::where('status', 'PAGO')
+            ->whereYear('created_at', $year);
+
+        if (Gate::allows("cliente")) {
+            $query->where('customer_user_id', $user->id);
+        } else if (Gate::allows("atendente")) {
+            $query->where('attendant_user_id', $user->id);
+        }
+
+        $paidOrders = $query->with('items')
             ->get();
 
-        // Agrupar pedidos por mês
+
         $ordersGroupedByMonth = $paidOrders->groupBy(function ($order) {
             return (int) $order->created_at->format('m');
         });
@@ -81,12 +161,12 @@ class Main extends Component
         foreach ($monthsWithData as $month) {
             $ordersInMonth = $ordersGroupedByMonth->get($month);
 
-            // Somar quantidade de pratos (items com dish_id não nulo)
+
             $dishesTotal = $ordersInMonth->flatMap(function ($order) {
                 return $order->items->filter(fn($item) => !is_null($item->dish_id));
             })->sum('quantity');
 
-            // Somar quantidade de bebidas (items com drink_id não nulo)
+
             $drinksTotal = $ordersInMonth->flatMap(function ($order) {
                 return $order->items->filter(fn($item) => !is_null($item->drink_id));
             })->sum('quantity');

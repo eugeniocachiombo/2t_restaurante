@@ -31,22 +31,6 @@ class CardapioComponent extends Component
         $this->tab = $tab;
     }
 
-    
-
-    public function importantMethods()
-    {
-
-        /*
-    Cart::all()
-    Cart::total(); // Ex: 59.80
-    Cart::count(); // Ex: 5
-    Cart::remove(1); // ID do item (não rowId)
-    Cart::clean();
-    $item = Cart::get(1); // retorna objeto do item
-    $items = Cart::items();*/
-
-    }
-
     public function addDishToCart($dish_id)
     {
         try {

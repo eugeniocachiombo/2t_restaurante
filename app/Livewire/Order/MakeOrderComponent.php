@@ -43,12 +43,12 @@ class MakeOrderComponent extends Component
 
         try {
             
-            // Cálculos
+            
             $totalQuantity = $cart->count();
             $totalPrice = $cart->total();
             $totalDiscount = $items->sum(fn($item) => ($item->attributes['discount'] ?? 0) * $item->qty);
 
-            // Criação do pedido
+            
             $order = Order::create([
                 'number' => 'Ped' . Str::upper(Str::random(5)),
                 'description' => 'Pedido criado pelo sistema',
@@ -60,7 +60,7 @@ class MakeOrderComponent extends Component
                 'total_discount' => $totalDiscount,
             ]);
 
-            // Itens do pedido
+            
             foreach ($items as $item) {
                 OrderItem::create([
                     'order_id' => $order->id,
@@ -81,11 +81,11 @@ class MakeOrderComponent extends Component
                 'html' => 'Operação realizada com sucesso',
             ]);
 
-           // $this->clear();
+           
             $this->dispatch('close_modal');
         } catch (\Exception $th) {
             DB::rollBack();
-            //dd($th->getMessage(), $th->getLine());
+            
             $this->dispatch('alerta', [
                 'icon' => 'error',
                 'btn' => true,
