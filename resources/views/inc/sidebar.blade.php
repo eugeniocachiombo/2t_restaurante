@@ -111,10 +111,10 @@
                     <i class="fa fa-users yellow_color"></i> <span>Utilizadores</span>
                 </a>
                 <ul class="collapse list-unstyled" id="users">
-                    <li><a href="#">> <span>Clientes</span></a></li>
-                    <li><a href="#">> <span>Atendentes</span></a></li>
-                    <li><a href="#">> <span>Supervisores</span></a></li>
-                    <li><a href="#">> <span>Cozinheiros</span></a></li>
+                    <li><a href="{{ route('user.custumer') }}">> <span>Clientes</span></a></li>
+                    <li><a href="{{ route('user.attendent') }}">> <span>Atendentes</span></a></li>
+                    <li><a href="{{ route('user.supervisor') }}">> <span>Supervisores</span></a></li>
+                    <li><a href="{{ route('user.cooker') }}">> <span>Cozinheiros</span></a></li>
                 </ul>
             </li>
             @endcan
