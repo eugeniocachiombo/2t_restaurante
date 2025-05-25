@@ -38,6 +38,14 @@ function getChartJs(type) {
                         pointBorderColor: 'rgba(255, 87, 34, 0)',
                         pointBackgroundColor: 'rgba(255, 87, 34, 0)',
                         pointBorderWidth: 1
+                    }, {
+                        label: "My Second dataset",
+                        data: [75, 58, 92, 58, 86, 27, 90],
+                        borderColor: 'rgb(30, 107, 208)',
+                        backgroundColor: 'rgba(30, 107, 208, 0.3)',
+                        pointBorderColor: 'rgba(30, 107, 208, 0)',
+                        pointBackgroundColor: 'rgba(30, 107, 208, 0)',
+                        pointBorderWidth: 1
                     }]
             },
             options: {
@@ -59,6 +67,10 @@ function getChartJs(type) {
                         label: "My Second dataset",
                         data: [28, 48, 40, 19, 86, 27, 90],
                         backgroundColor: 'rgba(30, 208, 133, 1)'
+                    }, {
+                        label: "My Second dataset",
+                        data: [28, 48, 40, 19, 86, 27, 90],
+                        backgroundColor: 'rgba(30, 107, 208, 1)'
                     }]
             },
             options: {
