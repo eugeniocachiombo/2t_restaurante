@@ -176,7 +176,7 @@
                 {
                     label: 'Pratos',
                     data: dishesData,
-                    borderColor: '#007bff', // azul
+                    borderColor: '#007bff',
                     backgroundColor: 'rgba(0, 123, 255, 0.2)',
                     fill: true,
                     tension: 0.4
@@ -184,7 +184,7 @@
                 {
                     label: 'Bebidas',
                     data: drinksData,
-                    borderColor: '#28a745', // verde
+                    borderColor: '#28a745',
                     backgroundColor: 'rgba(40, 167, 69, 0.2)',
                     fill: true,
                     tension: 0.4
@@ -200,7 +200,10 @@
                 },
                 tooltip: {
                     mode: 'nearest',
-                    intersect: false
+                    intersect: true,
+                    filter: function(tooltipItem) {
+                        return tooltipItem.element && tooltipItem.element.active;
+                    }
                 },
                 legend: {
                     position: 'top'
@@ -208,8 +211,7 @@
             },
             interaction: {
                 mode: 'nearest',
-                axis: 'x',
-                intersect: false
+                intersect: true
             },
             scales: {
                 y: {
@@ -223,3 +225,4 @@
         }
     });
 </script>
+
