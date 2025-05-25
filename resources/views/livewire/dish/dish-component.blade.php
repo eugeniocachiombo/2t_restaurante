@@ -38,11 +38,12 @@
                             <h2>Lista de @yield('title')</h2>
                         </div>
                         <div class="heading1 margin_0">
-                            <button class="btn btn-primary" type="button" 
-                                    wire:click.prevent='clear'
+                            @cannot('cliente')
+                                <button class="btn btn-primary" type="button" wire:click.prevent='clear'
                                     data-toggle="modal" data-target="#modal-add">
-                                <i class="fa fa-plus-circle"></i> Adicionar
-                            </button>
+                                    <i class="fa fa-plus-circle"></i> Adicionar
+                                </button>
+                            @endcannot
                         </div>
                     </div>
 
@@ -55,10 +56,16 @@
                                             <th class="bg-dark text-white text-center">ID</th>
                                             <th class="bg-dark text-white text-center">Descrição</th>
                                             <th class="bg-dark text-white text-center">Preço</th>
-                                            <th class="bg-dark text-white text-center">Qtd. Disponível</th> 
+                                            <th class="bg-dark text-white text-center">Qtd. Disponível</th>
                                             <th class="bg-dark text-white text-center">Status</th>
+
+                                            @cannot('cliente')
                                             <th class="bg-dark text-white text-center">Responsável</th>
-                                            <th class="bg-dark text-white text-center">Ação</th>
+                                            @endcannot
+                                            
+                                            @if (Gate::allows('admin') || Gate::allows('supervisor'))
+                                                <th class="bg-dark text-white text-center">Ação</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,13 +75,15 @@
                                                 <td class="text-center border ">
                                                     <div>
                                                         @if ($item->photo)
-                                                            <a target="blank" href="{{ asset('storage/' . $item->photo) }}">
+                                                            <a target="blank"
+                                                                href="{{ asset('storage/' . $item->photo) }}">
                                                                 <img src="{{ asset('storage/' . $item->photo) }}"
-                                                                alt="Foto" width="40" height="40"
-                                                                class="rounded-circle">
+                                                                    alt="Foto" width="40" height="40"
+                                                                    class="rounded-circle">
                                                             </a>
                                                         @else
-                                                            <div class="d-flex justify-content-center align-items-center">
+                                                            <div
+                                                                class="d-flex justify-content-center align-items-center">
                                                                 <i class="fa fa-image fa-3x"></i>
                                                             </div>
                                                         @endif
@@ -85,31 +94,42 @@
                                                     {{ number_format($item->price, 2, ',', '.') }} Kz
                                                 </td>
                                                 <td class="text-center border">
-                                                    {{$item->quantity}}
+                                                    {{ $item->quantity }}
                                                 </td>
                                                 <td class="text-center border">
-                                                    <span class="badge {{ $item->status === 'DISPONIVEL' ? 'bg-success' : 'bg-danger' }}">
+                                                    <span
+                                                        class="badge {{ $item->status === 'DISPONIVEL' ? 'bg-success' : 'bg-danger' }}">
                                                         {{ $item->status }}
                                                     </span>
                                                 </td>
+
+                                                @cannot('cliente')
+                                                    
                                                 <td class="text-center border">
-                                                    {{ $item->getUser->first_name ?? '' }} {{ $item->getUser->last_name ?? '' }}
+                                                    {{ $item->getUser->first_name ?? '' }}
+                                                    {{ $item->getUser->last_name ?? '' }}
                                                 </td>
-                                                <td class="text-center border">
-                                                    <button wire:click.prevent="setData({{ $item->id }})"
+                                                @endcannot
+
+                                                @if (Gate::allows('admin') || Gate::allows('supervisor'))
+                                                    <td class="text-center border">
+
+                                                        <button wire:click.prevent="setData({{ $item->id }})"
                                                             data-toggle="modal" data-target="#modal-add"
                                                             class="btn btn-sm btn-primary">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button wire:click.prevent="delete({{ $item->id }})"
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button wire:click.prevent="delete({{ $item->id }})"
                                                             class="btn btn-sm btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </td>
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                @endif
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="7" class="text-center p-5" style="font-size: 20px; font-weight: bold">
+                                                <td colspan="7" class="text-center p-5"
+                                                    style="font-size: 20px; font-weight: bold">
                                                     <i class="fa fa-tag"></i><br>Nenhuma informação encontrada
                                                 </td>
                                             </tr>
