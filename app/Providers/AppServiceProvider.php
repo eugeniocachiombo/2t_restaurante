@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Dish;
 use App\Models\Drink;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -38,24 +39,35 @@ class AppServiceProvider extends ServiceProvider
             return $user->access_id === 5;
         });
 
-        foreach (Dish::all() as $key => $item) {
-            if ($item->quantity == 0) {
-                $item->status = 'INDISPONIVEL';
-                $item->save();
-            }else if ($item->quantity >= 0){
-                $item->status = 'DISPONIVEL';
-                $item->save();
-            }
-        }
+        $this->checkStatus();
+    }
 
-        foreach (Drink::all() as $key => $item) {
-            if ($item->quantity == 0) {
-                $item->status = 'INDISPONIVEL';
-                $item->save();
-            }else if ($item->quantity >= 0){
-                $item->status = 'DISPONIVEL';
-                $item->save();
+    public function checkStatus(){
+       try {
+         if (Schema::hasTable("dishes") && Schema::hasTable("drinks")) {
+
+            foreach (Dish::all() as $key => $item) {
+                if ($item->quantity == 0) {
+                    $item->status = 'INDISPONIVEL';
+                    $item->save();
+                } else if ($item->quantity >= 0) {
+                    $item->status = 'DISPONIVEL';
+                    $item->save();
+                }
+            }
+
+            foreach (Drink::all() as $key => $item) {
+                if ($item->quantity == 0) {
+                    $item->status = 'INDISPONIVEL';
+                    $item->save();
+                } else if ($item->quantity >= 0) {
+                    $item->status = 'DISPONIVEL';
+                    $item->save();
+                }
             }
         }
+       } catch (\Throwable $th) {
+           // throw $th;
+       }
     }
 }
