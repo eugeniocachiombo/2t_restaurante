@@ -105,19 +105,28 @@
                 </a>
             </li>
 
-            @can('admin')
+            @cannot('cliente')
             <li class="active">
                 <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-users yellow_color"></i> <span>Utilizadores</span>
                 </a>
                 <ul class="collapse list-unstyled" id="users">
+                    @if (Gate::allows("admin") || Gate::allows("atendente"))
+                        
                     <li><a href="{{ route('user.custumer') }}">> <span>Clientes</span></a></li>
+                    @endif
+
+                    @if (Gate::allows("admin") || Gate::allows("atendente"))
                     <li><a href="{{ route('user.attendent') }}">> <span>Atendentes</span></a></li>
                     <li><a href="{{ route('user.supervisor') }}">> <span>Supervisores</span></a></li>
+                    @endif
+                    
+                    @if (Gate::allows("admin") || Gate::allows("supervisor"))
                     <li><a href="{{ route('user.cooker') }}">> <span>Cozinheiros</span></a></li>
+                    @endif
                 </ul>
             </li>
-            @endcan
+            @endcannot
         </ul>
     </div>
 </nav>
