@@ -101,7 +101,7 @@
     </div>
     @include('inc.footer')
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ asset('assets/js/a_chart.js') }}"></script>
 <script>
     const monthLabels = {!! json_encode($monthlyOrderStatusCounts['labels']) !!};
     const statusData = {!! json_encode($monthlyOrderStatusCounts['data']) !!};
