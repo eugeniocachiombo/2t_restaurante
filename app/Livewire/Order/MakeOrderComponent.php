@@ -15,6 +15,9 @@ class MakeOrderComponent extends Component
     public $cartItems = [];
     public $cartTotal = 0;
     public $cartQt = 0;
+    public $orderType = null;
+    public $address;
+    public $deliveryFee = 0;
 
     public function mount()
     {
@@ -28,8 +31,54 @@ class MakeOrderComponent extends Component
             ->layout('components.layouts.app');
     }
 
+    public function setOrderType($type)
+    {
+        $this->orderType = $type;
+        $this->calculateDeliveryFee();
+    }
+
+    public function unsetOrderType()
+    {
+        $this->orderType = null;
+    }
+
+    public function updatedAddress()
+    {
+        $this->calculateDeliveryFee();
+    }
+
+    public function calculateDeliveryFee()
+    {
+        if ($this->orderType === 'presencial') {
+            if (strtolower($this->address) === 'golf 2 projecto nova vida') {
+                $this->deliveryFee = 1000;
+            } else {
+                $this->deliveryFee = 2000;
+            }
+        } else {
+            $this->deliveryFee = 0;
+        }
+    }
+
+    public function confirmOrderType()
+    {
+        if ($this->orderType === 'presencial') {
+            $this->validate(
+                ["address" => "required"],
+                ["address.required" => "Campo Obrigatório"]
+            );
+        }
+        $this->dispatch('close_order_type_modal');
+    }
+
+
     public function makeOrder()
     {
+        if (!$this->orderType) {
+            $this->dispatch('open_order_type_modal');
+            return;
+        }
+
         $cart = app(Cart::class)->name(Auth::user()->id);
         $items = $cart->all();
 
@@ -46,25 +95,26 @@ class MakeOrderComponent extends Component
         DB::beginTransaction();
 
         try {
-            
-            
+
+
             $totalQuantity = $cart->count();
             $totalPrice = $cart->total();
             $totalDiscount = $items->sum(fn($item) => ($item->attributes['discount'] ?? 0) * $item->qty);
 
-            
+
             $order = Order::create([
                 'number' => 'Ped' . Str::upper(Str::random(5)),
                 'description' => 'Pedido criado pelo sistema',
                 'customer_user_id' => Auth::user()->id,
-                'type' => 'ONLINE',
+                'type' => strtoupper($this->orderType),
+                'delivery_tax' => $this->deliveryFee,
                 'status' => 'PENDENTE',
                 'total_price' => $totalPrice,
                 'total_quantity' => $totalQuantity,
                 'total_discount' => $totalDiscount,
             ]);
 
-            
+
             foreach ($items as $item) {
                 OrderItem::create([
                     'order_id' => $order->id,
@@ -85,11 +135,13 @@ class MakeOrderComponent extends Component
                 'html' => 'Operação realizada com sucesso',
             ]);
 
-           
+            $this->orderType = null;
             $this->dispatch('close_modal');
+            $generatepdf = new Order(); 
+            return $generatepdf->generatePdf($order->id);
         } catch (\Exception $th) {
             DB::rollBack();
-            
+            dd($th->getMessage());
             $this->dispatch('alerta', [
                 'icon' => 'error',
                 'btn' => true,

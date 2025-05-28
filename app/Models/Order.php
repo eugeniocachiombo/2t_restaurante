@@ -14,6 +14,7 @@ class Order extends Model
         "attendant_user_id",
         "type",
         "status",
+        "delivery_tax",
         "total_price",
         "total_quantity",
         "total_discount",

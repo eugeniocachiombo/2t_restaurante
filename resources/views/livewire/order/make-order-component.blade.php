@@ -23,6 +23,7 @@
             </div>
         </div>
         @include('livewire.order.modal-cart')
+        @include('livewire.order.modal-typeorder')
         @livewire('order.cardapio-component')
     </div>
     @include('inc.footer')

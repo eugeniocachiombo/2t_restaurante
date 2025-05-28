@@ -87,13 +87,24 @@
 <script>
     document.addEventListener('livewire:init', function () {
         Livewire.on('open_modal', () => {
-            var myModal = new bootstrap.Modal(document.getElementById('modal-add'));
+            var myModal = new bootstrap.Modal(document.getElementById('modal-cart'));
             myModal.show();
         });
 
         Livewire.on('close_modal', () => {
-            var myModal = bootstrap.Modal.getInstance(document.getElementById('modal-add'));
-            if (myModal) myModal.hide();
+            const modal = document.getElementById('modal-cart');
+
+            modal.classList.remove('show');
+            modal.classList.remove('fade'); 
+            modal.style.display = 'none';
+            
+            document.body.classList.remove('modal-open');
+            document.body.style = ''; 
+
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) {
+                backdrop.parentNode.removeChild(backdrop);
+            }
         });
     });
 </script>

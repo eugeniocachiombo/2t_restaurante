@@ -167,8 +167,9 @@
                 <span>
                     <span><strong>Fatura Nº:</strong> {{ $order->number }}</span> / 
                     <span><strong>Data:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</span> /
-                    <span><strong>Validade:</strong> 2 dias</span> /
-                    <span><strong>Tipo de pedido:</strong> <span style="text-transform: lowercase">{{ ucwords($order->type) }}</span></span>
+                    <span><strong>Validade:</strong> 2 dias</span> <br>
+                    <span><strong>Tipo de pedido:</strong> <span style="text-transform: lowercase">{{ ucwords($order->type) }}</span></span> /
+                    <span><strong>Taxa/Entrega:</strong> {{ number_format($order->delivery_tax, 2, ",", ".") }} Kz</span>
                 </span>
             </div>
             <hr>
@@ -185,9 +186,21 @@
             </thead>
             <tbody>
                 @foreach ($order->items as $item)
+                    @php
+                        $description = "";
+
+                        if ($item->dish_id) {
+                            $query = \App\Models\Dish::find($item->dish_id);
+                            $description = $query->description;
+                        } else {
+                           $query = \App\Models\Drink::find($item->drink_id);
+                            $description = $query->description;
+                        }
+                        
+                    @endphp
                     <tr>
                         <td>{{ $item->dish_id ? 'Prato' : 'Bebida' }}</td>
-                        <td>{{ $data->description ?? '-' }}</td>
+                        <td>{{ $description ?? '-' }}</td>
                         <td>{{ number_format($item->price, 2, ',', '.') }} kz</td>
                         <td>{{ $item->quantity }}</td>
                     </tr>
@@ -196,7 +209,7 @@
             <tfoot>
                 <tr>
                     <th colspan="3" style="text-align: right;">Total</th>
-                    <th colspan="2">Kz {{ $order->total_price }}</th>
+                    <th colspan="2">Kz {{ number_format($order->total_price, 2, ',', '.') }}</th>
                 </tr>
             </tfoot>
         </table>

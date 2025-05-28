@@ -27,17 +27,19 @@
                              <tbody>
                                  @foreach ($orderItems as $item)
                                      <tr>
-                                        <td>{{ $item->dish_id ? 'Prato' : 'Bebida' }}</td>
-                                        <td style="width: 80px; text-align: center;">
-                                            @php
-                                                $data = $item->dish ?? $item->drink;
-                                            @endphp
-                                            @if($data->photo)
-                                                <img src="{{ asset('storage/' . $data->photo) }}" alt="{{ $data->description }}" style="max-width: 70px; max-height: 70px; object-fit: cover;">
-                                            @else
-                                                <i class="fa fa-image fa-2x text-secondary"></i>
-                                            @endif
-                                        </td>
+                                         <td>{{ $item->dish_id ? 'Prato' : 'Bebida' }}</td>
+                                         <td style="width: 80px; text-align: center;">
+                                             @php
+                                                 $data = $item->dish ?? $item->drink;
+                                             @endphp
+                                             @if ($data->photo)
+                                                 <img src="{{ asset('storage/' . $data->photo) }}"
+                                                     alt="{{ $data->description }}"
+                                                     style="max-width: 70px; max-height: 70px; object-fit: cover;">
+                                             @else
+                                                 <i class="fa fa-image fa-2x text-secondary"></i>
+                                             @endif
+                                         </td>
                                          <td>{{ $item->dish->description ?? ($item->drink->description ?? '-') }}</td>
                                          <td>{{ number_format($item->price, 2, ',', '.') }} kz</td>
                                          <td>{{ $item->quantity }}</td>
