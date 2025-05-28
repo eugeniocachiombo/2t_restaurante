@@ -163,11 +163,12 @@
                 <span><strong>Email:</strong> {{ $order->customer->email }} / <strong>Tel:</strong> {{ $order->customer->phone }} </span>
             </div>
 
-            <div style="margin-top: 10px">
+            <div style="margin-top: 20px">
                 <span>
                     <span><strong>Fatura Nº:</strong> {{ $order->number }}</span> / 
                     <span><strong>Data:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</span> /
-                    <span><strong>Validade:</strong> 2 dias</span>
+                    <span><strong>Validade:</strong> 2 dias</span> /
+                    <span><strong>Tipo de pedido:</strong> <span style="text-transform: lowercase">{{ ucwords($order->type) }}</span></span>
                 </span>
             </div>
             <hr>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -31,6 +32,29 @@ class Order extends Model
     public function attendant()
     {
         return $this->belongsTo(User::class, 'attendant_user_id');
+    }
+
+    public function generatePdf($id)
+    {
+        $order = Order::find($id);
+
+        if (!$order) {
+            abort(404, "Pedido não encontrado.");
+        }
+
+        $pdf = Pdf::loadView('pdf.invoice-proform', ["order" => $order]);
+
+        $pdfDirectory = public_path("assets/pdfs");
+
+        if (!file_exists($pdfDirectory)) {
+            mkdir($pdfDirectory, 0755, true);
+        }
+
+        $fileName = "proforma_" . $order->id . ".pdf";
+        $path = $pdfDirectory . DIRECTORY_SEPARATOR . $fileName;
+        $pdf->save($path);
+
+        return response()->download($path);
     }
 
 }

@@ -27,29 +27,9 @@ class OrderComponent extends Component
 
     public function generatePdf($id)
     {
-        $order = Order::find($id);
-
-        if (!$order) {
-            abort(404, "Pedido não encontrado.");
-        }
-
-        $pdf = Pdf::loadView('pdf.invoice-proform', ["order" => $order]);
-
-        $pdfDirectory = public_path("assets/pdfs");
-
-        if (!file_exists($pdfDirectory)) {
-            mkdir($pdfDirectory, 0755, true);
-        }
-
-        $fileName = "proforma_" . $order->id . ".pdf";
-        $path = $pdfDirectory . DIRECTORY_SEPARATOR . $fileName;
-        $pdf->save($path);
-
-        return response()->download($path);
+        $order = new Order();
+        return $order->generatePdf($id);
     }
-
-
-
 
     public function getOrders()
     {
