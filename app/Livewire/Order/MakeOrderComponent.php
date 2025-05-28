@@ -40,6 +40,7 @@ class MakeOrderComponent extends Component
     public function unsetOrderType()
     {
         $this->orderType = null;
+        $this->address = null;
     }
 
     public function updatedAddress()
@@ -49,7 +50,7 @@ class MakeOrderComponent extends Component
 
     public function calculateDeliveryFee()
     {
-        if ($this->orderType === 'presencial') {
+        if ($this->orderType === 'online') {
             if (strtolower($this->address) === 'golf 2 projecto nova vida') {
                 $this->deliveryFee = 1000;
             } else {
@@ -62,7 +63,7 @@ class MakeOrderComponent extends Component
 
     public function confirmOrderType()
     {
-        if ($this->orderType === 'presencial') {
+        if ($this->orderType === 'online') {
             $this->validate(
                 ["address" => "required"],
                 ["address.required" => "Campo Obrigatório"]
@@ -135,9 +136,9 @@ class MakeOrderComponent extends Component
                 'html' => 'Operação realizada com sucesso',
             ]);
 
-            $this->orderType = null;
+            $this->unsetOrderType();
             $this->dispatch('close_modal');
-            $generatepdf = new Order(); 
+            $generatepdf = new Order();
             return $generatepdf->generatePdf($order->id);
         } catch (\Exception $th) {
             DB::rollBack();

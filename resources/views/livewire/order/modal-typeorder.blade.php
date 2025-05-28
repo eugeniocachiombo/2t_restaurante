@@ -2,9 +2,9 @@
     aria-labelledby="orderType" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered" role="document">
         <div class="modal-content shadow-lg">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">
-                    <i class="fa fa-map-marker-alt"></i> Escolher Tipo de Pedido
+            <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title text-dark">
+                    <i class="fa fa-map-marker-alt "></i> Escolher Tipo de Pedido
                 </h5>
                 <button type="button" class="btn btn-close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -15,18 +15,18 @@
                 <p class="mb-4 fs-5">Como deseja receber o seu pedido?</p>
 
                 <div class="d-flex justify-content-around">
-                    <button wire:click="setOrderType('online')"
-                        class="btn btn-lg w-45 {{ $orderType === 'online' ? 'btn-success' : 'btn-outline-success' }}">
-                        <i class="fa fa-globe"></i> Online
+                    <button wire:click="setOrderType('presencial')"
+                        class="btn btn-lg w-45 {{ $orderType === 'presencial' ? 'btn-primary' : 'btn-outline-primary' }}">
+                        <i class="fa fa-user"></i> Presencial
                     </button>
 
-                    <button wire:click="setOrderType('presencial')"
-                        class="btn btn-lg w-45 {{ $orderType === 'presencial' ? 'btn-info' : 'btn-outline-info' }}">
-                        <i class="fa fa-store"></i> Presencial
+                    <button wire:click="setOrderType('online')"
+                        class="btn btn-lg w-45 {{ $orderType === 'online' ? 'btn-primary' : 'btn-outline-primary' }}">
+                        <i class="fa fa-truck"></i> Entrega
                     </button>
                 </div>
 
-                @if ($orderType === 'presencial')
+                @if ($orderType === 'online')
                     <div class="mt-4 text-start">
                         <label for="address" class="form-label fw-bold">Selecione a Morada:</label>
                         <select wire:model="address" id="address" class="form-control">
@@ -46,7 +46,7 @@
                     </div>
 
                     @if ($address)
-                        <div class="alert alert-warning mt-4" role="alert">
+                        <div class="alert alert-primary mt-4" role="alert">
                             <i class="fa fa-info-circle"></i>
                             <strong>Nota:</strong> Será cobrada uma taxa de deslocação de
                             <strong>{{ number_format($deliveryFee, 2, ',', '.') }} AOA</strong>.
