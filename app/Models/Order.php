@@ -43,7 +43,10 @@ class Order extends Model
             abort(404, "Pedido não encontrado.");
         }
 
-        $pdf = Pdf::loadView('pdf.invoice-proform', ["order" => $order]);
+        $pdf = Pdf::loadView('pdf.invoice-proform', [
+            "order" => $order,
+            "accounts" => BankAccount::all(),
+        ]);
 
         $pdfDirectory = public_path("assets/pdfs");
 

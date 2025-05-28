@@ -214,9 +214,11 @@
             </tfoot>
         </table>
 
-        <h4>Dados para Pagamento</h4>
-        <div class="reference-code">Banco BAI – IBAN: AO06 0000 0000 0000 0000 001</div>
-        <div class="reference-code">Banco Millennium – IBAN: AO06 1111 2222 3333 4444 555</div>
+        <h4>Referência para Pagamento</h4>
+        @foreach ($accounts as $item)
+        <div class="reference-code">{{ $item->description ?? 'n/d' }} – IBAN: AO06 {{ $item->iban }}</div>
+        @endforeach
+        
 
         <p><strong>Instruções:</strong><br>
             Por favor, efetuar o pagamento com a referência da fatura. A entrega será feita após confirmação.

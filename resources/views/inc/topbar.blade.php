@@ -28,10 +28,9 @@
                         <li style="background: #222">
                             <a class="dropdown-toggle" data-toggle="dropdown">
                                 @if (auth()->user()->photo)
-                                    
-                                        <img class="img-fluid rounded-circle"
-                                            src="{{ asset('storage/' . auth()->user()->photo) }}" alt="photo de perfil"
-                                            style="width: 40px; height: 40px">
+                                    <img class="img-fluid rounded-circle"
+                                        src="{{ asset('storage/' . auth()->user()->photo) }}" alt="photo de perfil"
+                                        style="width: 40px; height: 40px">
                                 @else
                                     <i class="fa fa-image text-white fa-2x"></i>
                                 @endif
@@ -40,7 +39,10 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ route('user.profile') }}">Meu Perfil</a>
-                                <a class="dropdown-item" href="#">Definições</a>
+                                @can('admin')
+                                    <a class="dropdown-item" href="{{ route('payment.account') }}">Definições</a>
+                                @endcan
+
                                 <a class="dropdown-item" href="{{ route('auth.help') }}">Ajuda</a>
                                 <a class="dropdown-item" href="{{ route('auth.logout') }}"><span>Terminar Sessão</span>
                                     <i class="fa fa-sign-out"></i></a>
