@@ -19,12 +19,6 @@
                 </div>
 
                 <div class="mb-2">
-                    <label>Data de Emissão</label>
-                    <input type="date" class="form-control" wire:model="issued_at">
-                    @error('issued_at') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
-
-                <div class="mb-2">
                     <label>Comprovativo (PDF/Imagem)</label>
                     <input type="file" class="form-control" wire:model="invoice">
 

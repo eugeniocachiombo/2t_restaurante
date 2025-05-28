@@ -18,9 +18,9 @@ class BankAccountComponent extends Component
     ];
 
     protected $messages = [
-        'description.required' => 'O IBAN é obrigatório.',
+        'description.required' => 'A descrição é obrigatória.',
         'description.unique' => 'Este banco já existe',
-        'iban.required' => 'A descrição é obrigatória.',
+        'iban.required' => 'O IBAN é obrigatório.',
     ];
 
     public function render()

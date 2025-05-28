@@ -20,16 +20,12 @@ class SubmitInvoiceComponent extends Component
 
     protected $rules = [
         'number' => 'required|string',
-        'issued_at' => 'required|date',
         'invoice' => 'required|file|mimes:pdf,jpg,jpeg,png',
     ];
 
     protected $messages = [
         'number.required'     => 'O número da fatura é obrigatório.',
         'number.string'       => 'O número da fatura deve ser um texto válido.',
-
-        'issued_at.required'  => 'A data de emissão é obrigatória.',
-        'issued_at.date'      => 'A data de emissão deve ser uma data válida.',
 
         'invoice.required'    => 'O comprovativo da fatura é obrigatório.',
         'invoice.file'        => 'O comprovativo deve ser um arquivo.',

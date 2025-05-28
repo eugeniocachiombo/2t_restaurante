@@ -1,5 +1,5 @@
-<div wire:ignore.self class="modal fade" id="modal-bank-account" tabindex="-1" role="dialog" aria-labelledby="userModalLabel"
-    aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="modal-bank-account" tabindex="-1" role="dialog"
+    aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <form class="modal-content">
             <div class="modal-header">
@@ -20,14 +20,23 @@
 
                 <div class="form-group col-12 py-3">
                     <label>IBAN</label>
-                    <input type="text" class="form-control" id="iban" wire:model="iban">
+                    <div class="input-group">
+                        <div class="input-group-prepend ">
+                            <span class="input-group-text ">AO06</span>
+                        </div>
+                        <input type="text" class="form-control" id="iban" wire:model="iban"
+                            placeholder="Digite o restante do IBAN">
+                    </div>
                     @error('iban')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                     <script>
-                        $("#iban").mask('0000 0000 0000 0000 0000 0', { reverse: false });
+                        $("#iban").mask('0000 0000 0000 0000 0000 0', {
+                            reverse: false
+                        });
                     </script>
                 </div>
+
 
                 <div class="modal-footer">
                     <button wire:click.prevent="submit" wire:loading.attr="disabled" wire:target="submit"
@@ -44,7 +53,7 @@
     </div>
 </div>
 <script>
-    document.addEventListener('livewire:init', function () {
+    document.addEventListener('livewire:init', function() {
         Livewire.on('open_modal', () => {
             var myModal = new bootstrap.Modal(document.getElementById('modal-bank-account'));
             myModal.show();
@@ -54,11 +63,11 @@
             const modal = document.getElementById('modal-bank-account');
 
             modal.classList.remove('show');
-            modal.classList.remove('fade'); 
+            modal.classList.remove('fade');
             modal.style.display = 'none';
-            
+
             document.body.classList.remove('modal-open');
-            document.body.style = ''; 
+            document.body.style = '';
 
             const backdrop = document.querySelector('.modal-backdrop');
             if (backdrop) {
