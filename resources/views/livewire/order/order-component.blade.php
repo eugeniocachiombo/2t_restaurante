@@ -87,7 +87,7 @@
                                             </td>
                                                 <td class="text-center border">{{ number_format($item->total_price, 2, ",", ".") }} kz</td>
                                                 <td class="text-center border">{{ $item->total_quantity }}</td>
-                                                <td class="text-center border">
+                                                <td class="text-center border" style="white-space: nowrap">
                                                     <!-- Botão de visualizar itens -->
                                                     <button wire:click.prevent="generatePdf({{ $item->id }})"
                                                         class="btn btn-sm btn-secondary">

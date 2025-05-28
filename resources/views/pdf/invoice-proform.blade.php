@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #fff;
             color: #333;
+            font-size: 12px;
         }
 
         .invoice {
@@ -39,7 +40,7 @@
 
         .invoice-title {
             text-align: center;
-            font-size: 24px;
+            font-size: 16px;
             font-weight: bold;
             margin: 10px 0 20px;
             color: #2c3e50;
@@ -65,7 +66,7 @@
             padding: 10px 8px;
             border: 1px solid #ccc;
             text-align: center;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         th {
@@ -88,7 +89,7 @@
             margin-bottom: 10px;
             border-left: 4px solid #2980b9;
             font-family: monospace;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         p.footer-text {
@@ -160,19 +161,19 @@
                         n/d
                     @endif
                 </span> <br>
-                <span><strong>Email:</strong> {{ $order->customer->email }} / <strong>Tel:</strong> {{ $order->customer->phone }} </span>
+                <span><strong>Email:</strong> {{ $order->customer->email }}  <br>
+                    <strong>Tel:</strong> {{ $order->customer->phone }} </span> 
             </div>
 
-            <div style="margin-top: 20px">
+            <div style="margin-top: 20px; margin-bottom: 20px">
                 <span>
-                    <span><strong>Fatura Nº:</strong> {{ $order->number }}</span> / 
-                    <span><strong>Data:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</span> /
+                    <span><strong>Fatura Nº:</strong> {{ $order->number }}</span> <br> 
+                    <span><strong>Data:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</span> <br>
                     <span><strong>Validade:</strong> 2 dias</span> <br>
-                    <span><strong>Tipo de pedido:</strong> <span style="text-transform: lowercase">{{ ucwords($order->type) }}</span></span> /
+                    <span><strong>Modo de Recebimento:</strong> <span>{{ ucwords($order->type == 'ONLINE' ? "Entrega" : "Presencial") }}</span></span> <br>
                     <span><strong>Taxa/Entrega:</strong> {{ number_format($order->delivery_tax, 2, ",", ".") }} Kz</span>
                 </span>
             </div>
-            <hr>
         </div>
 
         <table>
