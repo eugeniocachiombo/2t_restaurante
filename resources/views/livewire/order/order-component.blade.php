@@ -89,6 +89,11 @@
                                                 <td class="text-center border">{{ $item->total_quantity }}</td>
                                                 <td class="text-center border">
                                                     <!-- Botão de visualizar itens -->
+                                                    <button wire:click.prevent="generatePdf({{ $item->id }})"
+                                                        class="btn btn-sm btn-secondary">
+                                                        <i class="fa fa-download"></i>
+                                                    </button>
+
                                                     <button wire:click.prevent="viewOrderItems({{ $item->id }})"
                                                         data-toggle="modal" data-target="#modal-view-items"
                                                         class="btn btn-sm btn-primary">

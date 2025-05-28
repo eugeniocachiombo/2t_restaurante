@@ -7,6 +7,7 @@ use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Livewire\Component;
 
 class OrderComponent extends Component
@@ -23,6 +24,32 @@ class OrderComponent extends Component
             'orders' => $this->getOrders(),
         ])->layout('components.layouts.app');
     }
+
+    public function generatePdf($id)
+    {
+        $order = Order::find($id);
+
+        if (!$order) {
+            abort(404, "Pedido não encontrado.");
+        }
+
+        $pdf = Pdf::loadView('pdf.invoice-proform', ["order" => $order]);
+
+        $pdfDirectory = public_path("assets/pdfs");
+
+        if (!file_exists($pdfDirectory)) {
+            mkdir($pdfDirectory, 0755, true);
+        }
+
+        $fileName = "proforma_" . $order->id . ".pdf";
+        $path = $pdfDirectory . DIRECTORY_SEPARATOR . $fileName;
+        $pdf->save($path);
+
+        return response()->download($path);
+    }
+
+
+
 
     public function getOrders()
     {
@@ -74,12 +101,11 @@ class OrderComponent extends Component
 
             $this->dispatch('alerta', [
                 'icon' => 'success',
-                'title' => 'Atualizado',
+                'title' => 'Actualizado',
                 'html' => 'Pedido atualizado com sucesso.',
             ]);
 
             $this->dispatch('close_modal');
-
         } catch (\Exception $e) {
             $this->dispatch('alerta', [
                 'icon' => 'error',
@@ -94,9 +120,9 @@ class OrderComponent extends Component
         try {
             DB::beginTransaction();
 
-           $order = Order::findOrFail($id);
-           $order->status = "CANCELADO";
-           $order->save();
+            $order = Order::findOrFail($id);
+            $order->status = "CANCELADO";
+            $order->save();
             DB::commit();
 
             $this->dispatch('alerta', [
@@ -104,7 +130,6 @@ class OrderComponent extends Component
                 'title' => 'Sucesso',
                 'html' => 'Operação realizada com sucesso.',
             ]);
-
         } catch (\Exception $e) {
             DB::rollBack();
 

@@ -28,14 +28,18 @@ class MakeOrderComponent extends Component
             ->layout('components.layouts.app');
     }
 
-
     public function makeOrder()
     {
         $cart = app(Cart::class)->name(Auth::user()->id);
         $items = $cart->all();
 
         if ($items->isEmpty()) {
-            session()->flash('error', 'Carrinho vazio.');
+            $this->dispatch('alerta', [
+                'icon' => 'warning',
+                'btn' => true,
+                'title' => 'Erro',
+                'html' =>  'Carrinho vazio',
+            ]);
             return;
         }
 

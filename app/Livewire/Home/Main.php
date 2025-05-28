@@ -56,7 +56,6 @@ class Main extends Component
                 ->join("orders", "orders.id", "order_items.order_id")
                 ->where('orders.status', 'PAGO')
                 ->where('orders.customer_user_id', $user->id)
-                ->distinct()
                 ->get();
         } else if (Gate::allows("cozinheiro")) {
             $query = Dish::where("user_id", $user->id)->get();
@@ -79,7 +78,6 @@ class Main extends Component
                 ->join("orders", "orders.id", "order_items.order_id")
                 ->where('orders.status', 'PAGO')
                 ->where('orders.customer_user_id', $user->id)
-                ->distinct()
                 ->get();
         } else {
             $query = Drink::where("user_id", $user->id)->get();
