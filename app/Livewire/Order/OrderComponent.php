@@ -31,6 +31,12 @@ class OrderComponent extends Component
         return $order->generatePdf($id);
     }
 
+    public function generatePdfReceive($id)
+    {
+        $order = new Order();
+        return $order->generatePdfReceive($id);
+    }
+
     public function getOrders()
     {
         if (Gate::allows("cliente")) {

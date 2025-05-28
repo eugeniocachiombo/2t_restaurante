@@ -108,7 +108,7 @@
                                                                     <i class="fa fa-file-pdf-o"></i> Fatura Proforma
                                                                 </a>
                                                                 <a class="dropdown-item" href="#"
-                                                                    wire:click.prevent="generatePdf({{ $item->id }})">
+                                                                    wire:click.prevent="generatePdfReceive({{ $item->id }})">
                                                                     <i class="fa fa-file-pdf-o"></i> Fatura Recibo
                                                                 </a>
                                                             </div>
