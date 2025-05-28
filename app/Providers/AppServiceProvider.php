@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Dish;
 use App\Models\Drink;
+use App\Models\Order;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -40,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->checkStatus();
+        $this->checkStatusOrder();
     }
 
     public function checkStatus(){
@@ -64,6 +66,22 @@ class AppServiceProvider extends ServiceProvider
                     $item->status = 'DISPONIVEL';
                     $item->save();
                 }
+            }
+        }
+       } catch (\Throwable $th) {
+           // throw $th;
+       }
+    }
+
+    public function checkStatusOrder(){
+       try {
+         if (Schema::hasTable("orders")) {
+
+            foreach (Order::all() as $key => $item) {
+                if ($item->invoice) {
+                    $item->status = 'PAGO';
+                    $item->save();
+                } 
             }
         }
        } catch (\Throwable $th) {

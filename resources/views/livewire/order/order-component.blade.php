@@ -68,31 +68,52 @@
                                                 <td class="text-center border">{{ $item->customer->first_name }}</td>
                                                 <td class="text-center border">{{ $item->type }}</td>
                                                 <td class="text-center border">
-                                                    
-                                                    @if ($item->status == "PENDENTE")
-                                                    <span class="badge bg-warning text-dark">
-                                                        {{ $item->status }}
+
+                                                    @if ($item->status == 'PENDENTE')
+                                                        <span class="badge bg-warning text-dark">
+                                                            {{ $item->status }}
                                                         </span>
-                                                    @elseif ($item->status == "CANCELADO")
-                                                    <span class="badge bg-danger">
-                                                        {{ $item->status }}
+                                                    @elseif ($item->status == 'CANCELADO')
+                                                        <span class="badge bg-danger">
+                                                            {{ $item->status }}
                                                         </span>
                                                     @else
-                                                    <span class="badge bg-success">
-                                                        {{ $item->status }}
+                                                        <span class="badge bg-success">
+                                                            {{ $item->status }}
                                                         </span>
-                                                        
                                                     @endif
-                                                    
-                                            </td>
-                                                <td class="text-center border">{{ number_format($item->total_price, 2, ",", ".") }} kz</td>
+
+                                                </td>
+                                                <td class="text-center border">
+                                                    {{ number_format($item->total_price, 2, ',', '.') }} kz</td>
                                                 <td class="text-center border">{{ $item->total_quantity }}</td>
                                                 <td class="text-center border" style="white-space: nowrap">
-                                                    <!-- Botão de visualizar itens -->
-                                                    <button wire:click.prevent="generatePdf({{ $item->id }})"
-                                                        class="btn btn-sm btn-secondary">
-                                                        <i class="fa fa-download"></i>
-                                                    </button>
+                                                
+                                                    @if ($item->status != 'PAGO')
+                                                        <button wire:click.prevent="generatePdf({{ $item->id }})"
+                                                            class="btn btn-sm btn-secondary">
+                                                            <i class="fa fa-download"></i>
+                                                        </button>
+                                                    @else
+                                                        <div class="btn-group">
+                                                            <button type="button"
+                                                                class="btn btn-sm btn-secondary dropdown-toggle"
+                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false">
+                                                                <i class="fa fa-download"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item" href="#"
+                                                                    wire:click.prevent="generatePdf({{ $item->id }})">
+                                                                    <i class="fa fa-file-pdf-o"></i> Fatura Proforma
+                                                                </a>
+                                                                <a class="dropdown-item" href="#"
+                                                                    wire:click.prevent="generatePdf({{ $item->id }})">
+                                                                    <i class="fa fa-file-pdf-o"></i> Fatura Recibo
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    @endif
 
                                                     <button wire:click.prevent="viewOrderItems({{ $item->id }})"
                                                         data-toggle="modal" data-target="#modal-view-items"
@@ -100,11 +121,11 @@
                                                         <i class="fa fa-eye"></i>
                                                     </button>
 
-                                                    @if ($item->status == "PENDENTE")
-                                                    <button wire:click.prevent="delete({{ $item->id }})"
-                                                        class="btn btn-sm btn-danger">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
+                                                    @if ($item->status == 'PENDENTE')
+                                                        <button wire:click.prevent="delete({{ $item->id }})"
+                                                            class="btn btn-sm btn-danger">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
                                                     @endif
                                                 </td>
                                             </tr>

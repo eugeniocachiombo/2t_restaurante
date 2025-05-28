@@ -13,6 +13,7 @@ class Order extends Model
         "customer_user_id",
         "attendant_user_id",
         "type",
+        "invoice",
         "status",
         "delivery_tax",
         "total_price",
