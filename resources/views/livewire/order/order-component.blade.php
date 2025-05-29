@@ -63,7 +63,10 @@
                                                 <td class="text-center border">{{ $item->id }}</td>
                                                 <td class="text-center border">{{ $item->description }} <br>
                                                     <span class="bagde badge-dark text-dark">Nº
-                                                        {{ $item->number }}</span>
+                                                        {{ $item->number }}</span> <br>
+                                                    <span class="bagde bg-warning text-dark px-2">
+                                                        {{ \Carbon\Carbon::parse($item->created_at)->format("d-m-Y H:i:s") }}
+                                                    </span> 
                                                 </td>
                                                 <td class="text-center border">{{ $item->customer->first_name }}</td>
                                                 <td class="text-center border">{{ $item->type }}</td>

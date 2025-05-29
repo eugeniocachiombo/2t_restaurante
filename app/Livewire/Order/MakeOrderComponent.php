@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Order;
 
+use App\Models\Dish;
+use App\Models\Drink;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
@@ -97,11 +99,9 @@ class MakeOrderComponent extends Component
 
         try {
 
-
             $totalQuantity = $cart->count();
             $totalPrice = $cart->total();
             $totalDiscount = $items->sum(fn($item) => ($item->attributes['discount'] ?? 0) * $item->qty);
-
 
             $order = Order::create([
                 'number' => 'Ped' . Str::upper(Str::random(5)),
@@ -115,8 +115,8 @@ class MakeOrderComponent extends Component
                 'total_discount' => $totalDiscount,
             ]);
 
-
             foreach ($items as $item) {
+                
                 OrderItem::create([
                     'order_id' => $order->id,
                     'dish_id' => $item->dish_id ? $item->dish_id : null,
@@ -124,8 +124,38 @@ class MakeOrderComponent extends Component
                     'quantity' => $item->qty,
                     'price' => $item->price,
                 ]);
-            }
 
+                $drink = Drink::find($item->drink_id);
+                if ($drink) {
+                    if ($item->qty > $drink->quantity) {
+                        $this->dispatch('alerta', [
+                            'icon' => 'warning',
+                            'btn' => true,
+                            'title' => 'Erro',
+                            'html' => 'Existe apenas  ' . $drink->quantity . " quantidade de ". $drink->description . ' disponível',
+                        ]);
+                        return;
+                    }
+                    $drink->quantity -= $item->qty;
+                    $drink->save();
+                }
+
+                $dish = Dish::find($item->dish_id);
+                if ($dish) {
+                    if ($item->qty > $dish->quantity) {
+                        $this->dispatch('alerta', [
+                            'icon' => 'warning',
+                            'btn' => true,
+                            'title' => 'Erro',
+                            'html' => 'Existe apenas  ' . $dish->quantity . " quantidade de ". $dish->description . ' disponível',
+                        ]);
+                        return;
+                    }
+                    $dish->quantity -= $item->qty;
+                    $dish->save();
+                }
+            }
+            
             $cart->clean();
             DB::commit();
 

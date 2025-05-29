@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Order;
 
+use App\Models\Dish;
+use App\Models\Drink;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
@@ -107,6 +109,20 @@ class OrderComponent extends Component
             DB::beginTransaction();
 
             $order = Order::findOrFail($id);
+
+            foreach ($order->items as $item) {
+                $drink = Drink::find($item->drink_id);
+                if ($drink) {
+                    $drink->quantity += $item->quantity;
+                    $drink->save();
+                }
+
+                $dish = Dish::find($item->dish_id);
+                if ($dish) {
+                    $dish->quantity += $item->quantity;
+                    $dish->save();
+                }
+            }
             $order->status = "CANCELADO";
             $order->save();
             DB::commit();
