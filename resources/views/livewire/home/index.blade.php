@@ -80,7 +80,7 @@
                                     alt="Funge com Calulu">
                             </div>
                             <div class="details">
-                                <a href="service-details.html" class="stretched-link">
+                                <a href="{{ route('auth.login') }}" class="stretched-link">
                                     <h3>Funge com Calulu</h3>
                                 </a>
                                 <p>Um prato tradicional e querido em toda Angola. O funge de milho ou bombó acompanha o
@@ -96,7 +96,7 @@
                                     alt="Muamba de Galinha">
                             </div>
                             <div class="details">
-                                <a href="service-details.html" class="stretched-link">
+                                <a href="{{ route('auth.login') }}" class="stretched-link">
                                     <h3>Muamba de Galinha</h3>
                                 </a>
                                 <p>Um clássico da culinária angolana. Frango cozido lentamente com óleo de palma,
@@ -112,7 +112,7 @@
                                     alt="Caldeirada de Cabrito">
                             </div>
                             <div class="details">
-                                <a href="service-details.html" class="stretched-link">
+                                <a href="{{ route('auth.login') }}" class="stretched-link">
                                     <h3>Caldeirada de Cabrito</h3>
                                 </a>
                                 <p>Carne de cabrito cozida lentamente com batatas, pimentões e ervas, formando um caldo
@@ -128,7 +128,7 @@
                                     alt="Moamba de Ginguba">
                             </div>
                             <div class="details">
-                                <a href="service-details.html" class="stretched-link">
+                                <a href="{{ route('auth.login') }}" class="stretched-link">
                                     <h3>Moamba de Ginguba</h3>
                                 </a>
                                 <p>Uma deliciosa variação da moamba, feita com molho de amendoim (ginguba), frango e
@@ -183,19 +183,6 @@
                         </div>
                     </div><!-- Fim do Item de Serviço -->
 
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-item item-teal position-relative">
-                            <i class="bi bi-stars icon"></i>
-                            <div>
-                                <h3>Eventos Gastronômicos</h3>
-                                <p>Transformamos momentos em experiências inesquecíveis. Jantares temáticos, degustações
-                                    e muito mais para surpreender seus convidados.</p>
-                                <a href="#gallery" class="read-more stretched-link">Ver eventos <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="service-item item-red position-relative">
                             <i class="bi bi-person-lines-fill icon"></i>
@@ -208,33 +195,6 @@
                             </div>
                         </div>
                     </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="service-item item-indigo position-relative">
-                            <i class="bi bi-calendar-check icon"></i>
-                            <div>
-                                <h3>Reserva de Mesas</h3>
-                                <p>Garanta seu lugar especial no nosso espaço! Perfeito para encontros, comemorações ou
-                                    um almoço tranquilo no seu dia.</p>
-                                <a href="#reservation" class="read-more stretched-link">Reservar agora <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="service-item item-pink position-relative">
-                            <i class="bi bi-lightbulb icon"></i>
-                            <div>
-                                <h3>Consultoria Gastronômica</h3>
-                                <p>Tem um evento e não sabe o que servir? Nós ajudamos com sugestões criativas e
-                                    combinações perfeitas para impressionar.</p>
-                                <a href="#contact" class="read-more stretched-link">Saiba como <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Fim do Item de Serviço -->
-
                 </div>
             </div>
 
