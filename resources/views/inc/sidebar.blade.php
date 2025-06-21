@@ -77,6 +77,7 @@
                 </ul>
             </li>
 
+            {{-- 
             @cannot('cliente')
                 <li
                     class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'category.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'ingredient.component' ? 'bg-success' : '' }}">
@@ -103,7 +104,8 @@
                     </ul>
                 </li>
             @endcannot
-
+                 --}}
+                 
             <li
                 class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'dish.component' ? 'bg-success' : '' }} ">
                 <a href="{{ route('dish.component') }}">
