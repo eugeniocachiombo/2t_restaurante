@@ -561,11 +561,13 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <iframe style="border:0; width:100%; height:270px;"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.5!2d13.229!3d-8.91!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f4d0f1234567%3A0xabcdef1234567890!2sUrbaniza%C3%A7%C3%A3o%20Nova%20Vida%2C%20Rua%2050%2C%20Luanda!5e0!3m2!1spt-PT!2sao!4v1718988888888!5m2!1spt-PT!2sao"
-                        frameborder="0" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+            <iframe
+  style="border:0; width:100%; height:270px;"
+  src="https://maps.google.com/maps?q=-8.90697,13.23981&z=18&output=embed"
+  frameborder="0"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
 
                 </div><!-- Fim do Google Maps -->
 
