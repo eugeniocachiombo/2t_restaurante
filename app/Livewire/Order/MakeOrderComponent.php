@@ -20,6 +20,7 @@ class MakeOrderComponent extends Component
     public $orderType = null;
     public $address;
     public $deliveryFee = 0;
+    public $localConfirmed = false;
 
     public function mount()
     {
@@ -43,6 +44,8 @@ class MakeOrderComponent extends Component
     {
         $this->orderType = null;
         $this->address = null;
+        $this->localConfirmed = false;
+        $this->deliveryFee = 0;
     }
 
     public function updatedAddress()
@@ -71,6 +74,7 @@ class MakeOrderComponent extends Component
                 ["address.required" => "Campo Obrigatório"]
             );
         }
+        $this->localConfirmed = true;
         $this->dispatch('close_order_type_modal');
     }
 

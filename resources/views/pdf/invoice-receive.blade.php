@@ -170,9 +170,9 @@
                 </span> <br>
                 <span><strong>Endereço:</strong>
                     @if ($order->customer->address_id)
-                        {{ $user->getAddress->description }},
-                        {{ $user->getAddress->getMunicipality->description }},
-                        {{ $user->getAddress->getProvince->description }}
+                        {{ $order->customer->getAddress->description }},
+                        {{ $order->customer->getAddress->getMunicipality->description }},
+                        {{ $order->customer->getAddress->getProvince->description }}
                     @else
                         n/d
                     @endif

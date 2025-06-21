@@ -75,7 +75,7 @@
                     </button>
                     <button wire:click.prevent="makeOrder" wire:target="makeOrder" class="btn main_bt">
                         <i wire:loading wire:target="makeOrder" class="fa fa-spinner fa-spin text-white"></i>
-                        <i wire:loading.remove wire:target="makeOrder" class="fa fa-check"></i> Fazer Pedido
+                        <i wire:loading.remove wire:target="makeOrder" class="fa fa-check"></i> {{ ($orderType && $localConfirmed) ? 'Concluir' : 'Fazer Pedido' }} 
                     </button>
                 @endif
             </div>
