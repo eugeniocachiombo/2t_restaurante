@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Fatura Proforma</title>
+    <title>Factura Proforma</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -145,7 +145,7 @@
         </div>
 
 
-        <div class="invoice-title">Fatura Proforma</div>
+        <div class="invoice-title">Factura Proforma</div>
 
         <div class="info-section" style="display: flex; justify-content-center">
             <div >
@@ -167,7 +167,7 @@
 
             <div style="margin-top: 20px; margin-bottom: 20px">
                 <span>
-                    <span><strong>Fatura Nº:</strong> {{ $order->number }}</span> <br> 
+                    <span><strong>Factura Nº:</strong> {{ $order->number }}</span> <br> 
                     <span><strong>Data:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</span> <br>
                     <span><strong>Validade:</strong> 2 dias</span> <br>
                     <span><strong>Modo de Recebimento:</strong> <span>{{ ucwords($order->type == 'ONLINE' ? "Entrega" : "Presencial") }}</span></span> <br>
@@ -222,11 +222,11 @@
         
 
         <p><strong>Instruções:</strong><br>
-            Por favor, efetuar o pagamento com a referência da fatura. A entrega será feita após confirmação.
+            Por favor, efetuar o pagamento com a referência da factura. A entrega será feita após confirmação.
         </p>
 
         <p class="footer-text">
-            Este documento não é uma fatura fiscal. É apenas uma estimativa para fins de pagamento.<br />
+            Este documento não é uma factura fiscal. É apenas uma estimativa para fins de pagamento.<br />
             Obrigado pela sua preferência.
         </p>
     </div>

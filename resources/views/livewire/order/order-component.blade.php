@@ -47,7 +47,7 @@
                                 <table class="table datatablePT py-4">
                                     <thead class="bg-dark text-white">
                                         <tr>
-                                            <th class="bg-dark text-white text-center">ID</th>
+                                            <th class="bg-dark text-white text-center">Nº</th>
                                             <th class="bg-dark text-white text-center">Descrição</th>
                                             <th class="bg-dark text-white text-center">Responsável</th>
                                             <th class="bg-dark text-white text-center">Tipo</th>
@@ -62,9 +62,7 @@
                                             <tr class="border">
                                                 <td class="text-center border">{{ $item->id }}</td>
                                                 <td class="text-center border">{{ $item->description }} <br>
-                                                    <span class="bagde badge-dark text-dark">Nº
-                                                        {{ $item->number }}</span> <br>
-                                                    <span class="bagde bg-warning text-dark px-2">
+                                                    <span class="bagde bg-warning text-dark px-2 mt-2">
                                                         {{ \Carbon\Carbon::parse($item->created_at)->format("d-m-Y H:i:s") }}
                                                     </span> 
                                                 </td>

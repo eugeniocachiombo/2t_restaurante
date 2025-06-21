@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Fatura Recibo</title>
+    <title>Factura Recibo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -161,7 +161,7 @@
             </div>
         </div>
 
-        <div class="invoice-title">Fatura Recibo</div>
+        <div class="invoice-title">Factura Recibo</div>
 
         <div class="info-section" style="display: flex; justify-content-center">
             <div>
@@ -183,7 +183,7 @@
 
             <div style="margin-top: 20px; margin-bottom: 20px">
                 <span>
-                    <span><strong>Fatura Nº:</strong> {{ $order->number }}</span> <br>
+                    <span><strong>Factura Nº:</strong> {{ $order->number }}</span> <br>
                     <span><strong>Data da Emissão:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</span>
                     <br>
                     <span><strong>Validade:</strong> 2 dias</span> <br>

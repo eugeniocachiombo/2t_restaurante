@@ -1,4 +1,4 @@
-@section('title', 'Submissão de Faturas')
+@section('title', 'Submissão de Facturas')
 
 <div class="midde_cont">
     <div class="container-fluid">
@@ -21,7 +21,7 @@
                     <div class="counter_no">
                         <div>
                             <p class="total_no">{{ count($invoices) }}</p>
-                            <p class="head_couter">Faturas Submetidas</p>
+                            <p class="head_couter">Facturas Submetidas</p>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 <div class="white_shd full">
                     <div class="full graph_head d-flex justify-content-between">
                         <div class="heading1 margin_0">
-                            <h2>Lista de Faturas Submetidas</h2>
+                            <h2>Lista de Facturas Submetidas</h2>
                         </div>
                         <div class="heading1 margin_0">
                             <button class="btn btn-primary" type="button" 
@@ -51,7 +51,7 @@
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th class="bg-dark text-white text-center">ID</th>
-                                            <th class="bg-dark text-white text-center">Nº Fatura</th>
+                                            <th class="bg-dark text-white text-center">Nº Factura</th>
                                             <th class="bg-dark text-white text-center">Comprovativo</th>
                                             <th class="bg-dark text-white text-center">Ação</th>
                                         </tr>

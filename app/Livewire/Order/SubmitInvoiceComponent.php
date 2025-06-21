@@ -24,10 +24,10 @@ class SubmitInvoiceComponent extends Component
     ];
 
     protected $messages = [
-        'number.required'     => 'O número da fatura é obrigatório.',
-        'number.string'       => 'O número da fatura deve ser um texto válido.',
+        'number.required'     => 'O número da factura é obrigatório.',
+        'number.string'       => 'O número da factura deve ser um texto válido.',
 
-        'invoice.required'    => 'O comprovativo da fatura é obrigatório.',
+        'invoice.required'    => 'O comprovativo da factura é obrigatório.',
         'invoice.file'        => 'O comprovativo deve ser um arquivo.',
         'invoice.mimes'       => 'O comprovativo deve estar em formato PDF, JPG, JPEG ou PNG.',
     ];
@@ -63,7 +63,7 @@ class SubmitInvoiceComponent extends Component
             if (!$order) {
                 $this->dispatch('alerta', [
                     'icon' => 'warning',
-                    'title' => 'Fatura Inexistente',
+                    'title' => 'Factura Inexistente',
                     'html' => 'Nenhum pedido com esse número foi encontrado.',
                 ]);
                 return;
@@ -79,8 +79,8 @@ class SubmitInvoiceComponent extends Component
 
             $this->dispatch('alerta', [
                 'icon' => 'success',
-                'title' => 'Fatura Submetida',
-                'html' => 'O comprovativo da fatura foi submetido com sucesso!',
+                'title' => 'Factura Submetida',
+                'html' => 'O comprovativo da factura foi submetido com sucesso!',
             ]);
 
             $this->reset(['number', 'client_id', 'issued_at', 'invoice']);
