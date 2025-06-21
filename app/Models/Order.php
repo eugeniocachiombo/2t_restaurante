@@ -82,7 +82,7 @@ class Order extends Model
             mkdir($pdfDirectory, 0755, true);
         }
 
-        $fileName = "proforma_" . $order->id . ".pdf";
+        $fileName = "factura_" . $order->id . ".pdf";
         $path = $pdfDirectory . DIRECTORY_SEPARATOR . $fileName;
         $pdf->save($path);
 
