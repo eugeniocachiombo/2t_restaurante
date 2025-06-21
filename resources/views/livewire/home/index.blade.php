@@ -561,13 +561,10 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
-            <iframe
-  style="border:0; width:100%; height:270px;"
-  src="https://maps.google.com/maps?q=-8.90697,13.23981&z=18&output=embed"
-  frameborder="0"
-  allowfullscreen=""
-  loading="lazy">
-</iframe>
+                    <iframe style="border:0; width:100%; height:270px;"
+                        src="https://maps.google.com/maps?q=-8.90697,13.23981&z=18&output=embed" frameborder="0"
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
 
                 </div><!-- Fim do Google Maps -->
 
