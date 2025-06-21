@@ -171,7 +171,8 @@
                     <span><strong>Data:</strong> {{ \Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}</span> <br>
                     <span><strong>Validade:</strong> 2 dias</span> <br>
                     <span><strong>Modo de Recebimento:</strong> <span>{{ ucwords($order->type == 'ONLINE' ? "Entrega" : "Presencial") }}</span></span> <br>
-                    <span><strong>Taxa/Entrega:</strong> {{ number_format($order->delivery_tax, 2, ",", ".") }} Kz</span>
+                    <span><strong>Taxa/Entrega:</strong> {{ number_format($order->delivery_tax, 2, ",", ".") }} Kz</span> <br>
+                    <span><strong>Local/Entrega:</strong> {{ $order->delivery_local ?? 'n/d' }}</span>
                 </span>
             </div>
         </div>
@@ -215,6 +216,7 @@
             </tfoot>
         </table>
 
+        {{-- 
         <h4>Referência para Pagamento</h4>
         @foreach ($accounts as $item)
         <div class="reference-code">{{ $item->description ?? 'n/d' }} – IBAN: AO06 {{ $item->iban }}</div>
@@ -224,6 +226,7 @@
         <p><strong>Instruções:</strong><br>
             Por favor, efetuar o pagamento com a referência da factura. A entrega será feita após confirmação.
         </p>
+        --}}
 
         <p class="footer-text">
             Este documento não é uma factura fiscal. É apenas uma estimativa para fins de pagamento.<br />

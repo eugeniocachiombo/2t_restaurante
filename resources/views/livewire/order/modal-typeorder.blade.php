@@ -52,6 +52,80 @@
                             <strong>{{ number_format($deliveryFee, 2, ',', '.') }} AOA</strong>.
                         </div>
                     @endif
+
+                    <div class="mt-4 text-start">
+                        <label for="paymentMethod" class="form-label fw-bold">Forma de Pagamento:</label>
+                        <select wire:change="generateCodeRef" wire:model="paymentMethod" id="paymentMethod"
+                            class="form-control">
+                            <option value="">-- Selecione --</option>
+                            <option value="ref">Referência</option>
+                            <option value="transfer">Transferência</option>
+                            <option value="qrcode">Código QR</option>
+                        </select>
+
+                        <span class="text-danger">
+                            @error('paymentMethod')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+
+                    @if ($paymentMethod == 'ref')
+                        <div class="alert alert-danger mt-4 " role="alert">
+                            <i class="fa fa-warning"></i> Indisponível de momento
+                            {{-- 
+                            <h4>Pagamento por Referência</h4>
+                            <p class="text-start"><h5 class="tex-dark">Entidade:</h5> <h4 class="text-secondary pt-2">Pryanick - Snack Bar</h4></p> 
+                            <p><h5 class="tex-dark">Código de Referência:</h5> <h4 class="text-secondary pt-2">{{ $refcode }}</h4></p> 
+                           --}}
+                        </div>
+                    @elseif ($paymentMethod == 'transfer')
+                        <h4>Coordenadas Bancárias</h4>
+                        @foreach ($accounts as $item)
+                            <div class="alert alert-primary mt-4" role="alert">
+                                <div class="reference-code"> <b>{{ $item->description ?? 'n/d' }}</b> – IBAN: AO06
+                                    {{ $item->iban }}</div>
+                            </div>
+                        @endforeach
+                    @elseif ($paymentMethod == 'qrcode')
+                    @endif
+
+                    @if ($paymentMethod != 'ref')
+                        <div class="mb-2">
+                            <label class="text-start mb-2">Anexar o Comprovativo de Pagamento (PDF/Imagem)</label>
+                            <input type="file" class="form-control" wire:model="invoice">
+
+                            {{-- Barra de progresso com wire:loading --}}
+                            <div class="my-2" wire:loading wire:target="invoice">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                                        style="width: 100%">
+                                        Carregando...
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Pré-visualização se imagem --}}
+                            @if ($invoice && Str::startsWith($invoice->getMimeType(), 'image'))
+                                <center>
+                                    <div class="my-3">
+                                        <img src="{{ $invoice->temporaryUrl() }}" class="img-fluid rounded"
+                                            style="max-height: 100px;">
+                                        <br>
+                                        <button type="button" class="btn btn-sm btn-danger mt-2"
+                                            wire:click="$set('invoice', null)">
+                                            Remover Comprovativo
+                                        </button>
+                                    </div>
+                                </center>
+                            @endif
+
+                            @error('invoice')
+                            <br>
+                                <span class="text-danger mt-2">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    @endif
                 @endif
             </div>
 
@@ -78,11 +152,11 @@
             const modal = document.getElementById('modal-order-type');
 
             modal.classList.remove('show');
-            modal.classList.remove('fade'); 
+            modal.classList.remove('fade');
             modal.style.display = 'none';
-            
+
             document.body.classList.remove('modal-open');
-            document.body.style = ''; 
+            document.body.style = '';
 
             const backdrop = document.querySelector('.modal-backdrop');
             if (backdrop) {

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Order;
 
+use App\Models\BankAccount;
 use App\Models\Dish;
 use App\Models\Drink;
 use App\Models\Order;
@@ -10,10 +11,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
 use Overtrue\LaravelShoppingCart\Cart;
 
 class MakeOrderComponent extends Component
 {
+
+    use WithFileUploads;
+
     public $cartItems = [];
     public $cartTotal = 0;
     public $cartQt = 0;
@@ -21,6 +26,10 @@ class MakeOrderComponent extends Component
     public $address;
     public $deliveryFee = 0;
     public $localConfirmed = false;
+    public $paymentMethod = null;
+    public $refcode = 0;
+    public $isGenerateRfcode = false;
+    public $invoice, $path;
 
     public function mount()
     {
@@ -30,7 +39,9 @@ class MakeOrderComponent extends Component
     public function render()
     {
         $this->loadCart();
-        return view('livewire.order.make-order-component')
+        return view('livewire.order.make-order-component', [
+            "accounts" => BankAccount::all(),
+        ])
             ->layout('components.layouts.app');
     }
 
@@ -44,8 +55,19 @@ class MakeOrderComponent extends Component
     {
         $this->orderType = null;
         $this->address = null;
+        $this->paymentMethod = null;
+        $this->invoice = null;
+        $this->path = null;
         $this->localConfirmed = false;
         $this->deliveryFee = 0;
+    }
+
+    public function generateCodeRef()
+    {
+        if ($this->isGenerateRfcode == false) {
+            $this->refcode = rand(111111111, 999999999);
+            $this->isGenerateRfcode = true;
+        }
     }
 
     public function updatedAddress()
@@ -70,9 +92,33 @@ class MakeOrderComponent extends Component
     {
         if ($this->orderType === 'online') {
             $this->validate(
-                ["address" => "required"],
-                ["address.required" => "Campo Obrigatório"]
+                [
+                    "address" => "required",
+                    "paymentMethod" => "required"
+                ],
+                [
+                    "address.required" => "Campo Obrigatório",
+                    "paymentMethod.required" => "Campo Obrigatório"
+                ]
             );
+        }
+
+        if ($this->paymentMethod != 'ref' && $this->orderType === 'online') {
+            $this->validate(
+                [
+                    'invoice' => 'required|file|mimes:pdf,jpg,jpeg,png',
+                ],
+                [
+                    'invoice.required'    => 'O comprovativo do pagamento é obrigatório.',
+                    'invoice.file'        => 'O comprovativo deve ser um arquivo.',
+                    'invoice.mimes'       => 'O comprovativo deve estar em formato PDF, JPG, JPEG ou PNG.',
+                ]
+            );
+            $this->path = $this->invoice->store('invoices', 'public');
+        }
+
+        if ($this->orderType != 'online') {
+            $this->path = null;
         }
         $this->localConfirmed = true;
         $this->dispatch('close_order_type_modal');
@@ -114,13 +160,15 @@ class MakeOrderComponent extends Component
                 'type' => strtoupper($this->orderType),
                 'delivery_tax' => $this->deliveryFee,
                 'status' => 'PENDENTE',
-                'total_price' => $totalPrice,
+                'total_price' => $totalPrice + $this->deliveryFee,
                 'total_quantity' => $totalQuantity,
                 'total_discount' => $totalDiscount,
+                'invoice' => $this->path ?? null,
+                'delivery_local' => $this->address ?? null,
             ]);
 
             foreach ($items as $item) {
-                
+
                 OrderItem::create([
                     'order_id' => $order->id,
                     'dish_id' => $item->dish_id ? $item->dish_id : null,
@@ -136,7 +184,7 @@ class MakeOrderComponent extends Component
                             'icon' => 'warning',
                             'btn' => true,
                             'title' => 'Erro',
-                            'html' => 'Existe apenas  ' . $drink->quantity . " quantidade de ". $drink->description . ' disponível',
+                            'html' => 'Existe apenas  ' . $drink->quantity . " quantidade de " . $drink->description . ' disponível',
                         ]);
                         return;
                     }
@@ -151,7 +199,7 @@ class MakeOrderComponent extends Component
                             'icon' => 'warning',
                             'btn' => true,
                             'title' => 'Erro',
-                            'html' => 'Existe apenas  ' . $dish->quantity . " quantidade de ". $dish->description . ' disponível',
+                            'html' => 'Existe apenas  ' . $dish->quantity . " quantidade de " . $dish->description . ' disponível',
                         ]);
                         return;
                     }
@@ -159,7 +207,7 @@ class MakeOrderComponent extends Component
                     $dish->save();
                 }
             }
-            
+
             $cart->clean();
             DB::commit();
 

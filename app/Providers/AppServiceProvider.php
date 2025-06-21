@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Dish;
 use App\Models\Drink;
 use App\Models\Order;
+use App\Services\ChangeStatus;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -40,52 +41,12 @@ class AppServiceProvider extends ServiceProvider
             return $user->access_id === 5;
         });
 
-        $this->checkStatus();
-        $this->checkStatusOrder();
-    }
-
-    public function checkStatus(){
-       try {
-         if (Schema::hasTable("dishes") && Schema::hasTable("drinks")) {
-
-            foreach (Dish::all() as $key => $item) {
-                if ($item->quantity == 0) {
-                    $item->status = 'INDISPONIVEL';
-                    $item->save();
-                } else if ($item->quantity >= 0) {
-                    $item->status = 'DISPONIVEL';
-                    $item->save();
-                }
-            }
-
-            foreach (Drink::all() as $key => $item) {
-                if ($item->quantity == 0) {
-                    $item->status = 'INDISPONIVEL';
-                    $item->save();
-                } else if ($item->quantity >= 0) {
-                    $item->status = 'DISPONIVEL';
-                    $item->save();
-                }
-            }
+        try {
+            ChangeStatus::changeStatusDishes();
+            ChangeStatus::changeStatusDrinks();
+            ChangeStatus::changeStatusOrders();
+        } catch (\Throwable $th) {
+            //throw $th;
         }
-       } catch (\Throwable $th) {
-           // throw $th;
-       }
-    }
-
-    public function checkStatusOrder(){
-       try {
-         if (Schema::hasTable("orders")) {
-
-            foreach (Order::all() as $key => $item) {
-                if ($item->invoice) {
-                    $item->status = 'PAGO';
-                    $item->save();
-                } 
-            }
-        }
-       } catch (\Throwable $th) {
-           // throw $th;
-       }
     }
 }

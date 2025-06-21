@@ -189,7 +189,8 @@
                     <span><strong>Validade:</strong> 2 dias</span> <br>
                     <span><strong>Modo de Recebimento:</strong> <span>{{ ucwords($order->type == 'ONLINE' ? "Entrega" : "Presencial") }}</span></span>
                     <br>
-                    <span><strong>Taxa/Entrega:</strong> {{ number_format($order->delivery_tax, 2, ",", ".") }} Kz</span>
+                    <span><strong>Taxa/Entrega:</strong> {{ number_format($order->delivery_tax, 2, ",", ".") }} Kz</span> <br>
+                    <span><strong>Local/Entrega:</strong> {{ $order->delivery_local ?? 'n/d' }}</span>
                 </span>
             </div>
         </div>

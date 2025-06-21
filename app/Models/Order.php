@@ -16,6 +16,7 @@ class Order extends Model
         "invoice",
         "status",
         "delivery_tax",
+        "delivery_local",
         "total_price",
         "total_quantity",
         "total_discount",
