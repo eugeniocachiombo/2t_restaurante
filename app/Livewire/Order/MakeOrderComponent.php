@@ -7,6 +7,8 @@ use App\Models\Dish;
 use App\Models\Drink;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\User;
+use App\Notifications\OrderNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -29,11 +31,11 @@ class MakeOrderComponent extends Component
     public $paymentMethod = null;
     public $refcode = 0;
     public $isGenerateRfcode = false;
-    public $invoice, $path;
+    public $invoice, $path, $custumerPhone;
 
     public function mount()
     {
-        $this->loadCart();
+        $this->custumerPhone = (int) Auth::user()->phone;
     }
 
     public function render()
@@ -58,6 +60,7 @@ class MakeOrderComponent extends Component
         $this->paymentMethod = null;
         $this->invoice = null;
         $this->path = null;
+        $this->custumerPhone = null;
         $this->localConfirmed = false;
         $this->deliveryFee = 0;
     }
@@ -107,8 +110,14 @@ class MakeOrderComponent extends Component
             $this->validate(
                 [
                     'invoice' => 'required|file|mimes:pdf,jpg,jpeg,png',
+                    'custumerPhone' => 'required|numeric|digits:9',
                 ],
                 [
+                    'custumerPhone.required'    => 'O número de telefone é obrigatório.',
+                    'custumerPhone.numeric'    => 'Aceita apenas números.',
+                    'custumerPhone.digits'    => 'Deve conter apenas 9 dígitos',
+
+
                     'invoice.required'    => 'O comprovativo do pagamento é obrigatório.',
                     'invoice.file'        => 'O comprovativo deve ser um arquivo.',
                     'invoice.mimes'       => 'O comprovativo deve estar em formato PDF, JPG, JPEG ou PNG.',
@@ -152,9 +161,10 @@ class MakeOrderComponent extends Component
             $totalQuantity = $cart->count();
             $totalPrice = $cart->total();
             $totalDiscount = $items->sum(fn($item) => ($item->attributes['discount'] ?? 0) * $item->qty);
+            $number = 'Ped' . Str::upper(Str::random(5));
 
             $order = Order::create([
-                'number' => 'Ped' . Str::upper(Str::random(5)),
+                'number' => $number,
                 'description' => 'Pedido criado pelo sistema',
                 'customer_user_id' => Auth::user()->id,
                 'type' => strtoupper($this->orderType),
@@ -165,7 +175,29 @@ class MakeOrderComponent extends Component
                 'total_discount' => $totalDiscount,
                 'invoice' => $this->path ?? null,
                 'delivery_local' => $this->address ?? null,
+                'custumer_phone' => $this->custumerPhone ?? null,
             ]);
+
+            $data = [
+                'order_id' => $order->id,
+                'number' => $number,
+                'description' => 'Pedido criado pelo sistema',
+                'customer_user_id' => Auth::user()->id,
+                'type' => strtoupper($this->orderType),
+                'delivery_tax' => $this->deliveryFee,
+                'status' => 'PENDENTE',
+                'total_price' => $totalPrice + $this->deliveryFee,
+                'total_quantity' => $totalQuantity,
+                'total_discount' => $totalDiscount,
+                'invoice' => $this->path ?? null,
+                'delivery_local' => $this->address ?? null,
+                'custumer_phone' => $this->custumerPhone ?? null,
+            ];
+
+            $users = User::where("access_id", 1)->orWhere("access_id", 2)->get();
+            foreach ($users as $key => $user) {
+                $user->notify(new OrderNotification($data));
+            }
 
             foreach ($items as $item) {
 
@@ -276,7 +308,6 @@ class MakeOrderComponent extends Component
     public function loadCart()
     {
         $cart = app(Cart::class)->name(Auth::user()->id);
-
         $this->cartItems = $cart->all();
         $this->cartTotal = $cart->total();
         $this->cartQt = $cart->count();

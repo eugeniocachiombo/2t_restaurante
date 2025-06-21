@@ -46,7 +46,7 @@
                     </div>
 
                     @if ($address)
-                        <div class="alert alert-primary mt-4" role="alert">
+                        <div class="alert alert-primary" role="alert">
                             <i class="fa fa-info-circle"></i>
                             <strong>Nota:</strong> Será cobrada uma taxa de deslocação de
                             <strong>{{ number_format($deliveryFee, 2, ',', '.') }} AOA</strong>.
@@ -71,7 +71,7 @@
                     </div>
 
                     @if ($paymentMethod == 'ref')
-                        <div class="alert alert-danger mt-4 " role="alert">
+                        <div class="alert alert-danger" role="alert">
                             <i class="fa fa-warning"></i> Indisponível de momento
                             {{-- 
                             <h4>Pagamento por Referência</h4>
@@ -80,26 +80,51 @@
                            --}}
                         </div>
                     @elseif ($paymentMethod == 'transfer')
-                        <h4>Coordenadas Bancárias</h4>
-                        @foreach ($accounts as $item)
-                            <div class="alert alert-primary mt-4" role="alert">
-                                <div class="reference-code"> <b>{{ $item->description ?? 'n/d' }}</b> – IBAN: AO06
-                                    {{ $item->iban }}</div>
+                        <div wire:ignore class="accordion mb-3" id="bankAccountsAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Ver contas bancárias
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-parent="#bankAccountsAccordion">
+                                    <div class="accordion-body">
+                                        @foreach ($accounts as $item)
+                                            <div class="alert alert-primary mt-3" role="alert">
+                                                <div class="reference-code">
+                                                    <b>{{ $item->description ?? 'n/d' }}</b> – IBAN: AO06
+                                                    {{ $item->iban }}
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
-                        @endforeach
+                        </div>
                     @elseif ($paymentMethod == 'qrcode')
                     @endif
 
-                    @if ($paymentMethod != 'ref')
-                        <div class="mb-2">
+                    @if ($paymentMethod && $paymentMethod != 'ref')
+
+                        <div class="mb-2 text-start">
+                            <label>Telefone</label>
+                            <input type="number" class="form-control" wire:model="custumerPhone">
+                            @error('custumerPhone')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="mb-2 mt-3 text-start">
                             <label class="text-start mb-2">Anexar o Comprovativo de Pagamento (PDF/Imagem)</label>
                             <input type="file" class="form-control" wire:model="invoice">
 
                             {{-- Barra de progresso com wire:loading --}}
-                            <div class="my-2" wire:loading wire:target="invoice">
+                            <div class="col-12 my-2" wire:loading wire:target="invoice">
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
-                                        style="width: 100%">
+                                    <div class=" progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                                        style="width: 100%;">
                                         Carregando...
                                     </div>
                                 </div>
@@ -121,7 +146,7 @@
                             @endif
 
                             @error('invoice')
-                            <br>
+                                <br>
                                 <span class="text-danger mt-2">{{ $message }}</span>
                             @enderror
                         </div>

@@ -20,6 +20,7 @@ class Order extends Model
         "total_price",
         "total_quantity",
         "total_discount",
+        "custumer_phone",
     ];
 
     public function items()
