@@ -5,6 +5,7 @@ namespace App\Livewire\Order;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
@@ -73,6 +74,7 @@ class SubmitInvoiceComponent extends Component
 
 
             $order->update([
+                'attendant_user_id' => Auth::user()->id,
                 'invoice' => $path,
                 'status' => 'PAGO',
             ]);

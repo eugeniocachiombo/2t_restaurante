@@ -11,15 +11,14 @@
             </div>
             <div class="right_topbar">
                 <div class="icon_info ">
-                    <ul class="d-none">
+                    <ul class="">
                         <li>
-                            <a href="#"><i class="fa fa-bell-o"></i><span class="badge"
-                                    style="background: #133070">2</span></a>
+                            @livewire('home.notification-component')
                         </li>
-                        <li>
+                        <li class="d-none">
                             <a href="#"><i class="fa fa-question-circle"></i></a>
                         </li>
-                        <li>
+                        <li class="d-none">
                             <a href="#"><i class="fa fa-envelope-o"></i><span class="badge"
                                     style="background: #133070">3</span></a>
                         </li>
@@ -53,4 +52,6 @@
             </div>
         </div>
     </nav>
+
+    @livewire('home.notification-modal')
 </div>
