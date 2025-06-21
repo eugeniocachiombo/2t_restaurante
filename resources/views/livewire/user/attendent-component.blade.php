@@ -85,8 +85,8 @@
                                                 <td class="border text-center">{{ \Carbon\Carbon::parse($user->birth_date)->format('d/m/Y') }}</td>
                                                 <td class="border text-center">{{ $user->phone }}</td>
                                                 <td class="border text-center">{{ $user->email }}</td>
-                                                <td class="border text-center">{{ $user->address->description ?? 'N/D' }}</td>
-                                                <td class="border text-center">
+                                                <td class="border text-center">{{ $user->getAddress->description ?? 'N/D' }}</td>
+                                                <td class="border text-center" style="white-space: nowrap">
                                                     <button wire:click.prevent="setData({{ $user->id }})"
                                                             data-toggle="modal" data-target="#modal-user"
                                                             class="btn btn-sm btn-primary">
