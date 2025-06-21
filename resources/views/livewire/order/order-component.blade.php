@@ -108,11 +108,11 @@
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item" href="#"
                                                                     wire:click.prevent="generatePdf({{ $item->id }})">
-                                                                    <i class="fa fa-file-pdf-o"></i> Fatura Proforma
+                                                                    <i class="fa fa-file-pdf-o"></i> Factura Proforma
                                                                 </a>
                                                                 <a class="dropdown-item" href="#"
                                                                     wire:click.prevent="generatePdfReceive({{ $item->id }})">
-                                                                    <i class="fa fa-file-pdf-o"></i> Fatura Recibo
+                                                                    <i class="fa fa-file-pdf-o"></i> Factura Recibo
                                                                 </a>
                                                             </div>
                                                         </div>

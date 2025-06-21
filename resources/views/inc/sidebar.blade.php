@@ -58,7 +58,7 @@
                         @if (Gate::allows("admin") || Gate::allows("atendente"))
                             
                         <li><a href="{{ route('order.submit.invoice.component') }}"><i class="fa fa-upload orange_color"></i> 
-                            <span>Submeter Fatura</span></a></li>
+                            <span>Submeter Factura</span></a></li>
                         @endif
                 </ul>
             </li>
