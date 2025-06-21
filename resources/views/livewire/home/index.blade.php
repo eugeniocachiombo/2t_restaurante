@@ -10,8 +10,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <h2>Bem-vindo ao <span class="sitename">
-                             @include('inc.namewebsite')
-                        </span></h2>
+                                @include('inc.namewebsite')
+                            </span></h2>
                         <p>Uma experiência gastronômica completa — no seu prato, na sua casa ou no nosso espaço</p>
                         <a href="#about" class="btn-get-started">Descubra mais</a>
                     </div>
@@ -29,32 +29,32 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="{{count($dishes)}}" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ count($dishes) }}"
+                                data-purecounter-duration="1" class="purecounter"></span>
                             <p>Pratos Servidos</p>
                         </div>
                     </div><!-- Fim do Item de Estatística -->
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="{{count($drinks)}}" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ count($drinks) }}"
+                                data-purecounter-duration="1" class="purecounter"></span>
                             <p>Bebidas Preparadas</p>
                         </div>
                     </div><!-- Fim do Item de Estatística -->
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="{{count($orders)}}" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ count($orders) }}"
+                                data-purecounter-duration="1" class="purecounter"></span>
                             <p>Pedidos Online</p>
                         </div>
                     </div><!-- Fim do Item de Estatística -->
 
                     <div class="col-lg-3 col-md-6">
                         <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="{{count($cookers)}}" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ count($cookers) }}"
+                                data-purecounter-duration="1" class="purecounter"></span>
                             <p>Especialistas na Cozinha</p>
                         </div>
                     </div><!-- Fim do Item de Estatística -->
@@ -164,7 +164,7 @@
                                 <h3>Entrega de Refeições</h3>
                                 <p>Receba nossas delícias onde estiver! Um cardápio completo, preparado com carinho e
                                     entregue com agilidade, direto na sua porta.</p>
-                                <a href="{{route("auth.login")}}" class="read-more stretched-link">Peça agora <i
+                                <a href="{{ route('auth.login') }}" class="read-more stretched-link">Peça agora <i
                                         class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                                 <h3>Pedidos Personalizados</h3>
                                 <p>Cada pedido é único, assim como você. Seja para uma ocasião especial ou seu prato
                                     favorito com um toque extra, preparamos tudo sob medida.</p>
-                                <a href="#contact" class="read-more stretched-link">Fazer pedido <i
+                                <a href="{{ route('auth.login') }}" class="read-more stretched-link">Fazer pedido <i
                                         class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                             <h3>Pronto para fazer seu pedido?</h3>
                             <p>Delícias autênticas, preparadas com carinho, estão à sua espera. Faça seu pedido agora e
                                 experimente o melhor da nossa cozinha no conforto da sua casa ou na nossa mesa.</p>
-                            <a class="cta-btn" href="#">Peça Agora</a>
+                            <a class="cta-btn" href="{{ route('auth.login') }}">Peça Agora</a>
                         </div>
                     </div>
                 </div>
@@ -224,13 +224,14 @@
 
         <!-- Seção da Equipe -->
         <section id="team" class="team section light-background"
-        style="background-image: url('{{ asset('assets/img/rest/1(1).jpg') }}'); background-size: cover; background-position: center;">
+            style="background-image: url('{{ asset('assets/img/rest/1(1).jpg') }}'); background-size: cover; background-position: center;">
 
             <!-- Título da Seção -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Nosso Equipa de Cozinha</h2>
-                <p class="text-white"><b>Conheça os talentos por trás dos sabores inesquecíveis. Nossa equipe de cozinha combina paixão,
-                    criatividade e tradição em cada prato servido.</b></p>
+                <h2>Nossa Equipa de Cozinha</h2>
+                <p class="text-white"><b>Conheça os talentos por trás dos sabores inesquecíveis. Nossa equipe de
+                        cozinha combina paixão,
+                        criatividade e tradição em cada prato servido.</b></p>
             </div><!-- Fim do Título da Seção -->
 
             <div class="container">
@@ -238,11 +239,11 @@
                 <div class="row gy-4">
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="100" >
+                        data-aos-delay="100">
                         <div class="team-member">
                             <div class="member-img">
-                                <img 
-                                 src="{{asset('assets/img/team/team-1.jpeg')}}" class="img-fluid" alt="Chef Principal">
+                                <img src="{{ asset('assets/img/team/team-1.jpeg') }}" class="img-fluid"
+                                    alt="Chef Principal">
                                 <div class="social">
                                     <a href="#"><i class="bi bi-instagram"></i></a>
                                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -256,11 +257,11 @@
                     </div><!-- Fim do Membro -->
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="200" >
+                        data-aos-delay="200">
                         <div class="team-member">
                             <div class="member-img">
-                                <img 
-                                 src="{{asset('assets/img/team/team-2.jpeg')}}" class="img-fluid" alt="Sous Chef">
+                                <img src="{{ asset('assets/img/team/team-2.jpeg') }}" class="img-fluid"
+                                    alt="Sous Chef">
                                 <div class="social">
                                     <a href="#"><i class="bi bi-instagram"></i></a>
                                 </div>
@@ -273,10 +274,10 @@
                     </div><!-- Fim do Membro -->
 
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                        data-aos-delay="300" >
+                        data-aos-delay="300">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{asset('assets/img/team/team-3.jpeg')}}" class="img-fluid"
+                                <img src="{{ asset('assets/img/team/team-3.jpeg') }}" class="img-fluid"
                                     alt="Especialista em Grelhados">
                                 <div class="social">
                                     <a href="#"><i class="bi bi-instagram"></i></a>
@@ -321,7 +322,7 @@
                                 <li>Sabor autêntico angolano</li>
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Pedir agora</a>
+                                <a href="{{ route('auth.login') }}" class="btn-buy">Pedir agora</a>
                             </div>
                         </div>
                     </div><!-- Fim do Prato -->
@@ -336,7 +337,7 @@
                                 <li>Perfeito para quem ama tradição</li>
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Pedir agora</a>
+                                <a href="{{ route('auth.login') }}" class="btn-buy">Pedir agora</a>
                             </div>
                         </div>
                     </div><!-- Fim do Prato -->
@@ -351,7 +352,7 @@
                                 <li>Simples, delicioso e reconfortante</li>
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Pedir agora</a>
+                                <a href="{{ route('auth.login') }}" class="btn-buy">Pedir agora</a>
                             </div>
                         </div>
                     </div><!-- Fim do Prato -->
@@ -367,7 +368,7 @@
                                 <li>Sabor marcante e porção generosa</li>
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Pedir agora</a>
+                                <a href="{{ route('auth.login') }}" class="btn-buy">Pedir agora</a>
                             </div>
                         </div>
                     </div><!-- Fim do Prato -->
@@ -507,7 +508,8 @@
                             diversificado de comidas e bebidas preparado com ingredientes selecionados, nossa missão é
                             unir sabor, qualidade e praticidade para atender a todos os momentos do seu dia.
                         </p>
-                        <a href="#menu" class="about-btn align-self-center align-self-xl-start"><span>Conheça nosso
+                        <a href="{{ route('auth.login') }}"
+                            class="about-btn align-self-center align-self-xl-start"><span>Conheça nosso
                                 menu</span>
                             <i class="bi bi-chevron-right"></i></a>
                     </div>
@@ -547,7 +549,8 @@
 
 
         <!-- Seção de Contato -->
-        <section id="contact" class="contact section" style="background-image: url('{{ asset('assets/img/rest/1(1).jpg') }}'); background-size: cover; background-position: center;">
+        <section id="contact" class="contact section"
+            style="background-image: url('{{ asset('assets/img/rest/1(1).jpg') }}'); background-size: cover; background-position: center;">
 
             <!-- Título da Seção -->
             <div class="container section-title" data-aos="fade-up">
@@ -558,10 +561,12 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <iframe style="border:0; width: 100%; height: 270px;"
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
+                    <iframe style="border:0; width:100%; height:270px;"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.5!2d13.229!3d-8.91!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f4d0f1234567%3A0xabcdef1234567890!2sUrbaniza%C3%A7%C3%A3o%20Nova%20Vida%2C%20Rua%2050%2C%20Luanda!5e0!3m2!1spt-PT!2sao!4v1718988888888!5m2!1spt-PT!2sao"
                         frameborder="0" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+
                 </div><!-- Fim do Google Maps -->
 
                 <div class="row gy-4">
