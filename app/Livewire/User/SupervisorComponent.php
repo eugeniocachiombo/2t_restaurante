@@ -192,7 +192,8 @@ class SupervisorComponent extends Component
             'nif',
             'address_id',
             'email',
-            'phone'
+            'phone',
+            'edit'
         ]);
     }
 }

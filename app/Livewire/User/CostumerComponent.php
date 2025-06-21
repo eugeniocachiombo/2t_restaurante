@@ -192,7 +192,8 @@ class CostumerComponent extends Component
             'nif',
             'address_id',
             'email',
-            'phone'
+            'phone',
+            'edit'
         ]);
     }
 }

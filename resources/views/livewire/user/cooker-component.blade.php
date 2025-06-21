@@ -37,7 +37,7 @@
                             <h2>Lista de @yield('title')</h2>
                         </div>
                         <div class="heading1 margin_0">
-                            <button class="btn btn-primary" wire:click.prevent='resetForm' data-toggle="modal" data-target="#modal-user">
+                            <button wire:click.prevent='resetForm' class="btn btn-primary" wire:click.prevent='resetForm' data-toggle="modal" data-target="#modal-user">
                                 <i class="fa fa-plus-circle"></i> Adicionar
                             </button>
                         </div>
