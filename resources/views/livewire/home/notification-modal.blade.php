@@ -1,100 +1,102 @@
 <div id="notification-modal"
-    style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%);
-           background: white; padding: 20px; border: 1px solid #ccc; z-index: 999;
-           width: 600px; max-height: 80vh; overflow-y: auto;">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="mb-0">Notificações Não Lidas</h4>
-        <button id="close-modal" class="btn btn-sm btn-danger">&times;</button>
+     style="display: none; position: fixed; top: 10%; left: 50%; transform: translateX(-50%);
+            background: #fff; padding: 25px 20px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            border: 1px solid #ddd; z-index: 9999; width: 600px; max-height: 85vh; overflow-y: auto; transition: all 0.3s ease;">
+
+    <!-- Cabeçalho -->
+    <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+        <h4 class="mb-0 text-primary"><i class="fa fa-bell mr-2"></i>Notificações Não Lidas</h4>
+        <button id="close-modal" class="btn btn-sm btn-light border" title="Fechar" aria-label="Fechar modal">
+            <i class="fa fa-times text-danger"></i>
+        </button>
     </div>
 
+    <!-- Lista de notificações -->
     <div id="notificationAccordion" class="accordion">
-    @forelse(auth()->user()->unreadNotifications as $notification)
-        @php $index = $loop->index; @endphp
+        @forelse(auth()->user()->unreadNotifications as $notification)
+            @php $index = $loop->index; @endphp
 
-        <div class="card">
-            <div class="card-header" id="heading-{{ $index }}">
-                <div class="d-flex justify-content-between align-items-center">
-                    <!-- Botão de colapso com área 100% clicável e ícone dinâmico -->
+            <div class="card mb-2 border rounded shadow-sm">
+                <div class="card-header p-2" id="heading-{{ $index }}">
                     <button class="btn btn-link w-100 text-left d-flex justify-content-between align-items-center toggle-collapse"
                             type="button"
                             data-toggle="collapse"
                             data-target="#collapse-{{ $index }}"
                             aria-expanded="false"
-                            aria-controls="collapse-{{ $index }}">
+                            aria-controls="collapse-{{ $index }}"
+                            style="text-decoration: none; font-weight: 600; color: #333;">
                         <span>Pedido nº {{ $notification->data['order_id'] ?? 'Desconhecido' }}</span>
-                        <i class="fa fa-chevron-down ml-2" id="icon-{{ $index }}"></i>
+                        <i class="fa fa-chevron-down ml-2 text-dark" id="icon-{{ $index }}"></i>
                     </button>
                 </div>
-            </div>
 
-            <div id="collapse-{{ $index }}" class="collapse"
-                 aria-labelledby="heading-{{ $index }}" data-parent="#notificationAccordion">
-                <div class="card-body">
-                    <p><strong>ID do Pedido:</strong> {{ $notification->data['order_id'] }}</p>
+                <div id="collapse-{{ $index }}" class="collapse"
+                     aria-labelledby="heading-{{ $index }}" data-parent="#notificationAccordion">
+                    <div class="card-body">
+                        <p><strong>ID do Pedido:</strong> {{ $notification->data['order_id'] }}</p>
 
-                    @if (auth()->user()->access_id == 1 || auth()->user()->access_id == 2)
-                        <p><strong>Telefone:</strong> {{ $notification->data['custumer_phone'] ?? 'n/d' }}</p>
-                        <p><strong>Local de Entrega:</strong> {{ $notification->data['delivery_local'] ?? 'n/d' }}</p>
-                        <p><strong>Total Pago:</strong>
-                            {{ number_format($notification->data['total_price'] ?? 0, 2, ',', '.') }} kz</p>
+                        @if (auth()->user()->access_id == 1 || auth()->user()->access_id == 2)
+                            <p><strong>Telefone:</strong> {{ $notification->data['custumer_phone'] ?? 'n/d' }}</p>
+                            <p><strong>Local de Entrega:</strong> {{ $notification->data['delivery_local'] ?? 'n/d' }}</p>
+                            <p><strong>Total Pago:</strong>
+                                {{ number_format($notification->data['total_price'] ?? 0, 2, ',', '.') }} kz</p>
 
-                        <a href="#" class="btn btn-sm btn-primary my-2 view-file-btn"
-                           data-src="{{ asset('storage/' . $notification->data['invoice']) }}"
-                           data-index="{{ $index }}">
-                            <i class="fa fa-eye"></i> Visualizar o comprovativo
-                        </a>
+                            <a href="#" class="btn btn-outline-primary btn-sm view-file-btn my-2"
+                               data-src="{{ asset('storage/' . $notification->data['invoice']) }}"
+                               data-index="{{ $index }}">
+                                <i class="fa fa-eye"></i> Visualizar Comprovativo
+                            </a> <br>
 
-                        <br>
-                        <a href="#"
-                           wire:click.prevent="confirm({{ auth()->user()->id }}, {{ $notification }})"
-                           wire:loading.attr="disabled" wire:target="confirm"
-                           class="btn btn-sm btn-primary">
-                            <span wire:loading.remove wire:target="confirm">Confirmar</span>
-                            <span wire:loading wire:target="confirm">
-                                <i class="fa fa-spinner fa-spin"></i> A processar...
-                            </span>
-                        </a>
+                            <a href="#"
+                               wire:click.prevent="confirm({{ auth()->user()->id }}, {{ $notification }})"
+                               wire:loading.attr="disabled" wire:target="confirm"
+                               class="btn btn-primary btn-sm ml-2">
+                                <span wire:loading.remove wire:target="confirm">Confirmar</span>
+                                <span wire:loading wire:target="confirm">
+                                    <i class="fa fa-spinner fa-spin"></i> A processar...
+                                </span>
+                            </a>
 
-                        <!-- Visualizador de comprovativo -->
-                        <div class="file-viewer" id="file-viewer-{{ $index }}" style="display: none; margin-top: 15px;">
-                            <iframe class="file-frame" id="file-frame-{{ $index }}"
-                                    src="" style="width: 100%; height: 500px; border: none;"></iframe>
-                        </div>
-                    @else
-                        <p><strong>Mensagem:</strong> {{ $notification->data['description'] ?? 'n/d' }}</p>
+                            <div class="file-viewer mt-3" id="file-viewer-{{ $index }}" style="display: none;">
+                                <iframe class="file-frame" id="file-frame-{{ $index }}"
+                                        src="" style="width: 100%; height: 400px; border: 1px solid #ccc; border-radius: 4px;"></iframe>
+                            </div>
+                        @else
+                            <p><strong>Mensagem:</strong> {{ $notification->data['description'] ?? 'n/d' }}</p>
 
-                        <a href="#"
-                           wire:click.prevent="confirm({{ auth()->user()->id }}, {{ $notification }})"
-                           wire:loading.attr="disabled" wire:target="confirm"
-                           class="btn btn-sm btn-primary">
-                            <span wire:loading.remove wire:target="confirm">Marcar Como Lido</span>
-                            <span wire:loading wire:target="confirm">
-                                <i class="fa fa-spinner fa-spin"></i> A processar...
-                            </span>
-                        </a>
-                    @endif
+                            <a href="#"
+                               wire:click.prevent="confirm({{ auth()->user()->id }}, {{ $notification }})"
+                               wire:loading.attr="disabled" wire:target="confirm"
+                               class="btn btn-primary btn-sm">
+                                <span wire:loading.remove wire:target="confirm">Marcar Como Lido</span>
+                                <span wire:loading wire:target="confirm">
+                                    <i class="fa fa-spinner fa-spin"></i> A processar...
+                                </span>
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
-    @empty
-        <div class="alert alert-info">Nenhuma notificação não lida.</div>
-    @endforelse
+        @empty
+            <div class="alert alert-info">Nenhuma notificação não lida.</div>
+        @endforelse
+    </div>
 </div>
 
-</div>
-
+<!-- Scripts -->
 <script>
+    // Abrir modal ao clicar no botão (garanta que o botão existe na sua página)
     document.getElementById('notification-btn').addEventListener('click', function(event) {
         event.preventDefault();
         document.getElementById('notification-modal').style.display = 'block';
     });
 
+    // Fechar modal
     document.getElementById('close-modal').addEventListener('click', function() {
         document.getElementById('notification-modal').style.display = 'none';
     });
-</script>
 
-<script>
+    // Toggle do ícone na expansão/colapso das notificações
     document.querySelectorAll('.toggle-collapse').forEach(button => {
         button.addEventListener('click', function () {
             const targetId = this.getAttribute('data-target').replace('#collapse-', '');
@@ -109,13 +111,11 @@
                     icon.classList.remove('fa-chevron-up');
                     icon.classList.add('fa-chevron-down');
                 }
-            }, 350); // Espera a transição do Bootstrap
+            }, 350); // Espera a animação do Bootstrap terminar
         });
     });
-</script>
 
-
-<script>
+    // Visualizador de comprovativo
     document.querySelectorAll('.view-file-btn').forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
