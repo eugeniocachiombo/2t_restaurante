@@ -12,7 +12,7 @@
             <div class="right_topbar">
                 <div class="icon_info ">
                     <ul class="">
-                        <li>
+                        <li >
                             @livewire('home.notification-component')
                         </li>
                         <li class="d-none">
