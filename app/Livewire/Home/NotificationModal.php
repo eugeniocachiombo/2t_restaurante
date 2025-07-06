@@ -13,9 +13,20 @@ use Livewire\Component;
 
 class NotificationModal extends Component
 {
+
     public function render()
     {
-        return view('livewire.home.notification-modal');
+        return view('livewire.home.notification-modal', [
+            "user" => auth()->user(),
+        ]);
+    }
+
+    public function updateMessage() {
+        $this->dispatch('alerta', [
+            'icon' => 'warning',
+                'btn' => true,
+                'html' => 'Informações actualizadas, abra novamente as notificações',
+            ]);
     }
 
     public function confirm($user_id, $notify)
@@ -48,6 +59,53 @@ class NotificationModal extends Component
             }
 
 
+            $drivers = User::where("access_id", 6)->get();
+
+            foreach ($drivers as $key => $item) {
+                $custumerId = $notification['data']['customer_user_id'];
+                $custumer = User::find($custumerId);
+
+                $driverId = $item->id;
+                $driver = User::find($driverId);
+                $driver->notify(new OrderNotification([
+                    'order_id' => $orderId,
+                    'custumer_name' => $custumer->first_name ." " . $custumer->last_name,
+                    'custumer_phone' => $notification['data']["custumer_phone"],
+                    'delivery_local' => $notification['data']["delivery_local"],
+                    'total_price' => $notification['data']["total_price"],
+                    'description' => 'Foi encontrado um pedido para fazeres a entrega.',
+                ]));
+            }
+
+
+            DB::commit();
+            $this->dispatch('alerta', [
+                'icon' => 'success',
+                'btn' => true,
+                'title' => 'Sucesso',
+                'html' => 'Operação realizada com sucesso',
+            ]);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th->getMessage());
+            $this->dispatch('alerta', [
+                'icon' => 'error',
+                'btn' => true,
+                'title' => 'Erro',
+                'html' => 'Erro ao realizar operação',
+            ]);
+        }
+    }
+
+
+    public function markAsRead($user_id, $notify)
+    {
+        try {
+
+            DB::beginTransaction();
+            $user = User::find($user_id);
+            $notification = $user->unreadNotifications->find($notify["id"]);
+            $notification->markAsRead();
             DB::commit();
             $this->dispatch('alerta', [
                 'icon' => 'success',
