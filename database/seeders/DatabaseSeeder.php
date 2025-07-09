@@ -22,17 +22,32 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Create access type
-        $this->create_type_access("admin");
-        $this->create_type_access("atendente");
-        $this->create_type_access("supervisor");
-        $this->create_type_access("cozinheiro");
-        $this->create_type_access("cliente");
+        $this->create_type_access("Admin");
+        $this->create_type_access("Atendente");
+        $this->create_type_access("Supervisor");
+        $this->create_type_access("Cozinheiro");
+        $this->create_type_access("Cliente");
+        $this->create_type_access("Motoboy");
 
         // Create province
-        $this->create_province("Luanda");
-        $this->create_province("Huambo");
+        $this->create_province("Bengo");
+        $this->create_province("Benguela");
         $this->create_province("Bié");
-        $this->create_province("Záire");
+        $this->create_province("Cabinda");
+        $this->create_province("Cuando Cubango");
+        $this->create_province("Cuanza Norte");
+        $this->create_province("Cuanza Sul");
+        $this->create_province("Cunene");
+        $this->create_province("Huambo");
+        $this->create_province("Huíla");
+        $this->create_province("Luanda");
+        $this->create_province("Lunda Norte");
+        $this->create_province("Lunda Sul");
+        $this->create_province("Malange");
+        $this->create_province("Moxico");
+        $this->create_province("Namibe");
+        $this->create_province("Uige");
+        $this->create_province("Zaire");
 
         // Create municipality
         $this->create_municipality("Cacuaco", 1);

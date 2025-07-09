@@ -132,6 +132,10 @@
                     @if (Gate::allows("admin") || Gate::allows("supervisor"))
                     <li><a href="{{ route('user.cooker') }}">> <span>Cozinheiros</span></a></li>
                     @endif
+
+                    @if (Gate::allows("admin") || Gate::allows("motoboy"))
+                    <li><a href="{{ route('user.cooker') }}">> <span>Motoboy</span></a></li>
+                    @endif
                 </ul>
             </li>
             @endcannot

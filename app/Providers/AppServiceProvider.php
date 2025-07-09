@@ -40,6 +40,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define("cliente", function ($user) {
             return $user->access_id === 5;
         });
+        Gate::define("motoboy", function ($user) {
+            return $user->access_id === 6;
+        });
 
         try {
             ChangeStatus::changeStatusDishes();
