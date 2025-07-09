@@ -134,7 +134,7 @@
                     @endif
 
                     @if (Gate::allows("admin") || Gate::allows("motoboy"))
-                    <li><a href="{{ route('user.cooker') }}">> <span>Motoboy</span></a></li>
+                    <li><a href="{{ route('user.driver') }}">> <span>Motoboy</span></a></li>
                     @endif
                 </ul>
             </li>

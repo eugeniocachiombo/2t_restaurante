@@ -2,6 +2,10 @@
 
 namespace App\Livewire\User;
 
+use App\Models\User;
+use App\Models\Address;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class DriverComponent extends Component
