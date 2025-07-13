@@ -42,42 +42,43 @@
                     <i class="fa fa-user red_color"></i> <span>Perfil</span>
                 </a>
             </li>
-            <li
-                class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'order.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'order.make.component' ? 'bg-success' : '' }}">
-                <a href="#order" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa fa-clipboard orange_color"></i> <span>Pedidos</span>
-                </a>
-                <ul class="collapse list-unstyled" id="order">
-                    @can('cliente')
-                        <li><a href="{{ route('order.make.component') }}"><i class="fa fa-truck orange_color"></i>
-                                <span>Fazer Pedido</span></a></li>
-                    @endcan
-                    <li><a href="{{ route('order.component') }}"><i class="fa fa-list orange_color"></i> <span>Lista
-                                de Pedidos</span></a></li>
+            @cannot('motoboy')
+                <li
+                    class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'order.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'order.make.component' ? 'bg-success' : '' }}">
+                    <a href="#order" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-clipboard orange_color"></i> <span>Pedidos</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="order">
+                        @can('cliente')
+                            <li><a href="{{ route('order.make.component') }}"><i class="fa fa-truck orange_color"></i>
+                                    <span>Fazer Pedido</span></a></li>
+                        @endcan
+                        <li><a href="{{ route('order.component') }}"><i class="fa fa-list orange_color"></i> <span>Lista
+                                    de Pedidos</span></a></li>
 
-                        @if (Gate::allows("admin") || Gate::allows("atendente"))
-                            
-                        <li><a href="{{ route('order.submit.invoice.component') }}"><i class="fa fa-upload orange_color"></i> 
-                            <span>Submeter Factura</span></a></li>
+                        @if (Gate::allows('admin') || Gate::allows('atendente'))
+                            <li><a href="{{ route('order.submit.invoice.component') }}"><i
+                                        class="fa fa-upload orange_color"></i>
+                                    <span>Submeter Factura</span></a></li>
                         @endif
-                </ul>
-            </li>
-            <li
-                class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'drink.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'drink.stockenter.component' ? 'bg-success' : '' }}">
-                <a href="#drinks" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
-                </a>
-                <ul class="collapse list-unstyled" id="drinks">
-                    @cannot('cliente')
-                        <li><a href="{{ route('drink.stockenter.component') }}"><i
-                                    class="fa fa-plus-circle purple_color"></i> <span>Entrada de Estoque</span></a></li>
-                    @endcannot
-                    <li><a href="{{ route('drink.component') }}"><i class="fa fa-list purple_color"></i> <span>Lista
-                                de bebidas</span></a></li>
-                </ul>
-            </li>
+                    </ul>
+                </li>
+                <li
+                    class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'drink.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'drink.stockenter.component' ? 'bg-success' : '' }}">
+                    <a href="#drinks" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="drinks">
+                        @cannot('cliente')
+                            <li><a href="{{ route('drink.stockenter.component') }}"><i
+                                        class="fa fa-plus-circle purple_color"></i> <span>Entrada de Estoque</span></a></li>
+                        @endcannot
+                        <li><a href="{{ route('drink.component') }}"><i class="fa fa-list purple_color"></i> <span>Lista
+                                    de bebidas</span></a></li>
+                    </ul>
+                </li>
 
-            {{-- 
+                {{-- 
             @cannot('cliente')
                 <li
                     class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'category.component' || \Illuminate\Support\Facades\Route::currentRouteName() == 'ingredient.component' ? 'bg-success' : '' }}">
@@ -105,39 +106,39 @@
                 </li>
             @endcannot
                  --}}
-                 
-            <li
-                class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'dish.component' ? 'bg-success' : '' }} ">
-                <a href="{{ route('dish.component') }}">
-                    <i class="fa fa-cutlery blue1_color"></i> <span>Pratos</span>
-                </a>
-            </li>
 
-            @cannot('cliente')
-            <li class="active">
-                <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa fa-users yellow_color"></i> <span>Utilizadores</span>
-                </a>
-                <ul class="collapse list-unstyled" id="users">
-                    @if (Gate::allows("admin") || Gate::allows("atendente"))
-                        
-                    <li><a href="{{ route('user.custumer') }}">> <span>Clientes</span></a></li>
-                    @endif
+                <li
+                    class="{{ \Illuminate\Support\Facades\Route::currentRouteName() == 'dish.component' ? 'bg-success' : '' }} ">
+                    <a href="{{ route('dish.component') }}">
+                        <i class="fa fa-cutlery blue1_color"></i> <span>Pratos</span>
+                    </a>
+                </li>
 
-                    @if (Gate::allows("admin") || Gate::allows("atendente"))
-                    <li><a href="{{ route('user.attendent') }}">> <span>Atendentes</span></a></li>
-                    <li><a href="{{ route('user.supervisor') }}">> <span>Supervisores</span></a></li>
-                    @endif
-                    
-                    @if (Gate::allows("admin") || Gate::allows("supervisor"))
-                    <li><a href="{{ route('user.cooker') }}">> <span>Cozinheiros</span></a></li>
-                    @endif
+                @cannot('cliente')
+                    <li class="active">
+                        <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fa fa-users yellow_color"></i> <span>Utilizadores</span>
+                        </a>
+                        <ul class="collapse list-unstyled" id="users">
+                            @if (Gate::allows('admin') || Gate::allows('atendente'))
+                                <li><a href="{{ route('user.custumer') }}">> <span>Clientes</span></a></li>
+                            @endif
 
-                    @if (Gate::allows("admin") || Gate::allows("motoboy"))
-                    <li><a href="{{ route('user.driver') }}">> <span>Motoboy</span></a></li>
-                    @endif
-                </ul>
-            </li>
+                            @if (Gate::allows('admin') || Gate::allows('atendente'))
+                                <li><a href="{{ route('user.attendent') }}">> <span>Atendentes</span></a></li>
+                                <li><a href="{{ route('user.supervisor') }}">> <span>Supervisores</span></a></li>
+                            @endif
+
+                            @if (Gate::allows('admin') || Gate::allows('supervisor'))
+                                <li><a href="{{ route('user.cooker') }}">> <span>Cozinheiros</span></a></li>
+                            @endif
+
+                            @if (Gate::allows('admin') || Gate::allows('motoboy'))
+                                <li><a href="{{ route('user.driver') }}">> <span>Motoboy</span></a></li>
+                            @endif
+                        </ul>
+                    </li>
+                @endcannot
             @endcannot
         </ul>
     </div>

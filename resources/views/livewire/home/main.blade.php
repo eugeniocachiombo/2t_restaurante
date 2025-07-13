@@ -8,96 +8,136 @@
                 </div>
             </div>
         </div>
-        <div class="row column1">
-            @if (!Gate::allows("cliente"))
-            <div class="col-md-6 col-lg-3">
-                <div class="full counter_section margin_bottom_30">
-                    <div class="couter_icon">
-                        <div>
-                            <i class="fa fa-users yellow_color"></i>
+        @cannot('motoboy')
+            <div class="row column1">
+                @if (!Gate::allows('cliente'))
+                    <div class="col-md-6 col-lg-3">
+                        <div class="full counter_section margin_bottom_30">
+                            <div class="couter_icon">
+                                <div>
+                                    <i class="fa fa-users yellow_color"></i>
+                                </div>
+                            </div>
+                            <div class="counter_no">
+                                <div>
+                                    <p class="total_no">{{ count($customers) }}</p>
+                                    <p class="head_couter">Clientes</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="counter_no">
-                        <div>
-                            <p class="total_no">{{ count($customers) }}</p>
-                            <p class="head_couter">Clientes</p>
+                @endif
+                <div class="col-md-6 col-lg-{{ !Gate::allows('cliente') ? '3' : '4' }}">
+                    <div class="full counter_section margin_bottom_30">
+                        <div class="couter_icon">
+                            <div>
+                                <i class="fa fa-clipboard orange_color"></i>
+                            </div>
+                        </div>
+                        <div class="counter_no">
+                            <div>
+                                <p class="total_no">{{ count($orders) }}</p>
+                                <p class="head_couter">Pedidos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-{{ !Gate::allows('cliente') ? '3' : '4' }}">
+                    <div class="full counter_section margin_bottom_30">
+                        <div class="couter_icon">
+                            <div>
+                                <i class="fa fa-cutlery blue1_color"></i>
+                            </div>
+                        </div>
+                        <div class="counter_no">
+                            <div>
+                                <p class="total_no">{{ count($dishes) }}</p>
+                                <p class="head_couter">Pratos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-{{ !Gate::allows('cliente') ? '3' : '4' }}">
+                    <div class="full counter_section margin_bottom_30">
+                        <div class="couter_icon">
+                            <div>
+                                <i class="fa fa-glass purple_color"></i>
+                            </div>
+                        </div>
+                        <div class="counter_no">
+                            <div>
+                                <p class="total_no">{{ count($drinks) }}</p>
+                                <p class="head_couter">Bebidas</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endif
-            <div class="col-md-6 col-lg-{{ !Gate::allows("cliente") ? '3' : '4' }}">
-                <div class="full counter_section margin_bottom_30">
-                    <div class="couter_icon">
-                        <div>
-                            <i class="fa fa-clipboard orange_color"></i>
+            <div class="row column1">
+                <div class="col-lg-6">
+                    <div class="white_shd full margin_bottom_30">
+                        <div class="full graph_head">
+                            <div class="heading1 margin_0">
+                                <h2>Gráfico de Análise de Pedidos</h2>
+                            </div>
+                        </div>
+                        <div class="map_section padding_infor_info">
+                            <canvas id="orders_analysis_chart"></canvas>
                         </div>
                     </div>
-                    <div class="counter_no">
-                        <div>
-                            <p class="total_no">{{ count($orders) }}</p>
-                            <p class="head_couter">Pedidos</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="white_shd full margin_bottom_30">
+                        <div class="full graph_head">
+                            <div class="heading1 margin_0">
+                                <h2>Gráfico de Análise de Vendas</h2>
+                            </div>
+                        </div>
+                        <div class="map_section padding_infor_info">
+                            <canvas id="sales_analysis_chart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-{{ !Gate::allows("cliente") ? '3' : '4' }}">
-                <div class="full counter_section margin_bottom_30">
-                    <div class="couter_icon">
-                        <div>
-                            <i class="fa fa-cutlery blue1_color"></i>
+        @endcannot
+
+        @can('motoboy')
+            <div class="row column1">
+                <div class="col-12">
+                    <div class="full counter_section margin_bottom_30">
+                        <div class="couter_icon">
+                            <div>
+                                <i class="fa fa-motorcycle green_color"></i>
+                            </div>
+                        </div>
+                        <div class="counter_no">
+                            <div>
+                                <p class="head_couter">Exclusivamente Para Entregadores</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="counter_no">
-                        <div>
-                            <p class="total_no">{{ count($dishes) }}</p>
-                            <p class="head_couter">Pratos</p>
+                </div>
+
+            <div class="row column1">
+                <div class="col-md-12">
+                    <div class="white_shd full margin_bottom_30">
+                        <div class="full graph_head">
+                            <div class="heading1 margin_0">
+                                <h2>Informações Importantes</h2>
+                            </div>
+                        </div>
+                        <div class="full progress_bar_inner">
+                            <div class="msg_section padding_infor_info">
+                                <p><i class="fa fa-info-circle"></i> Mantenha seu estado actualizado com a central.</p>
+                                <p><i class="fa fa-map-marker"></i> Verifique o endereço antes de sair para entrega.</p>
+                                <p><i class="fa fa-phone"></i> Em caso de problema, entre em contacto com o suporte.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-{{ !Gate::allows("cliente") ? '3' : '4' }}">
-                <div class="full counter_section margin_bottom_30">
-                    <div class="couter_icon">
-                        <div>
-                            <i class="fa fa-glass purple_color"></i>
-                        </div>
-                    </div>
-                    <div class="counter_no">
-                        <div>
-                            <p class="total_no">{{ count($drinks) }}</p>
-                            <p class="head_couter">Bebidas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row column1">
-            <div class="col-lg-6">
-                <div class="white_shd full margin_bottom_30">
-                    <div class="full graph_head">
-                        <div class="heading1 margin_0">
-                            <h2>Gráfico de Análise de Pedidos</h2>
-                        </div>
-                    </div>
-                    <div class="map_section padding_infor_info">
-                        <canvas id="orders_analysis_chart"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="white_shd full margin_bottom_30">
-                    <div class="full graph_head">
-                        <div class="heading1 margin_0">
-                            <h2>Gráfico de Análise de Vendas</h2>
-                        </div>
-                    </div>
-                    <div class="map_section padding_infor_info">
-                        <canvas id="sales_analysis_chart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endcan
+
     </div>
     @include('inc.footer')
 </div>
@@ -174,8 +214,7 @@
         type: 'line',
         data: {
             labels: salesLabels,
-            datasets: [
-                {
+            datasets: [{
                     label: 'Pratos',
                     data: dishesData,
                     borderColor: '#007bff',
@@ -227,4 +266,3 @@
         }
     });
 </script>
-
