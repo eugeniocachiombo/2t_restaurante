@@ -69,10 +69,11 @@
                         <i class="fa fa-glass purple_color"></i> <span>Bebidas</span>
                     </a>
                     <ul class="collapse list-unstyled" id="drinks">
-                        @cannot('cliente')
+                        @can('admin')
                             <li><a href="{{ route('drink.stockenter.component') }}"><i
                                         class="fa fa-plus-circle purple_color"></i> <span>Entrada de Estoque</span></a></li>
-                        @endcannot
+                        @endcan
+
                         <li><a href="{{ route('drink.component') }}"><i class="fa fa-list purple_color"></i> <span>Lista
                                     de bebidas</span></a></li>
                     </ul>
@@ -124,7 +125,7 @@
                                 <li><a href="{{ route('user.custumer') }}">> <span>Clientes</span></a></li>
                             @endif
 
-                            @if (Gate::allows('admin') || Gate::allows('atendente'))
+                            @if (Gate::allows('admin'))
                                 <li><a href="{{ route('user.attendent') }}">> <span>Atendentes</span></a></li>
                                 <li><a href="{{ route('user.supervisor') }}">> <span>Supervisores</span></a></li>
                             @endif

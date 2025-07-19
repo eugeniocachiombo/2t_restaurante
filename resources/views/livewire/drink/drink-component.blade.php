@@ -37,12 +37,12 @@
                             <h2>Lista de @yield('title')</h2>
                         </div>
                         <div class="heading1 margin_0">
-                            @cannot('cliente')
+                           @if (!Gate::allows('cliente') && !Gate::allows('atendente'))
                                 <button class="btn btn-primary" type="button" wire:click.prevent='clear'
                                     data-toggle="modal" data-target="#modal-add">
                                     <i class="fa fa-plus-circle"></i> Adicionar
                                 </button>
-                            @endcannot
+                            @endif
                         </div>
                     </div>
 

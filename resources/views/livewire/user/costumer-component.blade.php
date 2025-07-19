@@ -56,7 +56,9 @@
                                             <th class="bg-dark text-white text-center">Telefone</th>
                                             <th class="bg-dark text-white text-center">Email</th>
                                             <th class="bg-dark text-white text-center">Endereço</th>
+                                            @can('admin')
                                             <th class="bg-dark text-white text-center">Ações</th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,6 +88,7 @@
                                                 <td class="border text-center">{{ $user->phone }}</td>
                                                 <td class="border text-center">{{ $user->email }}</td>
                                                 <td class="border text-center">{{ $user->getAddress->description ?? 'N/D' }}</td>
+                                                @can('admin')
                                                 <td class="border text-center" style="white-space: nowrap">
                                                     <button wire:click.prevent="setData({{ $user->id }})"
                                                             data-toggle="modal" data-target="#modal-user"
@@ -97,6 +100,7 @@
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
+                                                @endcan
                                             </tr>
                                         @empty
                                             <tr>
