@@ -126,7 +126,7 @@ class MakeOrderComponent extends Component
             $this->path = $this->invoice->store('invoices', 'public');
         }
 
-        if ($this->paymentMethod != 'ref') {
+        if ($this->paymentMethod != 'transfer') {
             $this->path = null;
         }
         $this->localConfirmed = true;
