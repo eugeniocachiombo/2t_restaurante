@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        @if (!Gate::allows('motoboy') && !Gate::allows('atendente'))
+        @if (!Gate::allows('motoboy') && !Gate::allows('atendente') && !Gate::allows('cliente'))
             <div class="row column1">
                 @if (!Gate::allows('cliente'))
                     <div class="col-md-6 col-lg-3">
@@ -102,6 +102,57 @@
             </div>
         @endif
 
+        @can('cliente')
+            <div class="row column1">
+                <div class="col-12">
+                    <div class="full counter_section margin_bottom_30"
+                        style="background-color: #f9f9ff; border-left: 5px solid #28a745; border-radius: 8px; padding: 15px;">
+                        <div class="couter_icon" style="float: left; margin-right: 15px;">
+                            <div
+                                style="background-color: #28a745; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa fa-user" style="color: white; font-size: 24px;"></i>
+                            </div>
+                        </div>
+                        <div class="counter_no">
+                            <div>
+                                <p class="head_couter"
+                                    style="font-size: 18px; font-weight: bold; color: #28a745; margin-top: 10px;">
+                                    <i class="fa fa-user-circle" style="margin-right: 5px;"></i>
+                                    Exclusivamente Para Clientes
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row column1">
+                    <div class="col-md-12">
+                        <div class="white_shd full margin_bottom_30" style="border-radius: 8px;">
+                            <div class="full graph_head"
+                                style="background-color: #28a745; border-radius: 8px 8px 0 0; padding: 12px;">
+                                <div class="heading1 margin_0">
+                                    <h2 style="color: white; font-size: 18px; margin: 0;">Informações Importantes</h2>
+                                </div>
+                            </div>
+                            <div class="full progress_bar_inner" style="padding: 20px;">
+                                <div class="msg_section padding_infor_info" style="font-size: 15px; color: #333;">
+                                    <p><i class="fa fa-shopping-cart" style="color: #28a745;"></i> Verifique sempre os itens
+                                        do
+                                        seu pedido antes de confirmar.</p>
+                                    <p><i class="fa fa-bell" style="color: #28a745;"></i> Acompanhe o estado do seu pedido
+                                        em
+                                        tempo real. No icone de notificações</p>
+                                    <p><i class="fa fa-star" style="color: #28a745;"></i> Avalie o atendimento e a entrega
+                                        para ajudar-nos a melhorar.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endcan
+
+
         @can('atendente')
             <div class="row column1">
                 <div class="col-12">
@@ -110,7 +161,7 @@
                         <div class="couter_icon" style="float: left; margin-right: 15px;">
                             <div
                                 style="background-color: #1e90ff; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fa fa-receipt" style="color: white; font-size: 24px;"></i>
+                                <i class="fa fa-receipt" style="color: white; font-size: 24px;"></i>
                             </div>
                         </div>
                         <div class="counter_no">
@@ -136,7 +187,8 @@
                             </div>
                             <div class="full progress_bar_inner" style="padding: 20px;">
                                 <div class="msg_section padding_infor_info" style="font-size: 15px; color: #333;">
-                                    <p><i class="fa fa-check-circle" style="color: #1e90ff;"></i> Confirme todos os pedidos
+                                    <p><i class="fa fa-check-circle" style="color: #1e90ff;"></i> Confirme todos os
+                                        pedidos
                                         com clareza antes de finalizar.</p>
                                     <p><i class="fa fa-comments" style="color: #1e90ff;"></i> Use uma linguagem clara e
                                         educada com os clientes.</p>
@@ -190,6 +242,8 @@
                 </div>
             </div>
         @endcan
+
+
 
         @include('inc.footer')
     </div>
