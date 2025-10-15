@@ -5,6 +5,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
+/public/assets/pdfs
 /vendor
 .env
 .env.backup
