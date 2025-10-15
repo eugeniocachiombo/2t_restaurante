@@ -2,7 +2,8 @@
     <div class="modal-dialog modal-lg" role="document">
         <form class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{ $edit ? 'Editar' : 'Adicionar' }} Cliente</h5>
+                <h5 class="modal-title">{{ $edit ? 'Editar' : 'Adicionar' }} {{ substr(View::yieldContent('title'), 0, -1) }}
+                </h5>
                 <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

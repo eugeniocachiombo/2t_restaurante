@@ -1,4 +1,4 @@
-@section('title', 'Motoboy')
+@section('title', 'Motoboys')
 
 <div class="midde_cont">
     <div class="container-fluid">

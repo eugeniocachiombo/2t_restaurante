@@ -143,6 +143,18 @@
                                         </button>
                                     </div>
                                 </center>
+                            @elseif($invoice)
+                                <center>
+                                    <div class="my-3">
+                                        <div>
+                                          Arquivo anexado: {{ $invoice->getClientOriginalName() }}
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-danger mt-2"
+                                            wire:click="$set('invoice', null)">
+                                            Remover Comprovativo
+                                        </button>
+                                    </div>
+                                </center>
                             @endif
 
                             @error('invoice')

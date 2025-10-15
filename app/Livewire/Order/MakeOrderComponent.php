@@ -31,7 +31,7 @@ class MakeOrderComponent extends Component
     public $paymentMethod = null;
     public $refcode = 0;
     public $isGenerateRfcode = false;
-    public $invoice, $path, $custumerPhone;
+    public $invoice = null, $path = '', $custumerPhone;
 
     public function mount()
     {
@@ -126,7 +126,7 @@ class MakeOrderComponent extends Component
             $this->path = $this->invoice->store('invoices', 'public');
         }
 
-        if ($this->orderType != 'online') {
+        if ($this->paymentMethod != 'ref') {
             $this->path = null;
         }
         $this->localConfirmed = true;
